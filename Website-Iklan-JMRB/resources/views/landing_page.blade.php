@@ -1,7 +1,7 @@
 @extends('layouts/app')
-
+@section('content')
 <!-- background image -->
-<!-- <div class="text-center bg-image" style=" background-image:{{url('Web/Iklan.png')}}; height: 400px;">
+<div class="text-center bg-image" style=" background-image:{{url('Web/Iklan.png')}}; height: 400px;">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
     <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-white">
@@ -10,9 +10,10 @@
         </div>
     </div>
     </div>
-</div> -->
+</div>
 <!-- background image -->
 
 <!-- body image -->
-<!-- <img src="{{url('Web/Jenis-Iklan&Utilitas.png')}}" class="img-fluid" alt=""> -->
+<img src="{{url('Web/Jenis-Iklan&Utilitas.png')}}" class="img-fluid" alt="">
 <!-- body image -->
+@endsection

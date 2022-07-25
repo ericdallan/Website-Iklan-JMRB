@@ -42,9 +42,9 @@
             </div>
         </div>
     </nav>
-     <!-- Navbar -->
-
-   <!-- footer -->
+    <!-- Navbar -->
+    @yield('content')
+    <!-- footer -->
     <footer class="text-lg-start text-white pt-5 pb-5" style="background-color:#0A142F">
         <div class="container text-left">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
