@@ -4,8 +4,9 @@
 <style>
     label{
         color:#0A142F;
+        font-weight:bold;
     }
-    input[type="text"], input[type="email"], input[type="password"]  {
+    input[type="text"], input[type="email"], input[type="password"]{
         background-color : #D9D9D9; 
     }
     button{
@@ -15,7 +16,7 @@
 </style>
 <!-- color label -->
 
-<!-- container form -->
+<!-- Login form -->
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="row py-3">
@@ -34,12 +35,12 @@
                         <input type="password" class="form-control" id="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="text-white mt-3 mb-2">Login</button>
+                        <button type="submit" class="text-white mt-3 mb-2 border-0">Login</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<!-- container form -->
+<!-- Login form -->
 @endsection 

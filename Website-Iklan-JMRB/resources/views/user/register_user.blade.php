@@ -1,9 +1,10 @@
 @extends('layouts/app')
 @section('content')
-<!-- color label -->
+color label -->
 <style>
     label{
         color:#0A142F;
+        font-weight:bold;
     }
     input[type="text"], input[type="email"], input[type="password"]  {
         background-color : #D9D9D9; 
@@ -15,7 +16,7 @@
 </style>
 <!-- color label -->
 
-<!-- container form -->
+<!-- Register form -->
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="row">
@@ -46,7 +47,7 @@
                         <input type="password" class="form-control" id="ConfirmPassword" placeholder="Re-enter Password">
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="text-white mt-3 mb-2">Create Your Account</button>
+                        <button type="submit" class="text-white mt-3 mb-2 border-0">Create Your Account</button>
                         <div style="font-size: 15px;">Already have an account ? <a href="/User/Login" style="text-decoration:none; color:#0A142F; font-weight: bold;">Login</a></div>
                     </div>
                 </form>
@@ -54,6 +55,6 @@
         </div>
     </div>
 </div>
-<!-- container form -->
+<!-- Register form
 
 @endsection

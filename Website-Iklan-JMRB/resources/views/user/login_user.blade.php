@@ -34,7 +34,7 @@
                         <input type="password" class="form-control" id="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="text-white mt-3 mb-2">Login</button>
+                        <button type="submit" class="text-white mt-3 mb-2 border-0">Login</button>
                         <div style="font-size: 15px;">Don’t have an account ? <a href="/User/Register" style="text-decoration:none; color:#0A142F; font-weight: bold;">Register</a></div>
                     </div>
                 </form>
