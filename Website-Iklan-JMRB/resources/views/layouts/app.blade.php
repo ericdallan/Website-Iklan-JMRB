@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="sticky-top navbar navbar-expand-lg navbar-white" style="background-color: #FFFFFF; box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);">
+    <nav class="sticky-top navbar navbar-expand-lg navbar-white" style="background-color: #FFFFFF; box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);">
         <div class="container">
             <a class="navbar-brand " href="/"><img src="{{url('Web/logocolor.png')}}" height="30"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +31,12 @@
                         Login
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="">Admin</a></li>
-                            <li><a class="dropdown-item" href="">Tenant</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Login">Admin</a></li>
+                            <li><a class="dropdown-item" href="/User/Login">Tenant</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-3" href="#">Register</a>
+                        <a class="nav-link me-3" href="/User/Register">Register</a>
                     </li>
                 </div>
             </div>

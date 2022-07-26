@@ -27,4 +27,16 @@ class HomeController extends Controller
     {
         return view('Iklan');
     }
+    public function LoginUser()
+    {
+        return view('user.login_user');
+    }
+    public function RegisterUser()
+    {
+        return view('user.register_user');
+    }
+    public function LoginAdmin()
+    {
+        return view('admin.login_admin');
+    }
 }

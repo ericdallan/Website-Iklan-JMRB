@@ -1,13 +1,17 @@
 @extends('layouts/app')
 @section('content')
 <!-- background image -->
-<div class="text-center bg-image" style=" background-image:{{url('Web/Kantor.png')}}; height: 400px;">
+<div class="bg-image mb-4" style=" background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/08/screenshot-1024x768.jpg'); height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-    <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-        <h2 class="mb-3">Profil Perusahaan</h2>
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white text-center">
+                <h2 class="mb-3" style="text-shadow :0 0 10px #FECD0A;">Profil Perusahaan</h2>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 <!-- background image -->
@@ -46,12 +50,50 @@
 <!-- visi dan misi -->
 
 <!-- tata nilai akhlah -->
-<div class="container text-center">
-    <h2 class="fw-bold" style="text-decoration: underline; text-decoration-color:#FECE3D;">Tata Nilai Akhlak</h2>
+<div class="container">
+    <div class="row mb-2">
+        <h2 class="fw-bold text-center mb-3" style="text-decoration: underline; text-decoration-color:#FECE3D;">Tata Nilai Akhlak</h2>
+    </div>
     <div class="row">
-        <div class="col" style="background-color:#0C1531">
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Amanah</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
+                <div>Memegang teguh kepercayaan yang telah diberikan.</div>
+            </div>
         </div>
-        <div class="col" style="background-color:#0C1531">
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Misi</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
+                <div>Terus belajar dan mengembangkan kapabilitas.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Harmonis</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
+                <div>Saling peduli dan menghargai perbedaan.</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Loyal</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
+                <div>Berdedikasi dan mengutamakan kepentingan Bangsa dan Negara.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Adaptif</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
+                <div>Terus berinovasi dan antusias dalam menggerakkan ataupun menghadapi perubahan.</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Kolaboratif</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
+                <div>Membangun kerja sama yang sinergis.</div>
+            </div>
         </div>
     </div>
 </div>

@@ -17,3 +17,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 Route::get('/About_Us', [HomeController::class, 'profil'])->name('About_Us');
 Route::get('/Iklan', [HomeController::class, 'Iklan'])->name('Iklan');
+Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
+Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
+Route::get('/Admin/Login', [HomeController::class, 'LoginAdmin'])->name('LoginAdmin');
