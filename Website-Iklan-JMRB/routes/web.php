@@ -22,10 +22,13 @@ Route::get('/Iklan', [HomeController::class, 'Iklan'])->name('Iklan');
 // Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
 // Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
 
+//User
 Route::get('/register', [LoginController::class, 'indexReg'])->name('register')->middleware('guest');
 Route::post('/register', [LoginController::class, 'storeReg']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'loginpersonal']);
+Route::post('/login', [LoginController::class, 'loginuser']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 // Route::get('/Admin/Login', [HomeController::class, 'LoginAdmin'])->name('LoginAdmin');
 

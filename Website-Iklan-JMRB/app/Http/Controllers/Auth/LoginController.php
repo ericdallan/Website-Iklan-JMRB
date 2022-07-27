@@ -41,7 +41,7 @@ class LoginController extends Controller
         ]);
         return redirect('/');
     }
-    public function loginpersonal(Request $request){
+    public function loginuser(Request $request){
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],

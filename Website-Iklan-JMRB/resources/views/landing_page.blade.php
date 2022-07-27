@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
 <!-- background image -->
 <div class="bg-image mb-4" style=" background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/09/5_2021-Jelang-IPO-PT-JMRB-Gencarkan-Pengembangan-Koridor-Jalan-Tol-1024x576.png'); height: 100vh;
