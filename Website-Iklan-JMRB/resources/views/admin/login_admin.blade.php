@@ -9,7 +9,7 @@
     input[type="text"], input[type="email"], input[type="password"]{
         background-color : #D9D9D9; 
     }
-    button{
+    .btn-default{
         background-color:#0A142F;
         width:20rem;
     }
