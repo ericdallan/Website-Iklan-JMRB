@@ -32,19 +32,19 @@
                 <form action="">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Your Username">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Your Username">
                     </div>
                     <div class="mb-3">
-                        <label for="companyName" class="form-label">Company Name</label>
-                        <input type="text" class="form-control" id="companyName" placeholder="Your Company Name">
+                        <label for="company_name" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your Company Name">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Your Email Address">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3">
                         <label for="ConfirmPassword" class="form-label">Confirm Password</label>

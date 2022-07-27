@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +19,19 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 Route::get('/About_Us', [HomeController::class, 'profil'])->name('About_Us');
 Route::get('/Iklan', [HomeController::class, 'Iklan'])->name('Iklan');
-Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
-Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
+// Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
+// Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
 
-// Route::prefix('user')->name('user.')->group(function(){
+Route::prefix('user')->name('user.')->group(function(){
 
-//     Route::middleware(['guest:web'])->group(function(){
-//         Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
-//         Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
-//     });
-// });
+    Route::middleware(['guest:web'])->group(function(){
+        Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
+        Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
+    });
+});
 
 Route::get('/Admin/Login', [HomeController::class, 'LoginAdmin'])->name('LoginAdmin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
