@@ -1,6 +1,6 @@
 @extends('layouts/app')
 @section('content')
-color label -->
+<!-- color label --> 
 <style>
     label{
         color:#0A142F;

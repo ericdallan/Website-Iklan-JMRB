@@ -17,7 +17,9 @@
 <!-- background image -->
 
 <!-- body image -->
-<img src="{{url('Web/Roadmap.jpg')}}" class="img-fluid" alt="">
+<div class="d-flex justify-content-center align-items-center">
+    <img src="{{url('Web/Roadmap.jpg')}}" class="img-fluid" alt="">
+</div>
 <!-- body image -->
 
 <!-- visi dan misi -->
@@ -56,43 +58,43 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Amanah</div>
-            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
-                <div>Memegang teguh kepercayaan yang telah diberikan.</div>
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Amanah</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <h6>Memegang teguh kepercayaan yang telah diberikan.</h6>
             </div>
         </div>
         <div class="col">
-            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Misi</div>
-            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
-                <div>Terus belajar dan mengembangkan kapabilitas.</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Harmonis</div>
-            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
-                <div>Saling peduli dan menghargai perbedaan.</div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Loyal</div>
-            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
-                <div>Berdedikasi dan mengutamakan kepentingan Bangsa dan Negara.</div>
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Misi</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <h6>Terus belajar dan mengembangkan kapabilitas.</h6>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Adaptif</div>
-            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
-                <div>Terus berinovasi dan antusias dalam menggerakkan ataupun menghadapi perubahan.</div>
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Harmonis</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <h6>Saling peduli dan menghargai perbedaan.</h6>
             </div>
         </div>
         <div class="col">
-            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:450px;color:#FECE3D">Kolaboratif</div>
-            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:350px;color:#0C1531">
-                <div>Membangun kerja sama yang sinergis.</div>
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Loyal</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <h6>Berdedikasi dan mengutamakan kepentingan Bangsa dan Negara.</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Adaptif</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <h6>Terus berinovasi dan antusias dalam menggerakkan ataupun menghadapi perubahan.</h6>
+            </div>
+        </div>
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 mt-2 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Kolaboratif</div>
+            <div class="text-left mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <h6>Membangun kerja sama yang sinergis.</h6>
             </div>
         </div>
     </div>

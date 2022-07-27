@@ -18,6 +18,8 @@
 <!-- background image -->
 
 <!-- body image -->
-<img src="{{url('Web/Jenis-Iklan&Utilitas.png')}}" class="img-fluid" alt="">
+<div class="d-flex justify-content-center align-items-center">
+    <img src="{{url('Web/Jenis-Iklan&Utilitas.png')}}" class="img-fluid" alt="">
+</div>
 <!-- body image -->
 @endsection
