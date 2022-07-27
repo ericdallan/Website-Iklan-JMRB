@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,6 @@ use App\Http\Controllers\Auth\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 Route::get('/About_Us', [HomeController::class, 'profil'])->name('About_Us');
@@ -22,16 +22,14 @@ Route::get('/Iklan', [HomeController::class, 'Iklan'])->name('Iklan');
 // Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
 // Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
 
-Route::prefix('user')->name('user.')->group(function(){
+Route::get('/register', [LoginController::class, 'indexReg'])->name('register')->middleware('guest');
+Route::post('/register', [LoginController::class, 'storeReg']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'loginpersonal']);
 
-    Route::middleware(['guest:web'])->group(function(){
-        Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
-        Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
-    });
-});
+// Route::get('/Admin/Login', [HomeController::class, 'LoginAdmin'])->name('LoginAdmin');
 
-Route::get('/Admin/Login', [HomeController::class, 'LoginAdmin'])->name('LoginAdmin');
 
-Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');

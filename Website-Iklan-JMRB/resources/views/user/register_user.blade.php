@@ -59,6 +59,6 @@
         </div>
     </div>
 </div>
-<!-- Register form
+<!-- Register form -->
 
 @endsection
