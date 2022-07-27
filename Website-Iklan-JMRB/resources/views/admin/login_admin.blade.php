@@ -11,7 +11,11 @@
     }
     button{
         background-color:#0A142F;
-        width:300px;
+        width:20rem;
+    }
+    .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active{
+        background-color:#0A142F;
+        width:20rem;
     }
 </style>
 <!-- color label -->
@@ -35,7 +39,7 @@
                         <input type="password" class="form-control" id="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="text-white mt-3 mb-2 border-0">Login</button>
+                        <button type="submit" class="btn-default text-white mt-3 mb-2 border-0">Login</button>
                     </div>
                 </form>
             </div>

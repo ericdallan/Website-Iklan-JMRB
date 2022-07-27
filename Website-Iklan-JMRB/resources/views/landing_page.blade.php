@@ -9,7 +9,7 @@
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white text-center">
-                <h2 class="mb-3" style="text-shadow :0 0 10px #FECD0A;">IKLAN & UTILITAS</h2>
+                <h2 class="mb-3" style="text-shadow :0 0 0.7rem #FECD0A;">IKLAN & UTILITAS</h2>
                 <h5 class="mb-3">Sejak 2019, PT JMRB menambah lini bisnisnya ke sektor pengelolaan media periklanan dan utilitas di ruas-ruas jalan tol dan rest area milik Jasa Marga Group</h5>
             </div>
         </div>
