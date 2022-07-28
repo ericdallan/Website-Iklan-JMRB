@@ -50,7 +50,7 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 
                 session(['login' => true]);
-                return redirect()->intended('/About_Us')->with('berhasil_login','Login Berhasil!');
+                return redirect()->intended('/')->with('berhasil_login','Login Berhasil!');
             }else{
                 return redirect('/login')->with('gagal_login','Email atau Password Salah!');
             }

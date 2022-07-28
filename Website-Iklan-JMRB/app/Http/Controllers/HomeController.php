@@ -11,22 +11,22 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
         return view('landing_page');
     }
-    // public function profil()
-    // {
-    //     return view('profil_perusahaan');
-    // }
-    // public function Iklan()
-    // {
-    //     return view('Iklan');
-    // }
+    public function profil()
+    {
+        return view('profil_perusahaan');
+    }
+    public function Iklan()
+    {
+        return view('Iklan');
+    }
     // public function LoginUser()
     // {
     //     return view('user.login_user');

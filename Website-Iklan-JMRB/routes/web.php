@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,24 +16,24 @@ use App\Http\Controllers\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// guest
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 Route::get('/About_Us', [HomeController::class, 'profil'])->name('About_Us');
 Route::get('/Iklan', [HomeController::class, 'Iklan'])->name('Iklan');
-// Route::get('/User/Login', [HomeController::class, 'LoginUser'])->name('LoginUser');
-// Route::get('/User/Register', [HomeController::class, 'RegisterUser'])->name('RegisterUser');
 
 //User
-Route::get('/register', [LoginController::class, 'indexReg'])->name('register')->middleware('guest');
+Route::get('/register', [LoginController::class, 'indexReg'])->name('register')->middleware('web');
 Route::post('/register', [LoginController::class, 'storeReg']);
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('web');
+Route::get('/login-admin', [LoginController::class, 'index'])->name('login-admin')->middleware('web');
 Route::post('/login', [LoginController::class, 'loginuser']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
 
-// Route::get('/Admin/Login', [HomeController::class, 'LoginAdmin'])->name('LoginAdmin');
-
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::middleware(['guest:web'])->group(function () {
+        Route::get('/profile-user', [UserController::class, 'indexProfil'])->name('profil-user');
+    });
+    Route::middleware(['auth:web'])->group(function () {
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    });
+});
