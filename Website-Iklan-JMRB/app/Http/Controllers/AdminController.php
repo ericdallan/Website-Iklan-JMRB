@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cr;
 use Illuminate\Http\Request;
-use app\Models\User;
 
-
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexProfil()
+    public function index()
     {
-        return view('user.profile_user');
-    }
-
-    public function indexEditProfil()
-    {
-        return view('user.edit_profileUser');
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(cr $cr)
     {
         //
     }
@@ -58,10 +52,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(cr $cr)
     {
         //
     }
@@ -70,25 +64,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function updateProfile(Request $request)
-    {
-        $user = User::find($request->id);
-        $user->email = $request->email;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->phone_number = $request->phone_number;
-        $user->company_name = $request->company_name;
-        $user->company_address = $request->company_address;
-        $user->company_desc = $request->company_desc;
-
-        $user->save();
-        return view('user.profile_user');
-    }
-
-    public function update(Request $request, $id)
+    public function update(Request $request, cr $cr)
     {
         //
     }
@@ -96,10 +75,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(cr $cr)
     {
         //
     }

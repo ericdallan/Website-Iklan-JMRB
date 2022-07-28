@@ -25,7 +25,7 @@
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-@if (Route::has('login'))
+@if(Route::current()->getName() == 'login')
 <!-- container form -->
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
@@ -55,7 +55,7 @@
     </div>
 </div>
 <!-- container form -->
-@elseif (Route::has('login-admin'))
+@elseif (Route::current()->getName() == 'login/admin')
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="row py-3">

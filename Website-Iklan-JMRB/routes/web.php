@@ -25,15 +25,17 @@ Route::get('/Iklan', [HomeController::class, 'Iklan'])->name('Iklan');
 Route::get('/register', [LoginController::class, 'indexReg'])->name('register')->middleware('web');
 Route::post('/register', [LoginController::class, 'storeReg']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('web');
-Route::get('/login-admin', [LoginController::class, 'index'])->name('login-admin')->middleware('web');
+Route::get('/login/admin', [LoginController::class, 'index'])->name('login/admin')->middleware('web');
 Route::post('/login', [LoginController::class, 'loginuser']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/profile-user', [UserController::class, 'indexProfil'])->name('profil-user')->middleware('web');
+Route::get('/profile/edit', [UserController::class, 'indexEditProfil'])->name('profile/edit')->middleware('web');
+Route::patch('/profile/update', [UserController::class, 'updateProfile'])->name('profile/update')->middleware('web');
 
-Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
+// Route::group(['prefix' => 'user', 'middleware' => 'web'], function () {
 
-    Route::middleware(['guest:web'])->group(function () {
-        Route::get('/profile-user', [UserController::class, 'indexProfil'])->name('profil-user');
-    });
-    Route::middleware(['auth:web'])->group(function () {
-        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    });
-});
+//     Route::middleware(['guest:web'])->group(function () {
+//     });
+//     Route::middleware(['auth:web'])->group(function () {
+//     });
+// });

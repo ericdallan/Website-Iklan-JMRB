@@ -27,9 +27,6 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.dashboard');
                 }
                 if($guard === 'user'){
-                    return redirect()->route('user.landing_page');
-                }
-                if($guard === 'web'){
                     return redirect()->route('landing_page');
                 }
             }

@@ -44,7 +44,7 @@
                         <li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('login-admin') }}">Admin</a></li>
+                                <li><a class="dropdown-item" href="{{ route('login/admin') }}">Admin</a></li>
                                 <li><a class="dropdown-item" href="{{ route('login') }}">Tenant</a></li>
                             </ul>
                         </li>
