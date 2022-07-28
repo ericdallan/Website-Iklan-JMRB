@@ -8,8 +8,7 @@
 
     input[type="text"],
     input[type="email"],
-    input[type="password"],
-    input[type="tel"] {
+    input[type="password"] {
         background-color: #D9D9D9;
     }
 
@@ -80,7 +79,7 @@
                         </div>
                         <div class="row mb-4">
                             <label for="phone_mumber" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone_mumber" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}" disabled>
+                            <input type="text" class="form-control" id="phone_mumber" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}" disabled>
                         </div>
                     </div>
                 </div>

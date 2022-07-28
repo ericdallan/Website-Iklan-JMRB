@@ -8,8 +8,7 @@
 
     input[type="text"],
     input[type="email"],
-    input[type="password"],
-    input[type="tel"] {
+    input[type="password"] {
         background-color: #D9D9D9;
     }
 
@@ -61,23 +60,23 @@
                         <input type="hidden" id="id" name="id" value="{{ Auth::guard('web')->user()->id_user }}">
                         <div class="row mb-4">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Your Username" value="{{ Auth::guard('web')->user()->username }}">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" value="{{ Auth::guard('web')->user()->username }}">
                         </div>
                         <div class="row mb-4">
                             <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="{{ Auth::guard('web')->user()->first_name }}">
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Your First Name" value="{{ Auth::guard('web')->user()->first_name }}">
                         </div>
                         <div class="row mb-4">
                             <label for="last_Name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_Name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_Name }}">
+                            <input type="text" class="form-control" id="last_Name" name="last_Name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_Name }}">
                         </div>
                         <div class="row mb-4">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email Address" value="{{ Auth::guard('web')->user()->email }}">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" value="{{ Auth::guard('web')->user()->email }}">
                         </div>
                         <div class="row mb-4">
                             <label for="phone_mumber" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone_mumber" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}">
+                            <input type="text" class="form-control" id="phone_mumber" name="phone_mumber" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}">
                         </div>
                     </div>
                 </div>
@@ -85,13 +84,13 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4">
                             <label for="company_address" class="form-label">Company Address</label>
-                            <input type="text" class="form-control" id="company_address" placeholder="Your Company Address" value="{{ Auth::guard('web')->user()->company_address }}">
+                            <input type="text" class="form-control" id="company_address" name="company_address" placeholder="Your Company Address" value="{{ Auth::guard('web')->user()->company_address }}">
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4">
                             <label for="company_name" class="form-label">Company Name</label>
-                            <input type="text" class="form-control" id="company_name" placeholder="Your Company Name" value="{{ Auth::guard('web')->user()->company_name }}">
+                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your Company Name" value="{{ Auth::guard('web')->user()->company_name }}">
                         </div>
                     </div>
                 </div>
@@ -99,7 +98,7 @@
                     <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center" style="width: 30rem;">
                         <div class="row mb-4">
                             <label for="company_desc" class="form-label">Company Description</label>
-                            <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}"></input>
+                            <input name="text" class="form-control" id="company_desc" name="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}"></input>
                         </div>
                     </div>
                 </div>
