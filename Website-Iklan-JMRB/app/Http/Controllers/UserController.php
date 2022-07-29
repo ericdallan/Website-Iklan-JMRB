@@ -94,7 +94,7 @@ class UserController extends Controller
             'company_address' => $request->company_address,
             'company_desc' => $request->company_desc,
         ]);
-        return redirect()->route('user.profile')->with(['success' => 'Berhasil Update Profile!']);
+        return redirect()->route('user.profile.')->with(['success' => 'Berhasil Update Profile!']);
     }
 
     public function update(Request $request, $id)

@@ -81,16 +81,16 @@
                             <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="{{ Auth::guard('web')->user()->first_name }}" disabled>
                         </div>
                         <div class="row mb-4">
-                            <label for="last_Name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_Name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_Name }}" disabled>
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_name }}" disabled>
                         </div>
                         <div class="row mb-4">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" class="form-control" id="email" placeholder="Your Email Address" value="{{ Auth::guard('web')->user()->email }}" disabled>
                         </div>
                         <div class="row mb-4">
-                            <label for="phone_mumber" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone_mumber" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}" disabled>
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_number }}" disabled>
                         </div>
                     </div>
                 </div>
