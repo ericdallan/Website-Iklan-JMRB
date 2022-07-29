@@ -20,11 +20,20 @@
         background-color: #FECD0A;
         font-weight: bold;
         width: 9.5rem;
-        height: 3rem;
+        height: 2rem;
         color: #0A142F;
     }
+    .alert-success {
+        
+    }
 </style>
-<div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
+@if (session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+</div>
+@endif
+<div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="container mx-auto">
             <form action="{{route('user/profile/update') }}" method="POST" enctype="multipart/form-data">
@@ -32,7 +41,6 @@
                 <div class="row g-0 ">
                     <div class="mx-auto d-flex justify-content-center align-self-center my-4">
                         <h5>Company Name Profile</h5>
-                        <p>{{ Auth::guard('web')->user()->id_user }}</p>
                     </div>
                 </div>
                 <div class="row g-0">
@@ -67,7 +75,7 @@
                         </div>
                         <div class="row mb-4">
                             <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_Name }}">
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_name }}">
                         </div>
                         <div class="row mb-4">
                             <label for="email" class="form-label">Email Address</label>
@@ -75,7 +83,7 @@
                         </div>
                         <div class="row mb-4">
                             <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}">
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_number }}">
                         </div>
                     </div>
                 </div>
@@ -95,13 +103,13 @@
                 </div>
                 <div class="row g-0">
                     <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center" style="width: 30rem;">
-                        <div class="row mb-4">
+                        <div class="row">
                             <label for="company_desc" class="form-label">Company Description</label>
-                            <input name="text" class="form-control" id="company_desc" name="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}"></input>
+                            <input type="text" class="form-control" id="company_desc" name="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}">
                         </div>
                     </div>
                 </div>
-                <div class="row g-0">
+                <div class="row g-0 pb-2">
                     <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center my-4">
                         <button type="submit" class="border-0 rounded-5">Update Profile</button>
                     </div>

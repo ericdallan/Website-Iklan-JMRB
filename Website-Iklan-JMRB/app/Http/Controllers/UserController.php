@@ -86,6 +86,7 @@ class UserController extends Controller
         $id = $request->id;
          //create post
          User::find($id)->update([
+            'username' => $request->username,
             'email' => $request->email,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -94,7 +95,7 @@ class UserController extends Controller
             'company_address' => $request->company_address,
             'company_desc' => $request->company_desc,
         ]);
-        return redirect()->route('user.profile.')->with(['success' => 'Berhasil Update Profile!']);
+        return redirect()->back()->with(['success' => 'Berhasil Update Profile!']);
     }
 
     public function update(Request $request, $id)

@@ -19,10 +19,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 </head>
+<style>
+    .navbar-sticky-top {
+        position: fixed;
+        z-index: 999;
+        opacity: 1;
+        width: 100%;
+    }
+</style>
 
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-white" style="background-color: #FFFFFF; box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);">
+        <nav class="navbar navbar-expand-lg navbar-white navbar-sticky-top" style="background-color: #FFFFFF; box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);">
             <div class="container">
                 <a class="navbar-brand " href="/"><img src="{{url('Web/logocolor.png')}}" height="30"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +73,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->username }}
+                                {{ Auth::user()->first_name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('user/profile',['id'=>auth()->user()->id_user]) }}">Profil</a>
@@ -81,13 +89,13 @@
                 </div>
             </div>
         </nav>
-        <div>
+        <div class="pt-5">
             @yield('content')
         </div>
     </div>
 </body>
 <!-- footer -->
-<footer class="text-lg-start text-white pt-5 pb-5" style="background-color:#0A142F">
+<footer class="text-lg-start text-white py-5" style="background-color:#0A142F">
     <div class="container text-left">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
             <div class="col">

@@ -26,7 +26,7 @@
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="row">
             <div class="col-6 mx-auto d-flex align-items-center" style="width: 500px;">
-                <img src="{{url('Web/RegisterUser.png')}}" class="img-fluid" alt="">
+                <img src="{{url('Web/RegisterUser.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="col-6 mx-auto my-3" style="width: 500px;">
                 <h2 class="text-center mb-4">Create Your Free Account</h2>

@@ -15,17 +15,17 @@ class HomeController extends Controller
     // {
     //     $this->middleware('auth');
     // }
-    public function index()
+    public function landing_page()
     {
         return view('landing_page');
     }
-    public function profil()
+    public function about_us()
     {
-        return view('profil_perusahaan');
+        return view('about_us');
     }
-    public function Iklan()
+    public function iklan()
     {
-        return view('Iklan');
+        return view('iklan');
     }
     // public function LoginUser()
     // {
