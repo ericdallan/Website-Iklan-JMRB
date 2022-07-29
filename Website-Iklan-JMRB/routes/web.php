@@ -28,14 +28,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::get('/login/admin', [LoginController::class, 'index'])->name('login/admin')->middleware('web');
 Route::post('/login', [LoginController::class, 'loginuser']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/profile-user', [UserController::class, 'indexProfil'])->name('profil-user')->middleware('web');
-Route::get('/profile/edit', [UserController::class, 'indexEditProfil'])->name('profile/edit')->middleware('web');
-Route::patch('/profile/update', [UserController::class, 'updateProfile'])->name('profile/update')->middleware('web');
-
-// Route::group(['prefix' => 'user', 'middleware' => 'web'], function () {
-
-//     Route::middleware(['guest:web'])->group(function () {
-//     });
-//     Route::middleware(['auth:web'])->group(function () {
-//     });
-// });
+Route::get('/user/profile/{id}', [UserController::class, 'profile'])->name('user/profile')->middleware('web');
+Route::get('/user/profile/edit/{id}', [UserController::class, 'editprofile'])->name('user/profile/edit')->middleware('web');
+Route::post('/user/profile/update', [UserController::class, 'updateprofile'])->name('user/profile/update')->middleware('web');

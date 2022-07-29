@@ -13,14 +13,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexProfil()
+    public function profile($id)
     {
-        return view('user.profile_user');
+        $user = User::find($id);
+        return view('user.profile', compact('user'));
     }
 
-    public function indexEditProfil()
+    public function editprofile($id)
     {
-        return view('user.edit_profileUser');
+        $user = User::find($id);
+        return view('user.edit_profile', compact('user'));
     }
 
     /**
@@ -73,23 +75,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateProfile(Request $request)
+    public function updateprofile(Request $request)
     {
-        $user = User::find($request->get('id_user'));
-        $user->email = $request->get('email');
-        $user->first_name = $request->get('first_name');
-        $user->last_name = $request->get('last_name');
-        $user->phone_number = $request->get('phone_number');
-        $user->company_name = $request->get('company_name');
-        $user->company_address = $request->get('company_address');
-        $user->company_desc = $request->get('company_desc');
-
-        $save = $user->save();
-        if( $save ){
-            return redirect('user.profile_user')->back()->with('success', 'Berhasil edit video');
-       }else {
-            return redirect('user.edit_profileUser')->back()->with('fail', 'Gagal edit video');
-       }
+        //validate form
+        $this->validate($request, [
+            'pic'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'username' => 'max:255',
+            'phone_number' => 'max:13'
+        ]);
+        $id = $request->id;
+         //create post
+         User::find($id)->update([
+            'email' => $request->email,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone_number' => $request->phone_number,
+            'company_name' => $request->company_name,
+            'company_address' => $request->company_address,
+            'company_desc' => $request->company_desc,
+        ]);
+        return redirect()->route('user.profile')->with(['success' => 'Berhasil Update Profile!']);
     }
 
     public function update(Request $request, $id)

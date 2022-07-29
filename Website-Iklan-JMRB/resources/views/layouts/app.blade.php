@@ -22,7 +22,7 @@
 
 <body>
     <div id="app">
-        <nav class="sticky-top navbar navbar-expand-lg navbar-white" style="background-color: #FFFFFF; box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-white" style="background-color: #FFFFFF; box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);">
             <div class="container">
                 <a class="navbar-brand " href="/"><img src="{{url('Web/logocolor.png')}}" height="30"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
                                 {{ Auth::user()->username }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/profile-user">Profil</a>
+                                <a class="dropdown-item" href="{{ route('user/profile',['id'=>auth()->user()->id_user]) }}">Profil</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -94,32 +94,32 @@
                 <img src="{{url('Web/logowhite.png')}}">
             </div>
             <div class="col">
-                <div class="row">
+                <div class="row mb-3">
                     <p>Contact Us</p>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <p>Gedung Jagorawi Lantai 2, Plaza Tol Taman Mini Indonesia Indah, RT.8/RW.2, Dukuh, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13550</p>
                 </div>
-                <div class="row" style="color: #FECD0A;">
+                <div class="row mb-3" style="color: #FECD0A;">
                     <i class="bi bi-telephone-fill"> (021) 22093560</i>
                 </div>
-                <div class="row" style="color: #FECD0A;">
+                <div class="row mb-2" style="color: #FECD0A;">
                     <i class="bi bi-envelope-fill"> relatedbusiness@jmrb.co.id</i>
                 </div>
             </div>
             <div class="col">
-                <div class="row">
+                <div class="row mb-3">
                     <p>About Us</p>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <a class="text-white" href="/About_Us" style="text-decoration:none;">Profil Perusahaan</a></li>
                 </div>
             </div>
             <div class="col">
-                <div class="row">
+                <div class="row mb-3">
                     <p>Social</p>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col" style="color: #FECD0A;">
                         <i class="bi bi-facebook p-2"></i>
                         <i class="bi bi-instagram p-2"></i>
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-        <div class="row pb-3 pt-5">
+        <div class="row px-3">
             <hr style="width:100%" , size="3" , color=FFFFFF>
         </div>
         <div class="row text-center opacity-50">

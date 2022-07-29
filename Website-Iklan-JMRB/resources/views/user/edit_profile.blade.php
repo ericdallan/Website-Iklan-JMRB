@@ -27,8 +27,7 @@
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="container mx-auto">
-            <form action="{{route('profile/update') }}" method="POST" enctype="multipart/form-data">
-                @method('patch')
+            <form action="{{route('user/profile/update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row g-0 ">
                     <div class="mx-auto d-flex justify-content-center align-self-center my-4">
@@ -67,16 +66,16 @@
                             <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Your First Name" value="{{ Auth::guard('web')->user()->first_name }}">
                         </div>
                         <div class="row mb-4">
-                            <label for="last_Name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_Name" name="last_Name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_Name }}">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your Last Name" value="{{ Auth::guard('web')->user()->last_Name }}">
                         </div>
                         <div class="row mb-4">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" value="{{ Auth::guard('web')->user()->email }}">
                         </div>
                         <div class="row mb-4">
-                            <label for="phone_mumber" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone_mumber" name="phone_mumber" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}">
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_mumber }}">
                         </div>
                     </div>
                 </div>
