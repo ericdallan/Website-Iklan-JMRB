@@ -22,7 +22,7 @@ class LoginController extends Controller
     |
     */
     public function index()
-    {   
+    {
         //show login page
         return view('auth.login');
     }
@@ -38,58 +38,60 @@ class LoginController extends Controller
         //Validate Register User
         $username = collect($request->username);
         $email = collect($request->email);
-        if (User::where('username', $username )->exists()) {
+        if (User::where('username', $username)->exists()) {
             return redirect()->back()->with('failed', 'Username telah digunakan !');
-        }elseif (User::where('email', $email )->exists()){
+        } elseif (User::where('email', $email)->exists()) {
             return redirect()->back()->with('failed', 'Email telah digunakan !');
-        }else {
+        } else {
             //Create Register User
             if (request()->password == request()->repassword) {
                 User::create([
                     'username' => request()->username,
                     'email' => request()->email,
                     'company_name' => request()->company_name,
-                    'password' => Hash::make(request()->password
+                    'password' => Hash::make(
+                        request()->password
                     )
                 ]);
                 return redirect('/login')->with('success', 'Registrasi Berhasil !');
-            }else{
+            } else {
                 return redirect()->back()->with('failed', 'Password tidak sama !');
             }
         }
-
     }
-    public function loginuser(Request $request){
+    public function loginuser(Request $request)
+    {
         //Validate Login
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-            //Login User
-            if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
-                
-                session(['login' => true]);
-                return redirect()->intended('/')->with('berhasil_login','Login Berhasil!');
-            }else{
-                return redirect('/login')->with('gagal_login','Email atau Password Salah!');
-            }
+        //Login User
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            session(['login' => true]);
+            return redirect()->intended('/')->with('berhasil_login', 'Login Berhasil!');
+        } else {
+            return redirect('/login')->with('gagal_login', 'Email atau Password Salah!');
+        }
     }
-    public function loginadmin(Request $request){
+    public function loginadmin(Request $request)
+    {
         //Validat4e Admin
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-            //Login Admin
-            if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
-                
-                session(['login' => true]);
-                return redirect()->intended('/')->with('berhasil_login','Login Berhasil!');
-            }else{
-                return redirect('/login')->with('gagal_login','Email atau Password Salah!');
-            }
+        //Login Admin
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            session(['login' => true]);
+            return redirect()->intended('/')->with('berhasil_login', 'Login Berhasil!');
+        } else {
+            return redirect('/login')->with('gagal_login', 'Email atau Password Salah!');
+        }
     }
     public function __construct()
     {
@@ -98,13 +100,13 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-    
+
         $request->session()->invalidate();
-    
+
         $request->session()->regenerateToken();
 
         $request->session()->forget('login');
-    
+
         return redirect('/');
     }
 }

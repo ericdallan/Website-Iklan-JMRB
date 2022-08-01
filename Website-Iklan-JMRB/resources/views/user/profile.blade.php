@@ -37,7 +37,7 @@
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="container mx-auto">
             <form action="">
-                <div class="row g-0 ">
+                <div class="row g-0">
                     <div class="mx-auto d-flex justify-content-center align-self-center my-4">
                         <h5>Company Name Profile</h5>
                     </div>

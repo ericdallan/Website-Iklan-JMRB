@@ -1,7 +1,20 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    .reveal {
+        position: relative;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: 1s all ease;
+    }
+
+    .reveal.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+</style>
 <!-- background image -->
-<div class="bg-image mb-4" style=" background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/09/5_2021-Jelang-IPO-PT-JMRB-Gencarkan-Pengembangan-Koridor-Jalan-Tol-1024x576.png'); height:39rem;
+<div class="bg-image mb-4 reveal" style=" background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/09/5_2021-Jelang-IPO-PT-JMRB-Gencarkan-Pengembangan-Koridor-Jalan-Tol-1024x576.png'); height:39rem;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,7 +31,7 @@
 <!-- background image -->
 
 <!-- body image -->
-<div class="d-flex justify-content-center align-items-center">
+<div class="d-flex justify-content-center align-items-center reveal">
     <img src="{{url('Web/Jenis-Iklan&Utilitas.png')}}" class="img-fluid" alt="">
 </div>
 <!-- body image -->
