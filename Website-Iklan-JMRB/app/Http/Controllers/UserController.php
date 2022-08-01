@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -77,25 +78,30 @@ class UserController extends Controller
      */
     public function updateprofile(Request $request)
     {
-        //validate form
-        $this->validate($request, [
-            'pic'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'username' => 'max:255',
-            'phone_number' => 'max:13'
-        ]);
         $id = $request->id;
-         //create post
-         User::find($id)->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone_number' => $request->phone_number,
-            'company_name' => $request->company_name,
-            'company_address' => $request->company_address,
-            'company_desc' => $request->company_desc,
-        ]);
-        return redirect()->back()->with(['success' => 'Berhasil Update Profile!']);
+        //validate form
+        $rules = [
+            'pic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'email' => '|required|email|unique:users,email,' . $id . ',id_user',
+            'username' => 'required|unique:users,username,' . $id . ',id_user'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->with(['failed' => 'Gagal melakukan update profile, Email atau Username telah digunakan !']);
+        } else {
+            //create post
+            User::find($id)->update([
+                'username' => $request->username,
+                'email' => $request->email,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'phone_number' => $request->phone_number,
+                'company_name' => $request->company_name,
+                'company_address' => $request->company_address,
+                'company_desc' => $request->company_desc,
+            ]);
+            return redirect()->back()->with(['success' => 'Berhasil melakukan update profile!']);
+        }
     }
 
     public function update(Request $request, $id)

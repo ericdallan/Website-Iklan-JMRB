@@ -23,18 +23,21 @@
         height: 2rem;
         color: #0A142F;
     }
-    .alert-success {
-        
-    }
 </style>
-@if (session('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
-    <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
-</div>
-@endif
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+        </div>
+        @endif
+        @if (session('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('failed') }}
+            <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+        </div>
+        @endif
         <div class="container mx-auto">
             <form action="{{route('user/profile/update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -47,7 +50,7 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem; height:20rem;">
                         <div class="row mb-4 d-flex align-items-center">
                             @if(Auth::guard('web')->user()->pic_profile == '')
-                            <strong>Foto Profile*</strong><i class="text-center" style="color:#636363;">belum ada foto profile ter-upload</i> </label>
+                            <strong>Foto Profile*</strong><i class="text-center" style="color:#636363;">belum ada foto profile ter-upload</i></label>
                             <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
                             @endif
                             @if(Auth::guard('web')->user()->pic_profile != '')>
@@ -66,7 +69,7 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <input type="hidden" id="id" name="id" value="{{ Auth::guard('web')->user()->id_user }}">
                         <div class="row mb-4">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="username" class="form-label">Username <i class="text-center fs-6 text-muted fw-normal">(Username tidak dapat diubah)</i></label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" value="{{ Auth::guard('web')->user()->username }}">
                         </div>
                         <div class="row mb-4">

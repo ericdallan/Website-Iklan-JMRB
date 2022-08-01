@@ -1,22 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- color label --> 
+<!-- color label -->
 <style>
-    label{
-        color:#0A142F;
-        font-weight:bold;
+    label {
+        color: #0A142F;
+        font-weight: bold;
     }
-    input[type="text"], input[type="email"], input[type="password"]  {
-        background-color : #D9D9D9; 
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        background-color: #D9D9D9;
     }
-    .btn-default{
-        background-color:#0A142F;
-        width:20rem;
+
+    .btn-default {
+        background-color: #0A142F;
+        width: 20rem;
     }
-    .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active{
-        background-color:#0A142F;
-        width:20rem;
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default:active,
+    .btn-default.active {
+        background-color: #0A142F;
+        width: 20rem;
     }
 </style>
 <!-- color label -->
@@ -24,6 +32,12 @@
 <!-- Register form -->
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
+        @if (session('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('failed') }}
+            <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+        </div>
+        @endif
         <div class="row">
             <div class="col-6 mx-auto d-flex align-items-center" style="width: 500px;">
                 <img src="{{url('Web/RegisterUser.jpg')}}" class="img-fluid" alt="">
@@ -50,7 +64,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="password_confirmation" placeholder="Re-enter Password">
+                        <input type="password" class="form-control" id="password_confirmation" name="repassword" placeholder="Re-enter Password">
                     </div>
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-default text-white mt-3 mb-2 border-0">Create Your Account</button>

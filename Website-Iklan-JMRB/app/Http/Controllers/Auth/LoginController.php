@@ -22,30 +22,50 @@ class LoginController extends Controller
     |
     */
     public function index()
-    {
+    {   
+        //show login page
         return view('auth.login');
     }
 
     public function indexReg()
     {
+        //show register page
         return view('auth.register');
     }
 
-    public function storeReg()
+    public function storeReg(Request $request)
     {
-        User::create([
-            'username' => request()->username,
-            'email' => request()->email,
-            'company_name' => request()->company_name,
-            'password' => Hash::make(request()->password)
-        ]);
-        return redirect('/');
+        //Validate Register User
+        $username = collect($request->username);
+        $email = collect($request->email);
+        if (User::where('username', $username )->exists()) {
+            return redirect()->back()->with('failed', 'Username telah digunakan !');
+        }elseif (User::where('email', $email )->exists()){
+            return redirect()->back()->with('failed', 'Email telah digunakan !');
+        }else {
+            //Create Register User
+            if (request()->password == request()->repassword) {
+                User::create([
+                    'username' => request()->username,
+                    'email' => request()->email,
+                    'company_name' => request()->company_name,
+                    'password' => Hash::make(request()->password
+                    )
+                ]);
+                return redirect('/login')->with('success', 'Registrasi Berhasil !');
+            }else{
+                return redirect()->back()->with('failed', 'Password tidak sama !');
+            }
+        }
+
     }
     public function loginuser(Request $request){
+        //Validate Login
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+            //Login User
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
                 
@@ -56,10 +76,12 @@ class LoginController extends Controller
             }
     }
     public function loginadmin(Request $request){
+        //Validat4e Admin
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+            //Login Admin
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
                 

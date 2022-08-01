@@ -2,33 +2,47 @@
 @section('content')
 <!-- color label -->
 <style>
-    label{
-        color:#0A142F;
-        font-weight:bold;
+    label {
+        color: #0A142F;
+        font-weight: bold;
     }
-    input[type="text"], input[type="email"], input[type="password"]  {
-        background-color : #D9D9D9; 
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        background-color: #D9D9D9;
     }
-    .btn-default{
-        background-color:#0A142F;
-        width:20rem;
+
+    .btn-default {
+        background-color: #0A142F;
+        width: 20rem;
     }
-    .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active{
-        background-color:#0A142F;
-        width:20rem;
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default:active,
+    .btn-default.active {
+        background-color: #0A142F;
+        width: 20rem;
     }
 </style>
 <!-- color label -->
-@if (session('berhasil_login'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-{{ session('berhasil_login') }}
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
 @if(Route::current()->getName() == 'login')
 <!-- container form -->
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if (session('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="row py-3">
             <div class="col-6 mx-auto d-flex align-items-center" style="width: 500px;">
                 <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
@@ -58,13 +72,25 @@
 @elseif (Route::current()->getName() == 'login/admin')
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if (session('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="row py-3">
             <div class="col-6 mx-auto d-flex align-items-center" style="width: 500px;">
                 <img src="{{url('Web/LoginAdmin.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="col-6 mx-auto my-5" style="width: 500px;">
                 <h2 class="text-center">Login To Admin Account</h2>
-                <form  class="my-5" action="">
+                <form class="my-5" action="">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username" placeholder="Your Username">
@@ -82,4 +108,4 @@
     </div>
 </div>
 @endif
-@endsection 
+@endsection
