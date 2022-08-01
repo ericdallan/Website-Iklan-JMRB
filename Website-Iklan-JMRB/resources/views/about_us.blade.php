@@ -13,50 +13,6 @@
             font-weight: bold;
         }
     }
-
-    .reveal {
-        position: relative;
-        transform: translateY(150px);
-        opacity: 0;
-        transition: 1s all ease;
-    }
-
-    .reveal.active {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .active.fade-left {
-        animation: fade-left 1s ease-in;
-    }
-
-    .active.fade-right {
-        animation: fade-right 1s ease-in;
-    }
-
-    @keyframes fade-left {
-        0% {
-            transform: translateX(-100px);
-            opacity: 0;
-        }
-
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes fade-right {
-        0% {
-            transform: translateX(100px);
-            opacity: 0;
-        }
-
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
 </style>
 <!-- background image -->
 <div class="bg-image mb-4 reveal" style=" background-image: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.52));background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/08/screenshot-1024x768.jpg'); height: 39rem;
@@ -87,15 +43,15 @@
 <!-- visi dan misi -->
 <div class="container-fluid mt-5 mb-5 fw-bold">
     <div class="row">
-        <div class="col pb-5 reveal" style="background-color:#0C1531">
+        <div class="col pb-5 reveal fade-left" style="background-color:#0C1531">
             <h3 class="text-center mx-auto rounded-3 mt-5 mb-5 fw-bold reveal fade-left" style="background-color:#FECE3D;width:9.5rem; color:#0C1531">Visi</h3>
-            <div class="row reveal fade-right" style="color:#FFFFFF;">
+            <div class="row reveal fade-left" style="color:#FFFFFF;">
                 <p><i class="bi bi-square-fill" style="vertical-align: baseline"></i> Menjadi perusahaan terpercaya dalam memberikan nilai tambah di bidang kawasan di jalan tol dan bisnis terkait lainnya.</p>
             </div>
         </div>
-        <div class="col pb-5 reveal" style="background-color:#FECE3D">
+        <div class="col pb-5 reveal fade-right" style="background-color:#FECE3D">
             <h3 class="text-center mx-auto rounded-3 mt-5 mb-5 fw-bold reveal fade-right" style="background-color:#0C1531;width:9.5rem; color:#FECE3D">Misi</h3>
-            <div class="row reveal fade-left" style="color:#0C1531">
+            <div class="row reveal fade-right" style="color:#0C1531">
                 <p><i class="bi bi-square-fill" style="vertical-align: baseline"></i> Mewujudkan peran shared services yang optimal bagi Jasa Marga Group.</p>
                 <p><i class="bi bi-square-fill" style="vertical-align: baseline"></i> Meningkatkan nilai bagi pemegang saham</p>
                 <p><i class="bi bi-square-fill" style="vertical-align: baseline"></i> Menjalankan kerja sama yang saling menguntungkan dengan mitra</p>
