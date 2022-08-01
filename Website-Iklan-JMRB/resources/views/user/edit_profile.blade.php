@@ -1,7 +1,7 @@
 @extends('layouts/app')
 @section('content')
 <style>
-    label {
+    .form-label {
         color: #0A142F;
         font-weight: bold;
     }
@@ -12,15 +12,20 @@
         background-color: #D9D9D9;
     }
 
-    textarea {
-        background-color: #D9D9D9;
-    }
-
-    button {
+    .btn-default {
         background-color: #FECD0A;
         font-weight: bold;
         width: 9.5rem;
-        height: 2rem;
+        color: #0A142F;
+    }
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default:active,
+    .btn-default.active {
+        background-color: #FECD0A;
+        font-weight: bold;
+        width: 9.5rem;
         color: #0A142F;
     }
 </style>
@@ -47,21 +52,22 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem; height:20rem;">
+                    <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4 d-flex align-items-center">
                             @if(Auth::guard('web')->user()->pic_profile == '')
-                            <strong>Foto Profile*</strong><i class="text-center" style="color:#636363;">belum ada foto profile ter-upload</i></label>
+                            <div class="row">
+                                <label for="pic_profile" class="form-label">Tambah Foto Profile <i class="text-center mb-4" style="color:#636363;">belum ada foto profile ter-upload</i></label>
+                                <input onbeforeeditfocus="return false;" type="file" id="pic_profile" name="pic_profile">
+                            </div>
                             <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
                             @endif
-                            @if(Auth::guard('web')->user()->pic_profile != '')>
-                            <img src="/gambar/userprofile/{{Auth::guard('web')->user()->pic_profile}}" class="img-fluid" alt="">
-                            <div class="pic">
-                                <div class="mt-1">
-                                    <label class="form-label"><strong>Ganti Foto Profile*</strong></label>
-                                </div>
-                                <div class="mb-3">
-                                    <input onbeforeeditfocus="return false;" type="file" name="pic" id="pic">
-                                </div>
+                            @if(Auth::guard('web')->user()->pic_profile != '')
+                            <div class="d-flex justify-content-center align-self-center mb-4" style="height:28rem;">
+                                <img src="/Foto_Profile/User/{{Auth::guard('web')->user()->pic_profile}}" class="img-fluid rounded" alt="">
+                            </div>
+                            <div class="row">
+                                <label for="pic_profile" class="form-label">Ganti Foto Profile</label>
+                                <input type="file" id="pic_profile" class="form-control" name="pic_profile">
                             </div>
                             @endif
                         </div>
@@ -69,7 +75,7 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <input type="hidden" id="id" name="id" value="{{ Auth::guard('web')->user()->id_user }}">
                         <div class="row mb-4">
-                            <label for="username" class="form-label">Username <i class="text-center fs-6 text-muted fw-normal">(Username tidak dapat diubah)</i></label>
+                            <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" value="{{ Auth::guard('web')->user()->username }}">
                         </div>
                         <div class="row mb-4">
@@ -88,6 +94,10 @@
                             <label for="phone_number" class="form-label">Phone Number</label>
                             <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('web')->user()->phone_number }}">
                         </div>
+                        <div class="row mb-4">
+                            <label for="company_name" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your Company Name" value="{{ Auth::guard('web')->user()->company_name }}">
+                        </div>
                     </div>
                 </div>
                 <div class="row g-0">
@@ -98,14 +108,6 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
-                        <div class="row mb-4">
-                            <label for="company_name" class="form-label">Company Name</label>
-                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your Company Name" value="{{ Auth::guard('web')->user()->company_name }}">
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center" style="width: 30rem;">
                         <div class="row">
                             <label for="company_desc" class="form-label">Company Description</label>
                             <input type="text" class="form-control" id="company_desc" name="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}">
@@ -114,7 +116,7 @@
                 </div>
                 <div class="row g-0 pb-2">
                     <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center my-4">
-                        <button type="submit" class="border-0 rounded-5">Update Profile</button>
+                        <button type="submit" class="btn btn-default border-0 rounded-5">Update Profile</button>
                     </div>
                 </div>
             </form>

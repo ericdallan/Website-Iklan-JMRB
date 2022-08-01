@@ -81,7 +81,7 @@ class UserController extends Controller
         $id = $request->id;
         //validate form
         $rules = [
-            'pic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'pic_profile' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'email' => '|required|email|unique:users,email,' . $id . ',id_user',
             'username' => 'required|unique:users,username,' . $id . ',id_user'
         ];
@@ -100,6 +100,20 @@ class UserController extends Controller
                 'company_address' => $request->company_address,
                 'company_desc' => $request->company_desc,
             ]);
+            //Upload Foto Profile
+            $user = User::find($id);
+            $picName = $request->pic_profile;
+            if ($picName != "") {
+                if ($user->puc != '' && $user->pic_profile != null) {
+                    $path = public_path('Foto_Profile/User/');
+                    $filePic = $path . $user->pic_profile;
+                    unlink($filePic);
+                }
+                $picName = $picName->getClientOriginalName();
+                $user->pic_profile = $picName;
+                $request->pic_profile->move(public_path('Foto_Profile/User'), $picName);
+                $user->save();
+            }
             return redirect()->back()->with(['success' => 'Berhasil melakukan update profile!']);
         }
     }

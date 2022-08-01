@@ -33,7 +33,7 @@
         color: #0A142F;
     }
 </style>
-<div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
+<div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="container mx-auto">
             <form action="">
@@ -43,21 +43,15 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem; height:20rem;">
+                    <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4 d-flex align-items-center">
                             @if(Auth::guard('web')->user()->pic_profile == '')
                             <strong>Foto Profile*</strong><i class="text-center" style="color:#636363;">belum ada foto profile ter-upload</i> </label>
-                            <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
+                            <img src="{{url('Web/LoginUser.jpg')}}" class="rounded" alt="">
                             @endif
-                            @if(Auth::guard('web')->user()->pic_profile != '')>
-                            <img src="/gambar/userprofile/{{Auth::guard('web')->user()->pic_profile}}" class="img-fluid" alt="">
-                            <div class="pic">
-                                <div class="mt-1">
-                                    <label class="form-label"><strong>Ganti Foto Profile*</strong></label>
-                                </div>
-                                <div class="mb-3">
-                                    <input onbeforeeditfocus="return false;" type="file" name="pic" id="pic">
-                                </div>
+                            @if(Auth::guard('web')->user()->pic_profile != '')
+                            <div class="d-flex justify-content-center align-self-center" style="height:28rem;">
+                                <img src="/Foto_Profile/User/{{Auth::guard('web')->user()->pic_profile}}" class="img-fluid rounded" alt="">
                             </div>
                             @endif
                         </div>
@@ -100,16 +94,18 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center" style="width: 30rem;">
-                        <div class="row">
+                    <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
+                        <div class="row mb-4">
                             <label for="company_desc" class="form-label">Company Description</label>
                             <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}" disabled></input>
                         </div>
                     </div>
                 </div>
                 <div class="row g-0 mb-4">
-                    <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center my-4">
-                        <a class="btn btn-default text-center border-0 rounded-5" href="{{ route('user/profile/edit', ['id' => $user->id_user]) }}">Edit Profile</a>
+                    <div class="col-sm-6 col-md-6 mx-auto d-flex justify-content-center align-self-center">
+                        <div class="row mb-4">
+                            <a class="btn btn-default text-center border-0 rounded-5" href="{{ route('user/profile/edit', ['id' => $user->id_user]) }}">Edit Profile</a>
+                        </div>
                     </div>
                 </div>
             </form>
