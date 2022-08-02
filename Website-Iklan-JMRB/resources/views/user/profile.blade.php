@@ -47,7 +47,9 @@
                         <div class="row mb-4 d-flex align-items-center">
                             @if(Auth::guard('web')->user()->pic_profile == '')
                             <strong>Foto Profile*</strong><i class="text-center" style="color:#636363;">belum ada foto profile ter-upload</i> </label>
-                            <img src="{{url('Web/LoginUser.jpg')}}" class="rounded" alt="">
+                            <div class="d-flex justify-content-center align-self-center" style="height:24rem;">
+                                <img src="{{url('Web/LoginUser.jpg')}}" class="rounded" alt="">
+                            </div>
                             @endif
                             @if(Auth::guard('web')->user()->pic_profile != '')
                             <div class="d-flex justify-content-center align-self-center" style="height:28rem;">

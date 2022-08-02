@@ -91,6 +91,9 @@
             </ul>
         </div>
     </div>
+    <div>
+    @yield('content')
+    </div>
 </body>
 
 </html>
