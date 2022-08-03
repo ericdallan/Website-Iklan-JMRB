@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Website-Iklan-JMRB</title>
+    <title>Website-Iklan-JMRB - @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -131,53 +131,56 @@
                         <img src="{{url('Web/logowhite.png')}}" class="img-fluid" height="30">
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
+                        <li class="nav-item mb-2">
+                            @if(Route::has('dashboard') )
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-pie-chart-fill"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
+                                <i class="fs-6 bi bi-pie-chart-fill"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
+                            </a>
+                            @endif
+                            
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Iklan</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Iklan</span>
+                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
+                                <i class="fs-6 bi bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Payment</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Payment</span>
+                                <i class="fs-6 bi bi-calendar2-event"></i> <span class="ms-1 d-none d-sm-inline">Reminder</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-calendar2-event"></i> <span class="ms-1 d-none d-sm-inline">Reminder</span>
+                                <i class="fs-6 bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">User</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">User</span>
+                                <i class="fs-6 bi bi-person-badge-fill"></i> <span class="ms-1 d-none d-sm-inline">Admin</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-person-badge-fill"></i> <span class="ms-1 d-none d-sm-inline">Admin</span>
+                                <i class="fs-6 bi bi-bar-chart-line-fill"></i> <span class="ms-1 d-none d-sm-inline">Chart</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-bar-chart-line-fill"></i> <span class="ms-1 d-none d-sm-inline">Chart</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-4 bi bi-table"></i> <span class="ms-1 d-none d-sm-inline">Table</span>
+                                <i class="fs-6 bi bi-table"></i> <span class="ms-1 d-none d-sm-inline">Table</span>
                             </a>
                         </li>
                     </ul>
-                    <div class="dropdown pb-4">
+                    <!-- <div class="dropdown pb-4">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             @if(Auth::guard('admin')->user()->pic_profile == '')
                             <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
@@ -206,11 +209,55 @@
                                 </form>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="col py-3">
-                @yield('content')
+            <div class="col" style="background-color:rgba(12, 21, 49, 0.5);">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <a class="navbar-brand text-white" href="#">@yield('subtitle')</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            </ul>
+                            <div class="dropdown">
+                                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-white" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-none d-sm-inline mx-1">
+                                        @if(Auth::guard('admin')->user()->first_name != '')
+                                        {{ Auth::user()->first_name }}
+                                        @endif
+                                        @if(Auth::guard('admin')->user()->first_name == '')
+                                        {{ Auth::user()->username }}
+                                        @endif
+                                    </span>
+                                    @if(Auth::guard('admin')->user()->pic_profile == '')
+                                    <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                                    @endif
+                                    @if(Auth::guard('admin')->user()->pic_profile != '')
+                                    <img src="/Foto_Profile/User/{{Auth::guard('admin')->user()->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                                    @endif
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="py-3">
+                    @yield('content')
+                </div>
             </div>
         </div>
     </div>
