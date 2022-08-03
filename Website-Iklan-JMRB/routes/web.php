@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,9 +48,13 @@ Route::middleware(['auth:web'])->group(function () {
 //Non-Auth
 Route::middleware(['guest:admin'])->group(function () {
     //Login Admin
-    Route::get('/login/admin', [LoginController::class, 'index'])->name('login/admin');
-    Route::post('/login/admin', [LoginController::class, 'loginadmin']);
+    Route::get('/login/admin', [AdminController::class, 'index'])->name('login/admin');
+    Route::post('/login/admin', [AdminController::class, 'login']);
 });
 //Auth
 Route::middleware(['auth:admin'])->group(function () {
+    //Dashboard Admin
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    //Logout Admin
+    Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logout');
 });

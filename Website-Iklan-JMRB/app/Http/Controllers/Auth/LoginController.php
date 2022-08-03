@@ -63,8 +63,8 @@ class LoginController extends Controller
     {
         //Validate Login
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
         //Login User
         if (Auth::guard('web')->attempt($credentials)) {
@@ -73,24 +73,7 @@ class LoginController extends Controller
             session(['login' => true]);
             return redirect()->intended('/')->with('success', 'Login Berhasil!');
         } else {
-            return redirect('/login')->with('failed', 'Email atau Password Salah!');
-        }
-    }
-    public function loginadmin(Request $request)
-    {
-        //Validat4e Admin
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-        //Login Admin
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            session(['login' => true]);
-            return redirect()->intended('/')->with('success', 'Login Berhasil!');
-        } else {
-            return redirect('/login')->with('failed', 'Email atau Password Salah!');
+            return redirect()->back()->with('failed', 'Email atau Password Salah!');
         }
     }
     public function __construct()

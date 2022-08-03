@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts/app')
 @section('content')
 <!-- color label -->
 <style>
@@ -27,6 +27,7 @@
     }
 </style>
 <!-- color label -->
+
 <!-- Login form -->
 <div class="pb-5 pt-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container rounded-4" style="background-color:#FFFFFF;">
@@ -47,8 +48,8 @@
                 <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="col-6 mx-auto my-5" style="width: 31.25rem;">
-                <h2 class="text-center">Login To Your Account</h2>
-                <form class="my-5" action="{{ route('login') }}" method="POST">
+                <h2 class="text-center">Login To Admin Account</h2>
+                <form class="my-5" action="{{ route('login/admin') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -59,8 +60,7 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-default text-white mt-3 mb-2 border-0">Login</button>
-                        <div style="font-size: 1rem;">Don’t have an account ? <a href="{{ route('register') }}" style="text-decoration:none; color:#0A142F; font-weight: bold;">Register</a></div>
+                        <button type="submit" class="btn-default text-white mt-3 mb-2 border-0">Login</button>
                     </div>
                 </form>
             </div>

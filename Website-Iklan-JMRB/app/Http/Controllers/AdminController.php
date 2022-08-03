@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -12,11 +14,47 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard($id)
+    public function dashboard()
     {
-        //
+        //show dashboard admin
+        return view('admin.dashboard');
     }
 
+    public function index()
+    {
+        //show login page
+        return view('admin.login');
+    }
+
+    public function login(Request $request)
+    {
+        //Validat4e Admin
+        $credentials = $request->validate([
+            'email' => 'required|email|exists:admins,email',
+            'password' => 'required',
+        ]);
+        //Login Admin
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            session(['login' => true]);
+            return redirect()->intended('/dashboard')->with('success', 'Login Berhasil!');
+        } else {
+            return redirect()->back()->with('failed', 'Email atau Password Salah!');
+        }
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        $request->session()->forget('login');
+
+        return redirect('/');
+    }
     /**
      * Show the form for creating a new resource.
      *
