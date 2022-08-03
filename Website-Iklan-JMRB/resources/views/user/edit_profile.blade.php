@@ -55,12 +55,12 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4 d-flex align-items-center">
                             @if(Auth::guard('web')->user()->pic_profile == '')
-                            <div class="row">
+                            <div class="row mb-4">
                                 <label for="pic_profile" class="form-label">Tambah Foto Profile <i class="text-center mb-4" style="color:#636363;">belum ada foto profile ter-upload</i></label>
                                 <input onbeforeeditfocus="return false;" type="file" id="pic_profile" name="pic_profile">
                             </div>
-                            <div class="d-flex justify-content-center align-self-center mb-4" style="height:28rem;">
-                                <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
+                            <div class="d-flex justify-content-center align-self-center" style="height:28rem;">
+                                <img src="{{url('Web/default-user.png')}}" class="img-fluid" alt="">
                             </div>
                             @endif
                             @if(Auth::guard('web')->user()->pic_profile != '')

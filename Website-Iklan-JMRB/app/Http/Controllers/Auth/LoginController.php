@@ -67,13 +67,13 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
         //Login User
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
 
             session(['login' => true]);
-            return redirect()->intended('/')->with('berhasil_login', 'Login Berhasil!');
+            return redirect()->intended('/')->with('success', 'Login Berhasil!');
         } else {
-            return redirect('/login')->with('gagal_login', 'Email atau Password Salah!');
+            return redirect('/login')->with('failed', 'Email atau Password Salah!');
         }
     }
     public function loginadmin(Request $request)
@@ -88,9 +88,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             session(['login' => true]);
-            return redirect()->intended('/')->with('berhasil_login', 'Login Berhasil!');
+            return redirect()->intended('/')->with('success', 'Login Berhasil!');
         } else {
-            return redirect('/login')->with('gagal_login', 'Email atau Password Salah!');
+            return redirect('/login')->with('failed', 'Email atau Password Salah!');
         }
     }
     public function __construct()

@@ -48,9 +48,7 @@ Route::middleware(['auth:web'])->group(function () {
 Route::middleware(['guest:admin'])->group(function () {
     //Login Admin
     Route::get('/login/admin', [LoginController::class, 'index'])->name('login/admin');
-    Route::post('/login', [LoginController::class, 'loginadmin']);
-    //Logout User
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/login/admin', [LoginController::class, 'loginadmin']);
 });
 //Auth
 Route::middleware(['auth:admin'])->group(function () {

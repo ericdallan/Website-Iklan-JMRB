@@ -24,10 +24,10 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 if($guard === 'admin'){
-                    return redirect()->route('landing_page');
+                    return redirect()->route('dashboard');
                 }
-                if($guard === 'user'){
-                    return redirect()->route('landing_page');
+                if($guard === 'web'){
+                    return redirect()->route('Home');
                 }
             }
         }

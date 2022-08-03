@@ -31,7 +31,7 @@
 
 <!-- Register form -->
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
-    <div class="container rounded-4 mt-1 reveal" style="background-color:#FFFFFF;">
+    <div class="container rounded-4 mt-1" style="background-color:#FFFFFF;">
         @if (session('failed'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('failed') }}
@@ -39,10 +39,10 @@
         </div>
         @endif
         <div class="row">
-            <div class="col-6 mx-auto d-flex align-items-center reveal fade-left" style="width: 31.25rem;">
+            <div class="col-6 mx-auto d-flex align-items-center" style="width: 31.25rem;">
                 <img src="{{url('Web/RegisterUser.jpg')}}" class="img-fluid" alt="">
             </div>
-            <div class="col-6 mx-auto my-3 reveal fade-right" style="width: 31.25rem;">
+            <div class="col-6 mx-auto my-3" style="width: 31.25rem;">
                 <h2 class="text-center mb-4">Create Your Free Account</h2>
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
