@@ -146,7 +146,7 @@
 <footer class="text-lg-start text-white py-5" style="background-color:#0A142F">
     <div class="container text-left">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-            <div class="col">
+            <div class="col justify-content-center align-items-center">
                 <img src="{{url('Web/logowhite.png')}}">
             </div>
             <div class="col">

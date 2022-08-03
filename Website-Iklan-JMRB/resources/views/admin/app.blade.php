@@ -20,194 +20,80 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
-<style>
-    #side_nav {
-        background-color: #0A142F;
-        min-width: 16.5rem;
-        max-width: 16.5rem;
-    }
-
-    .content {
-        min-height: 100vh;
-        width: 100%;
-    }
-
-    hr.h-color {
-        background-color: #A4A6B3;
-    }
-</style>
 
 <body>
-    <!-- <div class="row">
-        <div class="col-auto me-auto" style="background-color:#0A142F">
-            <a href="/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <img src="{{url('Web/logowhite.png')}}">
-            </a>
-            <hr style="color:aqua">
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-pie-chart-fill" width="16" height="16"></i>
-                        Overview
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-badge-ad-fill" width="16" height="16"></i>
-                        Iklan
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="far fa-handshake" width="16" height="16"></i>
-                        Negosiasi
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-credit-card" width="16" height="16"></i>
-                        Payment
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-calendar2-event" width="16" height="16"></i>
-                        Reminder
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-people-fill" width="16" height="16"></i>
-                        User
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-person-badge-fill" width="16" height="16"></i>
-                        Admin
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-            </ul>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-bar-chart-line-fill" width="16" height="16"></i>
-                        Chart
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-table" width="16" height="16"></i>
-                        Table
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong>mdo</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col">
-            @yield('content')
-        </div>
-    </div> -->
-    <div class="main-container d-flex">
+    <!-- <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
-            <div class="header-box px-2 pt-3 pb-4">
-                <a href="/dashboard" class="d-flex justify-content-center align-items-center my-3">
-                    <img src="{{url('Web/logowhite.png')}}">
-                </a>
-            </div>
-            <ul class="list-unstyled px-2">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-pie-chart-fill" width="16" height="16"></i>
-                        Overview
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a href="/dashboard" class="d-flex justify-content-center align-items-center my-3">
+                        <img src="{{url('Web/logowhite.png')}}">
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-badge-ad-fill" width="16" height="16"></i>
-                        Iklan
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="far fa-handshake" width="16" height="16"></i>
-                        Negosiasi
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-credit-card" width="16" height="16"></i>
-                        Payment
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-calendar2-event" width="16" height="16"></i>
-                        Reminder
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-people-fill" width="16" height="16"></i>
-                        User
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-person-badge-fill" width="16" height="16"></i>
-                        Admin
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-            </ul>
-            <hr class="h-color mx-3">
-            <ul class="list-unstyled">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-bar-chart-line-fill" width="16" height="16"></i>
-                        Chart
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-table" width="16" height="16"></i>
-                        Table
-                    </a>
-                </li>
-            </ul>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-pie-chart-fill" width="16" height="16"></i>
+                                    Overview
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-badge-ad-fill" width="16" height="16"></i>
+                                    Iklan
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="far fa-handshake" width="16" height="16"></i>
+                                    Negosiasi
+                                </a>
+                            </li>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-credit-card" width="16" height="16"></i>
+                                    Payment
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-calendar2-event" width="16" height="16"></i>
+                                    Reminder
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-people-fill" width="16" height="16"></i>
+                                    User
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-person-badge-fill" width="16" height="16"></i>
+                                    Admin
+                                </a>
+                            </li>
+                            <hr class="h-color mx-3">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-bar-chart-line-fill" width="16" height="16"></i>
+                                    Chart
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">
+                                    <i class="bi bi-table" width="16" height="16"></i>
+                                    Table
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
         <div class="content">
             <nav class="navbar navbar-expand-lg bg-light">
@@ -235,6 +121,97 @@
                     </div>
                 </div>
             </nav>
+        </div>
+    </div> -->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color:#0A142F;">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+                    <a href="/dashboard" class="d-flex align-items-center py-3 mb-md-0 me-md-auto text-decoration-none">
+                        <img src="{{url('Web/logowhite.png')}}" class="img-fluid" height="30">
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-pie-chart-fill"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Iklan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Payment</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-calendar2-event"></i> <span class="ms-1 d-none d-sm-inline">Reminder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">User</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-person-badge-fill"></i> <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-bar-chart-line-fill"></i> <span class="ms-1 d-none d-sm-inline">Chart</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white align-middle px-0">
+                                <i class="fs-4 bi bi-table"></i> <span class="ms-1 d-none d-sm-inline">Table</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if(Auth::guard('admin')->user()->pic_profile == '')
+                            <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                            @endif
+                            @if(Auth::guard('admin')->user()->pic_profile != '')
+                            <img src="/Foto_Profile/User/{{Auth::guard('admin')->user()->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                            @endif
+                            <span class="d-none d-sm-inline mx-1">
+                                @if(Auth::guard('admin')->user()->first_name != '')
+                                {{ Auth::user()->first_name }}
+                                @endif
+                                @if(Auth::guard('admin')->user()->first_name == '')
+                                {{ Auth::user()->username }}
+                                @endif
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col py-3">
+                @yield('content')
+            </div>
         </div>
     </div>
 </body>
