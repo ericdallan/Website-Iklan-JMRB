@@ -82,7 +82,7 @@ class UserController extends Controller
         //validate form
         $rules = [
             'pic_profile' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'email' => '|required|email|unique:users,email,' . $id . ',id_user',
+            'email' => 'required|email|unique:users,email,' . $id . ',id_user',
             'username' => 'required|unique:users,username,' . $id . ',id_user'
         ];
         $validator = Validator::make($request->all(), $rules);

@@ -137,7 +137,6 @@
                                 <i class="fs-6 bi bi-pie-chart-fill"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
                             </a>
                             @endif
-                            
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
@@ -222,8 +221,8 @@
                         <div class="collapse navbar-collapse" id="navbarText">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             </ul>
-                            <div class="dropdown">
-                                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-white" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre">
                                     <span class="d-none d-sm-inline mx-1">
                                         @if(Auth::guard('admin')->user()->first_name != '')
                                         {{ Auth::user()->first_name }}
@@ -239,18 +238,15 @@
                                     <img src="/Foto_Profile/User/{{Auth::guard('admin')->user()->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
                                     @endif
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin/profile',['id'=>auth()->user()->id_admin]) }}">Profil</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>
