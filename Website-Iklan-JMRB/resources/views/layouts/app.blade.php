@@ -84,13 +84,13 @@
                     @guest
                     <div class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="/">Home</a>
+                            <a class="nav-link me-3" href="{{ route('Home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="/About_Us">About Us</a>
+                            <a class="nav-link me-3" href="{{ route('About_Us') }}">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="/Iklan">Iklan</a>
+                            <a class="nav-link me-3" href="{{ route('Iklan') }}">Iklan</a>
                         </li>
                         <li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
