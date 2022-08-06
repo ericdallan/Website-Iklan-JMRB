@@ -23,12 +23,12 @@ class AdminController extends Controller
     public function profile($id)
     {
         $admin = Admin::find($id);
-        return view('admin.profile', compact('admin'));
+        return view('admin.profile_admin', compact('admin'));
     }
     public function editprofile($id)
     {
         $admin = Admin::find($id);
-        return view('admin.edit_profile', compact('admin'));
+        return view('admin.editprofile_admin', compact('admin'));
     }
     public function updateprofile(Request $request)
     {
