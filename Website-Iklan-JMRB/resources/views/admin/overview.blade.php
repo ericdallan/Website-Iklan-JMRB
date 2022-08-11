@@ -1,6 +1,6 @@
 @extends('admin/dashboard')
 @section('content')
-@section('title',  'Overview')
+@section('title',  'Dashboard-Overview')
 @section('subtitle',  'Overview')
 <div class="container">
     <h2>HEHEHEHE</h2>

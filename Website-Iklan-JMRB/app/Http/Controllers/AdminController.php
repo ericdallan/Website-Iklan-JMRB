@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -19,6 +20,29 @@ class AdminController extends Controller
     {
         //show dashboard admin
         return view('admin.overview');
+    }
+    public function dashboard_admin()
+    {
+        //show dashboard admin
+        $admin = Admin::all();
+        return view('admin.admin', compact('admin'));
+    }
+    public function dashboard_user()
+    {
+        //show dashboard admin
+        $user = User::all();
+        return view('admin.user', compact('user'));
+    }
+    public function detail_user($id)
+    {
+        //show dashboard admin
+        $user = User::find($id);
+        return view('admin.user', compact('user'));
+    }
+    public function dashboard_iklan()
+    {
+        //show dashboard admin
+        return view('admin.iklan');
     }
     public function profile($id)
     {

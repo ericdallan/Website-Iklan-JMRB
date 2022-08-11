@@ -55,6 +55,10 @@ Route::middleware(['guest:admin'])->group(function () {
 Route::middleware(['auth:admin'])->group(function () {
     //Dashboard Admin
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/admin',[AdminController::class, 'dashboard_admin'])->name('dashboard/admin');
+    Route::get('/dashboard/user',[AdminController::class, 'dashboard_user'])->name('dashboard/user');
+    Route::get('/dashboard/user/{id}/detail', [AdminController::class, 'detail_user'])->name('dashboard/user/detail');
+    Route::get('/dashboard/iklan',[AdminController::class, 'dashboard_iklan'])->name('dashboard/iklan');
     //Logout Admin
     Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logoutadmin');
     //Profile Admin

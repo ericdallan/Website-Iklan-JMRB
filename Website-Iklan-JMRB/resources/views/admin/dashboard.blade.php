@@ -130,16 +130,14 @@
                     <a href="/dashboard" class="d-flex align-items-center py-3 mb-md-0 me-md-auto text-decoration-none">
                         <img src="{{url('Web/logowhite.png')}}" class="img-fluid" height="30">
                     </a>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-2" id="menu">
                         <li class="nav-item mb-2">
-                            @if(Route::has('dashboard') )
-                            <a href="#" class="nav-link text-white align-middle px-0">
+                            <a href="{{route('dashboard')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-pie-chart-fill"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
                             </a>
-                            @endif
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
+                            <a href="{{route('dashboard/iklan')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Iklan</span>
                             </a>
                         </li>
@@ -159,12 +157,12 @@
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
+                            <a href="{{route('dashboard/user')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">User</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
+                            <a href="{{route('dashboard/admin')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-person-badge-fill"></i> <span class="ms-1 d-none d-sm-inline">Admin</span>
                             </a>
                         </li>
@@ -179,36 +177,6 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- <div class="dropdown pb-4">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            @if(Auth::guard('admin')->user()->pic_profile == '')
-                            <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                            @endif
-                            @if(Auth::guard('admin')->user()->pic_profile != '')
-                            <img src="/Foto_Profile/User/{{Auth::guard('admin')->user()->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                            @endif
-                            <span class="d-none d-sm-inline mx-1">
-                                @if(Auth::guard('admin')->user()->first_name != '')
-                                {{ Auth::user()->first_name }}
-                                @endif
-                                @if(Auth::guard('admin')->user()->first_name == '')
-                                {{ Auth::user()->username }}
-                                @endif
-                            </span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
             <div class="col" style="background-color:white;">
