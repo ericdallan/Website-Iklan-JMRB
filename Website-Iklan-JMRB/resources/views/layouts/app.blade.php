@@ -111,8 +111,26 @@
                         <li class="nav-item">
                             <a class="nav-link me-3" href="/About_Us">About Us</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle me-3"" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Iklan
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('Iklan')}}">Iklan</a></li>
+                                <li><a class="dropdown-item" href="#">MyIklan</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="/Iklan">Iklan</a>
+                            <a class="nav-link me-3" href="#">Negotiation</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle me-3"" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pembayaran
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Pembayaran</a></li>
+                                <li><a class="dropdown-item" href="#">MyPembayaran</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
