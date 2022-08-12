@@ -116,7 +116,7 @@
                                 Iklan
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('Iklan')}}">Iklan</a></li>
+                                <li><a class="dropdown-item" href="{{route('user/iklan')}}">Iklan</a></li>
                                 <li><a class="dropdown-item" href="#">MyIklan</a></li>
                             </ul>
                         </li>

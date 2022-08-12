@@ -20,8 +20,8 @@ use App\Http\Controllers\IklanController;
 */
 //Landing Page
 Route::get('/', [HomeController::class, 'landing_page'])->name('Home');
-Route::get('/About_Us', [HomeController::class, 'about_us'])->name('About_Us');
-Route::get('/Iklan', [HomeController::class, 'iklan'])->name('Iklan');
+Route::get('/about_Us', [HomeController::class, 'about_us'])->name('About_Us');
+Route::get('/iklan', [HomeController::class, 'iklan'])->name('Iklan');
 
 //Group Route User
 //Non-Auth
@@ -43,6 +43,8 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/user/profile/update', [UserController::class, 'updateprofile'])->name('user/profile/update');
     //Logout User
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    //Iklan User
+    Route::get('user/iklan',[IklanController::class, 'indexUser'])->name('user/iklan');
 });
 
 //Group Route Admin

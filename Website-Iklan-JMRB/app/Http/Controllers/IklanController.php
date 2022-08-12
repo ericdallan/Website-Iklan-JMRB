@@ -18,6 +18,12 @@ class IklanController extends Controller
         return view('admin.iklan', compact('iklan'));
     }
 
+    public function indexUser()
+    {
+        $iklan = Iklan::all();
+        return view('user.iklan', compact('iklan'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
