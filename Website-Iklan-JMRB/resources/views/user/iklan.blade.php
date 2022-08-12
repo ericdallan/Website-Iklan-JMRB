@@ -21,7 +21,7 @@
             if (!$iklan->isEmpty()){
             @endphp
             @foreach($iklan as $iklans)
-            <div class="card mx-auto my-4" style="width: 18rem;">
+            <div class="card mx-auto my-4" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ $iklans-> name }}</h5>
                     <h6 class="card-subtitle my-2 text-muted">{{ $iklans-> zone }}</h6>

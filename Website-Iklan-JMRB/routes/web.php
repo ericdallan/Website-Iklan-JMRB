@@ -60,7 +60,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard/admin',[AdminController::class, 'dashboard_admin'])->name('dashboard/admin');
     Route::get('/dashboard/user',[AdminController::class, 'dashboard_user'])->name('dashboard/user');
-    Route::get('/dashboard/user/{id}/detail', [AdminController::class, 'detail_user'])->name('dashboard/user/detail');
     Route::get('/dashboard/iklan',[IklanController::class, 'index'])->name('dashboard/iklan');
     Route::post('/dashboard/iklan/create',[IklanController::class,'create_iklan'])->name('dashboard/iklan/create');
     //Logout Admin

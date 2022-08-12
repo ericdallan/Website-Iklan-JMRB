@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-white navbar-sticky-top" style="background-color: #FFFFFF; box-shadow: 0 10px 15px 0 rgba(0,0,0,.3);">
             <div class="container">
-                <a class="navbar-brand " href="/"><img src="{{url('Web/logocolor.png')}}" height="30"></a>
+                <a class="navbar-brand " href="{{ route('dashboard') }}"><img src="{{url('Web/logocolor.png')}}" height="30"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

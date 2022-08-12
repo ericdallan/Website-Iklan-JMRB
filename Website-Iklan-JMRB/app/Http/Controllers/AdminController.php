@@ -33,12 +33,6 @@ class AdminController extends Controller
         $user = User::all();
         return view('admin.user', compact('user'));
     }
-    public function detail_user($id)
-    {
-        //show dashboard admin
-        $user = User::find($id);
-        return view('admin.user', compact('user'));
-    }
     public function profile($id)
     {
         $admin = Admin::find($id);
