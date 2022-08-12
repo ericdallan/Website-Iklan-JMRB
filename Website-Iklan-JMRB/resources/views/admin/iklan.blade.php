@@ -55,13 +55,14 @@
         <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('dashboard/iklan/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$iklans->name}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body mx-3">
+                            <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}">
                             <div class="row mb-3">
                                 <label for="pic_advert" class="form-label">Ganti Foto Iklan</label>
                                 <input type="file" id="pic_advert" class="form-control" name="pic_advert">
@@ -74,21 +75,24 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Iklan's Name" value="{{ $iklans->name }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}">
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}">
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}">
                             </div>
                             <div class="row mb-2">
                                 <label for="location" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="location" placeholder="Iklan's Location" value="{{ $iklans->location }}">
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}">
                             </div>
                             <div class="row mb-2">
                                 <label for="rate" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}">
+                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}">
                             </div>
-
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-default btn-md rounded-3">Update</button>
                         </div>
                     </form>
                 </div>

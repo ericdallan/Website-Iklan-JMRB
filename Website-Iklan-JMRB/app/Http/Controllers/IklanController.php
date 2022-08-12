@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Iklan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class IklanController extends Controller
 {
@@ -63,6 +64,45 @@ class IklanController extends Controller
             return redirect()->back()->with('success', 'Berhasil membuat iklan !');
         } else {
             return redirect()->back()->with('failed', 'Gagal membuat iklan');
+        }
+    }
+    public function update_iklan(Request $request)
+    {
+        $id = $request->id;
+        $request->validate([
+            'name' => 'required',
+            'zone' => 'required',
+            'location' => 'required',
+            'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'rate' => 'required',
+        ]);
+        //create post
+        Iklan::find($id)->update([
+            'name' => $request->name,
+            'zone' => $request->zone,
+            'location' => $request->location,
+            'rate' => $request->rate,
+        ]);
+        //Upload Foto Profile
+        $iklan = Iklan::find($id);
+        //Pic Location
+        $picAdvert = $request->pic_advert;
+        if ($picAdvert != "") {
+            if ($iklan->puc != '' && $iklan->pic_advert != null) {
+                $path = public_path('Dokumen/Iklan');
+                $filePic = $path . $iklan->pic_advert;
+                unlink($filePic);
+            }
+            $picAdvert = $picAdvert->getClientOriginalName();
+            $iklan->pic_advert = $picAdvert;
+            $request->pic_advert->move(public_path('Dokumen/Iklan'), $picAdvert);
+            $save = $iklan->save();
+        }
+        $save = $iklan->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil melakukan update iklan !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal melakukan update iklan');
         }
     }
     /**

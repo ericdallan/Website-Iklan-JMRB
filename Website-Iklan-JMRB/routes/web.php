@@ -62,6 +62,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/dashboard/user',[AdminController::class, 'dashboard_user'])->name('dashboard/user');
     Route::get('/dashboard/iklan',[IklanController::class, 'index'])->name('dashboard/iklan');
     Route::post('/dashboard/iklan/create',[IklanController::class,'create_iklan'])->name('dashboard/iklan/create');
+    Route::post('/dashboard/iklan/update', [IklanController::class, 'update_iklan'])->name('dashboard/iklan/update');
     //Logout Admin
     Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logoutadmin');
     //Profile Admin
