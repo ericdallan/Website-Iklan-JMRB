@@ -52,7 +52,7 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="{{route('dashboard/iklan/update')}}" method="POST" enctype="multipart/form-data">
@@ -90,9 +90,8 @@
                                 <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}">
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-default btn-md rounded-3">Update</button>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-default btn-md rounded-3 w-25">Update</button>
                         </div>
                     </form>
                 </div>
@@ -139,9 +138,8 @@
                             <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-default btn-sm rounded-3">Create</button>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-default btn-sm rounded-3 w-25">Create</button>
                     </div>
                 </form>
             </div>

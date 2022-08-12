@@ -19,9 +19,9 @@ use App\Http\Controllers\IklanController;
 |
 */
 //Landing Page
-Route::get('/', [HomeController::class, 'landing_page'])->name('Home');
-Route::get('/about_Us', [HomeController::class, 'about_us'])->name('About_Us');
-Route::get('/iklan', [HomeController::class, 'iklan'])->name('Iklan');
+Route::get('/', [HomeController::class, 'landing_page'])->name('home');
+Route::get('/about_us', [HomeController::class, 'about_us'])->name('about_us');
+Route::get('/iklan', [HomeController::class, 'iklan'])->name('iklan');
 
 //Group Route User
 //Non-Auth

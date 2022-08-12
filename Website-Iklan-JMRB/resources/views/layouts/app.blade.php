@@ -84,13 +84,13 @@
                     @guest
                     <div class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="{{ route('Home') }}">Home</a>
+                            <a class="nav-link me-3" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="{{ route('About_Us') }}">About Us</a>
+                            <a class="nav-link me-3" href="/about_us">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="{{ route('Iklan') }}">Iklan</a>
+                            <a class="nav-link me-3" href="/iklan">Iklan</a>
                         </li>
                         <li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
@@ -109,7 +109,7 @@
                             <a class="nav-link me-3" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-3" href="/About_Us">About Us</a>
+                            <a class="nav-link me-3" href="/about_us">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3"" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -186,7 +186,7 @@
                     <p>About Us</p>
                 </div>
                 <div class="row mb-3">
-                    <a class="text-white" href="/About_Us" style="text-decoration:none;">Profil Perusahaan</a></li>
+                    <a class="text-white" href="/about_us" style="text-decoration:none;">Profil Perusahaan</a></li>
                 </div>
             </div>
             <div class="col">

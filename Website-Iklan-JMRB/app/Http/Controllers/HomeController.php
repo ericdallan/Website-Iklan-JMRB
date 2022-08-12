@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Iklan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +26,8 @@ class HomeController extends Controller
     }
     public function iklan()
     {
-        return view('iklan');
+        $iklan = Iklan::all();
+        return view('iklan', compact('iklan'));
     }
     // public function LoginUser()
     // {
