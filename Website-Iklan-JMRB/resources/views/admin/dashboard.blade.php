@@ -206,7 +206,7 @@
                                     <img src="/Foto_Profile/User/{{Auth::guard('admin')->user()->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
                                     @endif
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('admin/profile',['id'=>auth()->user()->id_admin]) }}">Profil</a>
                                     <a class="dropdown-item" href="{{ route('logoutadmin') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
@@ -220,6 +220,18 @@
                     </div>
                 </nav>
                 <div class="py-3">
+                    @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+                    </div>
+                    @endif
+                    @if (session('failed'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('failed') }}
+                        <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+                    </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>

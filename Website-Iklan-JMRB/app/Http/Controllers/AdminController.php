@@ -39,11 +39,6 @@ class AdminController extends Controller
         $user = User::find($id);
         return view('admin.user', compact('user'));
     }
-    public function dashboard_iklan()
-    {
-        //show dashboard admin
-        return view('admin.iklan');
-    }
     public function profile($id)
     {
         $admin = Admin::find($id);
@@ -111,7 +106,7 @@ class AdminController extends Controller
             $request->session()->regenerate();
 
             session(['login' => true]);
-            return redirect()->intended('/dashboard')->with('success', 'Login Berhasil!');
+            return redirect()->intended('/dashboard')->with('success', 'Selamat Datang di Dashboard Admin !');
         } else {
             return redirect()->back()->with('failed', 'Email atau Password Salah!');
         }
