@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modal -->
+        <!-- Modal Detai;-->
         <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -94,11 +94,11 @@
                                 <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}">
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Zone</label>
+                                <label for="location" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}">
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Zone</label>
+                                <label for="rate" class="form-label">Rate</label>
                                 <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
         }
         @endphp
     </div>
-    <!-- Modal -->
+    <!-- Modal New Advert-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -142,12 +142,20 @@
                             <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone">
                         </div>
                         <div class="row mb-2">
-                            <label for="location" class="form-label">Lokasi</label>
+                            <label for="location" class="form-label">Location</label>
                             <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location">
                         </div>
                         <div class="row mb-2">
-                            <label for="rate" class="form-label">Harga</label>
-                            <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate">
+                            <label for="type" class="form-label">Type</label>
+                            <input type="text" class="form-control" id="type" name="type" placeholder="Advertisement Type" value="Dashboard" readonly>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="rate" class="form-label">Rate</label>
+                            <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate" value="2500000" readonly>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="status" class="form-label">Status</label>
+                            <input type="text" class="form-control" id="status" name="status" placeholder="Advertisement Status" value="Open" readonly>
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">

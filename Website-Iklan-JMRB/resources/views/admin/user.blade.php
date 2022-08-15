@@ -131,37 +131,37 @@
                                         <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                                             <div class="row mb-4">
                                                 <label for="username" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="username" placeholder="Your Username" value="{{ $users->username }}" disabled>
+                                                <input type="text" class="form-control" id="username" placeholder="Your Username" value="{{ $users->username }}" readonly >
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="first_name" class="form-label">First Name</label>
                                                 @if($users->first_name == '')
-                                                <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="Not Updated" style="color:red" disabled>
+                                                <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="Not Updated" style="color:red" readonly >
                                                 @endif
                                                 @if($users->first_name != '')
-                                                <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="{{ $users->first_name }}" disabled>
+                                                <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="{{ $users->first_name }}" readonly >
                                                 @endif
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="last_name" class="form-label">Last Name</label>
                                                 @if($users->last_name == '')
-                                                <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="Not Updated" style="color:red" disabled>
+                                                <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="Not Updated" style="color:red" readonly >
                                                 @endif
                                                 @if($users->last_name != '')
-                                                <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="{{ $users->last_name }}" disabled>
+                                                <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="{{ $users->last_name }}" readonly >
                                                 @endif
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="email" class="form-label">Email Address</label>
-                                                <input type="email" class="form-control" id="email" placeholder="Your Email Address" value="{{ $users->email }}" disabled>
+                                                <input type="email" class="form-control" id="email" placeholder="Your Email Address" value="{{ $users->email }}" readonly >
                                             </div>
                                             <div class="row mb-4">
                                                 <label for="phone_number" class="form-label">Phone Number</label>
                                                 @if($users->phone_number == '')
-                                                <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="Not Updated" style="color:red" disabled>
+                                                <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="Not Updated" style="color:red" readonly >
                                                 @endif
                                                 @if($users->phone_number != '')
-                                                <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="{{ $users->phone_number }}" disabled>
+                                                <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="{{ $users->phone_number }}" readonly >
                                                 @endif
                                             </div>
                                         </div>
@@ -171,17 +171,17 @@
                                             <div class="row mb-4">
                                                 <label for="company_address" class="form-label">Company Address</label>
                                                 @if($users->company_address == '')
-                                                <input type="text" class="form-control" id="company_address" placeholder="Your Company Address" value="Not Updated" style="color:red" disabled>
+                                                <input type="text" class="form-control" id="company_address" placeholder="Your Company Address" value="Not Updated" style="color:red" readonly >
                                                 @endif
                                                 @if($users->company_address != '')
-                                                <input type="text" class="form-control" id="company_address" placeholder="Your Company Address" value="{{ $users->company_address }}" disabled>
+                                                <input type="text" class="form-control" id="company_address" placeholder="Your Company Address" value="{{ $users->company_address }}" readonly >
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                                             <div class="row mb-4">
                                                 <label for="company_name" class="form-label">Company Name</label>
-                                                <input type="text" class="form-control" id="company_name" placeholder="Your Company Name" value="{{ $users->company_name }}" disabled>
+                                                <input type="text" class="form-control" id="company_name" placeholder="Your Company Name" value="{{ $users->company_name }}" readonly >
                                             </div>
                                         </div>
                                     </div>
@@ -190,10 +190,10 @@
                                             <div class="row mb-4">
                                                 <label for="company_desc" class="form-label">Company Description</label>
                                                 @if($users->company_desc == '')
-                                                <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="Not Updated" style="color:red" disabled></input>
+                                                <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="Not Updated" style="color:red" readonly ></input>
                                                 @endif
                                                 @if($users->company_desc != '')
-                                                <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="{{ $users->company_desc }}" disabled></input>
+                                                <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="{{ $users->company_desc }}" readonly ></input>
                                                 @endif
                                             </div>
                                         </div>

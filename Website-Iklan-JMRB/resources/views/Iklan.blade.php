@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -55,19 +55,19 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}" disabled>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}" readonly >
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" disabled>
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" readonly >
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Lozation</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" disabled>
+                                <label for="location" class="form-label">Zone</label>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" readonly >
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Rate</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" disabled>
+                                <label for="rate" class="form-label">Zone</label>
+                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" readonly >
                             </div>
                         </div>
                     </div>

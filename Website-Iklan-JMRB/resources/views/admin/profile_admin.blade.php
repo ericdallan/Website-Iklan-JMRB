@@ -67,27 +67,27 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Your Username" value="{{ Auth::guard('admin')->user()->username }}" disabled>
+                            <input type="text" class="form-control" id="username" placeholder="Your Username" value="{{ Auth::guard('admin')->user()->username }}" readonly >
                         </div>
                         <div class="row mb-4">
                             <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="{{ Auth::guard('admin')->user()->first_name }}" disabled>
+                            <input type="text" class="form-control" id="first_name" placeholder="Your First Name" value="{{ Auth::guard('admin')->user()->first_name }}" readonly >
                         </div>
                         <div class="row mb-4">
                             <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="{{ Auth::guard('admin')->user()->last_name }}" disabled>
+                            <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="{{ Auth::guard('admin')->user()->last_name }}" readonly >
                         </div>
                         <div class="row mb-4">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email Address" value="{{ Auth::guard('admin')->user()->email }}" disabled>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email Address" value="{{ Auth::guard('admin')->user()->email }}" readonly >
                         </div>
                         <div class="row mb-4">
                             <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('admin')->user()->phone_number }}" disabled>
+                            <input type="text" class="form-control" id="phone_number" placeholder="Your Phone Number" value="{{ Auth::guard('admin')->user()->phone_number }}" readonly >
                         </div>
                         <div class="row mb-4">
                             <label for="division" class="form-label">Division</label>
-                            <input name="text" class="form-control" id="division" placeholder="Your Company Divison" value="{{ Auth::guard('admin')->user()->division }}" disabled></input>
+                            <input name="text" class="form-control" id="division" placeholder="Your Company Divison" value="{{ Auth::guard('admin')->user()->division }}" readonly ></input>
                         </div>
                     </div>
                 </div>
