@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Iklan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,10 @@ class AdminController extends Controller
     public function dashboard()
     {
         //show dashboard admin
-        return view('admin.overview');
+        $iklan = Iklan::all();
+        $admin = Admin::all();
+        $user = User::all();
+        return view('admin.overview', compact('iklan','admin','user'));
     }
     public function dashboard_admin(Request $request)
     {

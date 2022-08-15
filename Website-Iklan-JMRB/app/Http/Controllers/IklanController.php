@@ -13,9 +13,14 @@ class IklanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $iklan = Iklan::all();
+        if ($request->filled('search')) {
+            $iklan = Iklan::search($request->search)->get(); // search by value
+        } else {
+            $iklan = Iklan::get()->take('10'); // list 10 rows
+        }
         return view('admin.iklan', compact('iklan'));
     }
 
