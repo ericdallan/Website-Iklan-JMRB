@@ -8,6 +8,7 @@
         font-weight: bold;
         color: #FFFFFF;
     }
+
     .btn-default:hover,
     .btn-default:focus,
     .btn-default:active,
@@ -20,12 +21,14 @@
 <div class="container">
     <div class="row my-4">
         <div class="col-md-8">
-            <div class="input-group rounded" style="width: 18rem;">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i class="bi bi-search"></i>
-                </span>
-            </div>
+            <form action="" method="GET">
+                <div class="input-group rounded" style="width: 18rem;">
+                    <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="bi bi-search" type="submit"></i>
+                    </span>
+                </div>
+            </form>
         </div>
         <div class="col-6 col-md-4 text-end text-white"></div>
     </div>
@@ -143,7 +146,7 @@
                                             <div class="row mb-4">
                                                 <label for="last_name" class="form-label">Last Name</label>
                                                 @if($users->last_name == '')
-                                                <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="Not Updated"  style="color:red" disabled>
+                                                <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="Not Updated" style="color:red" disabled>
                                                 @endif
                                                 @if($users->last_name != '')
                                                 <input type="text" class="form-control" id="last_name" placeholder="Your Last Name" value="{{ $users->last_name }}" disabled>

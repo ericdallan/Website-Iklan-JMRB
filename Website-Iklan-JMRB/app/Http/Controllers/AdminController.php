@@ -22,16 +22,26 @@ class AdminController extends Controller
         //show dashboard admin
         return view('admin.overview');
     }
-    public function dashboard_admin()
+    public function dashboard_admin(Request $request)
     {
         //show dashboard admin
         $admin = Admin::all();
+        if ($request->filled('search')) {
+            $admin = Admin::search($request->search)->get(); // search by value
+        } else {
+            $admin = Admin::get()->take('10'); // list 10 rows
+        }
         return view('admin.admin', compact('admin'));
     }
-    public function dashboard_user()
+    public function dashboard_user(Request $request)
     {
         //show dashboard admin
         $user = User::all();
+        if ($request->filled('search')) {
+            $user = User::search($request->search)->get(); // search by value
+        } else {
+            $user = User::get()->take('10'); // list 10 rows
+        }
         return view('admin.user', compact('user'));
     }
     public function profile($id)

@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Searchable, Notifiable;
     protected $table = 'users';
-    protected $primaryKey ='id_user';
+    protected $primaryKey = 'id_user';
     /**
      * The attributes that are mass assignable.
      *
@@ -30,7 +31,15 @@ class User extends Authenticatable
         'pic_profile',
         'company_address',
     ];
-
+    public function toSearchableArray()
+    {
+        return [
+            'username' => $this->username,
+            'email' => $this->email,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+        ];
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

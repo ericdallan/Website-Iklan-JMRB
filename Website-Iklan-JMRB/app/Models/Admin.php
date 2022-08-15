@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Searchable, Notifiable;
     protected $table = 'admins';
     protected $primaryKey ='id_admin';
     /**
@@ -27,6 +28,15 @@ class Admin extends Authenticatable
         'pic_profile',
         'division',
     ];
+    public function toSearchableArray()
+    {
+        return [
+            'username' => $this->username,
+            'email' => $this->email,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+        ];
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

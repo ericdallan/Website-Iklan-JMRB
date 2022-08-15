@@ -7,13 +7,7 @@
         color: #0A142F;
         font-weight: bold;
     }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        background-color: #D9D9D9;
-    }
-
+    
     .btn-default {
         background-color: #0C1531;
         font-weight: bold;
@@ -36,9 +30,9 @@
         <div class="col-md-8">
             <form action="" method="GET">
                 <div class="input-group rounded" style="width: 18rem;">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                     <span class="input-group-text border-0" id="search-addon">
-                        <i class="bi bi-search"></i>
+                        <i class="bi bi-search" type="submit"></i>
                     </span>
                 </div>
             </form>
