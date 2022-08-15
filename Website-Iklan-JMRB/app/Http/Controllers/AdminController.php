@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -87,7 +88,33 @@ class AdminController extends Controller
         //show login page
         return view('admin.login');
     }
-
+    public function create_admin(Request $request)
+    {
+        //Validate Register Admin
+        $username = collect($request->username);
+        $email = collect($request->email);
+        if (Admin::where('username', $username)->exists()) {
+            return redirect()->back()->with('failed', 'Username telah digunakan !');
+        } elseif (Admin::where('email', $email)->exists()) {
+            return redirect()->back()->with('failed', 'Email telah digunakan !');
+        } else {
+            //Create Register Admin
+            if (request()->password == request()->repassword) {
+                Admin::create([
+                    'username' => request()->username,
+                    'email' => request()->email,
+                    'first_name' => request()->first_name,
+                    'last_name' => request()->last_name,
+                    'password' => Hash::make(
+                        request()->password
+                    )
+                ]);
+                return redirect()->back()->with('success', 'Admin berhasil ditambahkan !');
+            } else {
+                return redirect()->back()->with('failed', 'Password tidak sama !');
+            }
+        }
+    }
     public function login(Request $request)
     {
         //Validat4e Admin
@@ -117,69 +144,13 @@ class AdminController extends Controller
 
         return redirect('/');
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function delete_admin(Admin $admin, $id)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
+        if($admin=Admin::find($id)){
+            $admin->delete();
+            return redirect()->back()->with('success', 'Admin berhasil dihapus !');
+        }else{
+            return redirect()->back()->with('failed', 'Admin gagal dihapus !');
+        }
     }
 }

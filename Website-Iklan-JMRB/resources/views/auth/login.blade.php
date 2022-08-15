@@ -25,6 +25,22 @@
         background-color: #0A142F;
         width: 20rem;
     }
+
+    .form-group {
+        position: relative;
+    }
+
+    .form-group .form-control-icon {
+        position: absolute;
+        z-index: 2;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        text-align: center;
+        color: black;
+        right: 0;
+        top: 0px;
+    }
 </style>
 <!-- color label -->
 <!-- Login form -->
@@ -56,7 +72,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                        <div class="form-group">
+                            <i class="bi bi-eye-slash form-control-icon" id="togglePassword"></i>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                        </div>
                     </div>
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-default text-white mt-3 mb-2 border-0">Login</button>
@@ -66,6 +85,19 @@
             </div>
         </div>
     </div>
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function() {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+    </script>
 </div>
 <!-- Login form -->
 @endsection

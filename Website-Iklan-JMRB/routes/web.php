@@ -58,8 +58,13 @@ Route::middleware(['guest:admin'])->group(function () {
 Route::middleware(['auth:admin'])->group(function () {
     //Dashboard Admin
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    //Dashboad List Admin
     Route::get('/dashboard/admin',[AdminController::class, 'dashboard_admin'])->name('dashboard/admin');
+    Route::post('/dashboard/admin/create',[AdminController::class, 'create_admin'])->name('dashboard/admin/create');
+    Route::get('/dashboard/admin/delete/{id}',[AdminController::class, 'delete_admin'])->name('dashboard/admin/delete');
+    //Dashboard List User
     Route::get('/dashboard/user',[AdminController::class, 'dashboard_user'])->name('dashboard/user');
+    //Dashboard Iklan
     Route::get('/dashboard/iklan',[IklanController::class, 'index'])->name('dashboard/iklan');
     Route::post('/dashboard/iklan/create',[IklanController::class,'create_iklan'])->name('dashboard/iklan/create');
     Route::post('/dashboard/iklan/update', [IklanController::class, 'update_iklan'])->name('dashboard/iklan/update');
