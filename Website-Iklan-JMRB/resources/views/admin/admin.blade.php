@@ -34,12 +34,14 @@
 <div class="container">
     <div class="row my-4">
         <div class="col-md-8">
-            <div class="input-group rounded" style="width: 18rem;">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i class="bi bi-search"></i>
-                </span>
-            </div>
+            <form action="" method="GET">
+                <div class="input-group rounded" style="width: 18rem;">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="bi bi-search"></i>
+                    </span>
+                </div>
+            </form>
         </div>
         <div class="col-6 col-md-4 text-end text-white"><a class="btn btn-default btn-sm rounded-3" href="#" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create New Admin</a></div>
         <!-- Modal -->
@@ -150,7 +152,7 @@
                                         Apakah anda yakin ingin menghapus akun <b>{{$admins->username}}</b> ?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                                         <a class="btn btn-danger btn-sm" href="{{ route('dashboard/admin/delete', ['id' => $admins->id_admin]) }}">Delete</a>
                                     </div>
                                 </div>
