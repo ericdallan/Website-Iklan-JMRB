@@ -30,7 +30,6 @@
                 </div>
             </form>
         </div>
-        <div class="col-6 col-md-4 text-end text-white"></div>
     </div>
     <div class="table-responsive-lg">
         <table class="table table-hover table-bordered table-sm">

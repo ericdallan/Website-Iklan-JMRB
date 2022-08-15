@@ -16,12 +16,12 @@
 </style>
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             @php
             if (!$iklan->isEmpty()){
             @endphp
             @foreach($iklan as $iklans)
-            <div class="card mx-auto my-4" style="width: 20rem;">
+            <div class="card mx-4 my-4" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ $iklans-> name }}</h5>
                     <h6 class="card-subtitle my-2 text-muted">{{ $iklans-> zone }}</h6>
@@ -62,12 +62,26 @@
                                 <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" disabled>
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Zone</label>
+                                <label for="location" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" disabled>
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Zone</label>
+                                <label for="rate" class="form-label">Rate</label>
                                 <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" disabled>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <label for="start_date" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Iklan's Start Date">
+                                </div>
+                                <div class="col">
+                                    <label for="end_date" class="form-label">End Date</label>
+                                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="Iklan's End Date">
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="rate_negotiation" class="form-label">Rate Negotiation</label>
+                                <input type="text" class="form-control" id="rate_negotiation" name="rate_negotiation" placeholder="Iklan's Rate Negotiation">
                             </div>
                         </div>
                     </div>
@@ -83,6 +97,11 @@
             @endphp
         </div>
     </div>
-
+    <script>
+        $(document).ready(function() {
+            var today = new Date().toISOString().split('T')[0];
+            $("#start_date").attr('min', today);
+        });
+    </script>
 </div>
 @endsection

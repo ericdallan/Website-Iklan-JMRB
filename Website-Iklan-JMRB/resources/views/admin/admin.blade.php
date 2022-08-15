@@ -7,6 +7,7 @@
         color: #0A142F;
         font-weight: bold;
     }
+
     .btn-default {
         background-color: #0C1531;
         font-weight: bold;
@@ -131,7 +132,12 @@
                             @endif
                         </td>
                         <td>
+                            @if($admins->id_admin != Auth::guard('admin')->user()->id_admin)
                             <a class="btn btn-danger btn-sm" role="button" data-bs-toggle="modal" data-bs-target="#DeleteAdmin{{ $admins->id_admin }}">Delete</a>
+                            @endif
+                            @if($admins->id_admin == Auth::guard('admin')->user()->id_admin)
+                            <button class="btn btn-danger btn-sm" type="button" disabled>Delete</button>
+                            @endif
                         </td>
                         <!-- Modal Delete -->
                         <div class="modal fade" id="DeleteAdmin{{ $admins->id_admin }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

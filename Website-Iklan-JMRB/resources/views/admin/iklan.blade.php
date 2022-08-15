@@ -27,15 +27,27 @@
     }
 </style>
 <div class="container">
-    <div class="my-4">
-        <button type="button" class="btn btn-default btn-sm rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create New Advertisement</button>
+    <div class="row my-4">
+        <div class="col-md-8">
+            <form action="" method="GET">
+                <div class="input-group rounded" style="width: 18rem;">
+                    <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="bi bi-search" type="submit"></i>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-6 col-md-4 text-end text-white">
+            <button type="button" class="btn btn-default btn-sm rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create New Advertisement</button>
+        </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         @php
         if (!$iklan->isEmpty()){
         @endphp
         @foreach($iklan as $iklans)
-        <div class="card mx-3 my-3" style="width: 18rem;">
+        <div class="card mx-4 my-4" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{ $iklans-> name }}</h5>
                 <h6 class="card-subtitle my-2 text-muted">{{ $iklans-> zone }}</h6>

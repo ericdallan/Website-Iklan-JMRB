@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -62,11 +62,11 @@
                                 <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" disabled>
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Zone</label>
+                                <label for="location" class="form-label">Lozation</label>
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" disabled>
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Zone</label>
+                                <label for="rate" class="form-label">Rate</label>
                                 <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" disabled>
                             </div>
                         </div>
