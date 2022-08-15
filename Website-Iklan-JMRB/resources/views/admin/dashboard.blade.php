@@ -190,7 +190,7 @@
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             </ul>
                             <div class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle me-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <span class="d-none d-sm-inline mx-1">
                                         @if(Auth::guard('admin')->user()->first_name != '')
                                         {{ Auth::user()->first_name }}
