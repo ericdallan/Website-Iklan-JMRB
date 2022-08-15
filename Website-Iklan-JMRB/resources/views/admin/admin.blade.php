@@ -7,7 +7,6 @@
         color: #0A142F;
         font-weight: bold;
     }
-    
     .btn-default {
         background-color: #0C1531;
         font-weight: bold;
