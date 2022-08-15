@@ -63,7 +63,7 @@
                 <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="col-6 mx-auto my-5" style="width: 31.25rem;">
-                <h2 class="text-center">Login To Your Account</h2>
+                <h2 class="text-center">Login To User Account</h2>
                 <form class="my-5" action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="mb-3">

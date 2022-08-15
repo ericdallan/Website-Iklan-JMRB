@@ -45,7 +45,7 @@
         @endif
         <div class="row py-3">
             <div class="col-6 mx-auto d-flex align-items-center" style="width: 31.25rem;">
-                <img src="{{url('Web/LoginUser.jpg')}}" class="img-fluid" alt="">
+                <img src="{{url('Web/LoginAdmin.jpg')}}" class="img-fluid" alt="">
             </div>
             <div class="col-6 mx-auto my-5" style="width: 31.25rem;">
                 <h2 class="text-center">Login To Admin Account</h2>
