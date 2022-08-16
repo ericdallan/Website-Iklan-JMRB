@@ -54,13 +54,14 @@
         if (!$iklan->isEmpty()){
         @endphp
         @foreach($iklan as $iklans)
-        <div class="card mx-4 my-4" style="width: 18rem;">
+        <div class="card mx-4 mb-4" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title text-start">{{ $iklans-> name }}</h5>
+                <h3 class="card-title fw-bold">{{ $iklans-> name }}</h3>
                 <hr>
-                <h6 class="card-subtitle my-2 text-muted">Zone : {{ $iklans-> zone }}</h6>
-                <h6 class="card-subtitle my-2 text-muted">Location : KM {{ $iklans-> location }}</h6>
-                <h6 class="card-subtitle my-2 text-muted">Status : {{ $iklans-> status }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Status : {{ $iklans-> status }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Rate : <b>Rp.{{ $iklans-> rate }}</b></h6>
             </div>
             <div class="card-footer">
                 <div class="row">
@@ -69,8 +70,11 @@
                     </div>
                 </div>
                 <hr class="w-100">
-                <div class="row">
-                    <div class="text-end">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <i class="btn bi bi-trash3-fill fs-6" data-bs-toggle="modal" data-bs-target="#deleteIklan{{ $iklans->id_iklan }}" style="color:red; ">Delete</i>
+                    </div>
+                    <div class="col-8 text-end">
                         <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}">Detail</a>
                     </div>
                 </div>
@@ -138,6 +142,24 @@
                             <button type="submit" class="btn btn-default btn-md rounded-3 w-25">Update</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Delete -->
+        <div class="modal fade" id="deleteIklan{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Delete Iklan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah anda yakin ingin menghapus akun <b>{{$iklans->name}}</b> ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                        <a class="btn btn-danger btn-sm" href="{{ route('dashboard/iklan/delete', ['id' => $iklans->id_iklan]) }}">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>

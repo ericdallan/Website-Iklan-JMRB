@@ -118,6 +118,15 @@ class IklanController extends Controller
             return redirect()->back()->with('failed', 'Gagal melakukan update iklan');
         }
     }
+    public function delete_iklan(Iklan $iklan, $id)
+    {
+        if($iklan=Iklan::find($id)){
+            $iklan->delete();
+            return redirect()->back()->with('success', 'Iklan berhasil dihapus !');
+        }else{
+            return redirect()->back()->with('failed', 'Iklan gagal dihapus !');
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *

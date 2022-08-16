@@ -23,9 +23,10 @@
             @foreach($iklan as $iklans)
             <div class="card mx-auto my-4" style="width: 20rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $iklans-> name }}</h5>
-                    <h6 class="card-subtitle my-2 text-muted">{{ $iklans-> zone }}</h6>
-                    <h6 class="card-subtitle my-2 text-muted">{{ $iklans-> location }}</h6>
+                    <h5 class="card-title text-start">{{ $iklans-> name }}</h5>
+                    <hr>
+                    <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
+                    <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
                     <p class="card-text">Harga : <b>{{ $iklans-> rate }}</b></p>
                 </div>
                 <div class="card-footer">
@@ -55,19 +56,19 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}" readonly >
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" readonly >
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="location" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" readonly >
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="rate" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" readonly >
+                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" readonly>
                             </div>
                         </div>
                     </div>
