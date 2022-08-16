@@ -59,7 +59,7 @@
                 <h5 class="card-title text-start">{{ $iklans-> name }}</h5>
                 <hr>
                 <h6 class="card-subtitle my-2 text-muted">Zone : {{ $iklans-> zone }}</h6>
-                <h6 class="card-subtitle my-2 text-muted">KM : {{ $iklans-> location }}</h6>
+                <h6 class="card-subtitle my-2 text-muted">Location : KM {{ $iklans-> location }}</h6>
                 <h6 class="card-subtitle my-2 text-muted">Status : {{ $iklans-> status }}</h6>
             </div>
             <div class="card-footer">
@@ -103,12 +103,19 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}">
                             </div>
                             <div class="row mb-2">
-                                <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" readonly>
+                                <label class="form-label" for="zone">Zone</label>
+                                <select class="main form-select" id="zone" id="zone" name="zone">
+                                    <option value="I" {{($iklans->zone == 'I') ? "selected":'' }}>I</option>
+                                    <option value="II" {{($iklans->zone == 'II') ? "selected":'' }}>II</option>
+                                    <option value="III" {{($iklans->zone == 'III') ? "selected":'' }}>III</option>
+                                    <option value="IV" {{($iklans->zone == 'IV') ? "selected":'' }}>IV</option>
+                                </select>
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}">
+                                <label for="location" class="form-label">Location (KM) </label>
+                                <select class="sub form-select" id="location" id="location" name="location">
+                                    <option value="{{ $iklans->location }}">{{ $iklans->location }}</option>
+                                </select>
                             </div>
                             <div class="row mb-2">
                                 <label for="type" class="form-label">Type</label>
@@ -173,7 +180,7 @@
                             </select>
                         </div>
                         <div class="row mb-2">
-                            <label for="location" class="form-label">Location</label>
+                            <label for="location" class="form-label">Location (KM) </label>
                             <select class="sub form-select" id="location" id="location" name="location">
                                 <option value="" disabled selected>Advertisement Location</option>
                             </select>
