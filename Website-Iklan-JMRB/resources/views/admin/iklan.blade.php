@@ -60,8 +60,8 @@
                 <hr>
                 <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
                 <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></h6>
                 <h6 class="card-subtitle my-3 text-muted">Status : {{ $iklans-> status }}</h6>
-                <h6 class="card-subtitle my-3 text-muted">Rate : <b>Rp.{{ $iklans-> rate }}</b></h6>
             </div>
             <div class="card-footer">
                 <div class="row">
@@ -75,7 +75,7 @@
                         <i class="btn bi bi-trash3-fill fs-6" data-bs-toggle="modal" data-bs-target="#deleteIklan{{ $iklans->id_iklan }}" style="color:red; ">Delete</i>
                     </div>
                     <div class="col-8 text-end">
-                        <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}">Detail</a>
+                        <a class="btn btn-default btn-md w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}">Detail</a>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}">
                             </div>
                             <div class="row mb-2">
                                 <label class="form-label" for="zone">Zone</label>
@@ -122,12 +122,8 @@
                                 </select>
                             </div>
                             <div class="row mb-2">
-                                <label for="type" class="form-label">Type</label>
-                                <input type="text" class="form-control" id="type" name="type" placeholder="Advertisement Type" value="{{ $iklans->type }}" readonly>
-                            </div>
-                            <div class="row mb-2">
-                                <label for="rate" class="form-label">Rate</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" readonly>
+                                <label for="maps_coord" class="form-label">Maps Coordinate</label>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $iklans->maps_coord }}">
                             </div>
                             <div class="row mb-2">
                                 <label class="form-label" for="status">Status</label>
@@ -208,12 +204,8 @@
                             </select>
                         </div>
                         <div class="row mb-2">
-                            <label for="type" class="form-label">Type</label>
-                            <input type="text" class="form-control" id="type" name="type" placeholder="Advertisement Type" value="Dashboard" readonly>
-                        </div>
-                        <div class="row mb-2">
-                            <label for="rate" class="form-label">Rate</label>
-                            <input type="number" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate" value="2500000" readonly>
+                            <label for="maps_coord" class="form-label">Maps Coordinate</label>
+                            <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate">
                         </div>
                         <div class="row mb-2">
                             <label for="status" class="form-label">Status</label>

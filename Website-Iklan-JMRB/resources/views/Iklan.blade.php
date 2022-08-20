@@ -56,19 +56,19 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}" readonly>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" readonly>
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $iklans->zone }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="location" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" readonly>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="rate" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" readonly>
+                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate" value="{{ $iklans->rate }}" readonly>
                             </div>
                         </div>
                     </div>

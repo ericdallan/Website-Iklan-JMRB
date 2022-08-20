@@ -143,7 +143,7 @@ class AdminController extends Controller
             session(['login' => true]);
             return redirect()->intended('/dashboard')->with('success', 'Selamat Datang di Dashboard Admin !');
         } else {
-            return redirect()->back()->with('failed', 'Email atau Password Salah!');
+            return redirect('/login/admin')->with('failed', 'Email atau Password Salah!');
         }
     }
     public function logout(Request $request)

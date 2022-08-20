@@ -139,7 +139,7 @@
                         </li>
                         <li class="nav-item mb-2">
                             <a href="{{route('dashboard/iklan')}}" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Iklan</span>
+                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Advertisement</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">

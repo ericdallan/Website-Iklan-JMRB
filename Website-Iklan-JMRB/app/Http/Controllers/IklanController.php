@@ -43,18 +43,16 @@ class IklanController extends Controller
             'zone' => 'required',
             'location' => 'required',
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'rate' => 'required',
-            'type' => 'required',
             'status' => 'required',
+            'maps_coord'=>'required',
         ]);
         //create post
         $iklan = new Iklan();
         $iklan->name = $request->name;
         $iklan->zone = $request->zone;
         $iklan->location = $request->location;
-        $iklan->rate = $request->rate;
-        $iklan->type = $request->type;
         $iklan->status = $request->status;
+        $iklan->maps_coord= $request->maps_coord;
         //Pic Location
         $picAdvert = $request->pic_advert;
         if ($picAdvert != "") {
@@ -83,18 +81,16 @@ class IklanController extends Controller
             'zone' => 'required',
             'location' => 'required',
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'rate' => 'required',
-            'type' => 'required',
             'status' => 'required',
+            'maps_coord' => 'required',
         ]);
         //create post
         Iklan::find($id)->update([
             'name' => $request->name,
             'zone' => $request->zone,
             'location' => $request->location,
-            'rate' => $request->rate,
-            'type' => $request->type,
             'status' => $request->status,
+            'maps_coord' => $request->maps_coord,
         ]);
         //Upload Foto Profile
         $iklan = Iklan::find($id);

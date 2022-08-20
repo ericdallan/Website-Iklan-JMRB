@@ -1,6 +1,16 @@
 @extends('layouts/app')
 @section('content')
 <style>
+    .form-label {
+        color: #0A142F;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    .rate {
+        background-color: #D9D9D9;
+    }
+
     .btn-default {
         background-color: #0C1531;
         color: #FFFFFF;
@@ -27,7 +37,7 @@
                     <hr>
                     <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
                     <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
-                    <p class="card-text">Harga : <b>{{ $iklans-> rate }}</b></p>
+                    <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}"  style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></h6>
                 </div>
                 <div class="card-footer">
                     <div class="text-start">
@@ -35,7 +45,7 @@
                     </div>
                     <hr>
                     <div class="text-end">
-                        <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}">Detail</a>
+                        <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}">Choose</a>
                     </div>
                 </div>
             </div>
@@ -48,6 +58,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body mx-3">
+                            <input type="hidden" class="form-control" id="status_negotiation" name="status_negotiation" placeholder="Advertisement Location" value="Tahap Negosiasi" readonly>
                             <div class="row mb-3">
                                 <div class="text-muted">Preview Foto Iklan</div>
                             </div>
@@ -56,34 +67,53 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Iklan's Name" value="{{ $iklans->name }}" readonly>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Iklan's Zone" value="{{ $iklans->zone }}" readonly>
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $iklans->zone }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Iklan's Location" value="{{ $iklans->location }}" readonly>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Rate</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Iklan's Rate" value="{{ $iklans->rate }}" readonly>
+                                <label for="maps_coord" class="form-label">Maps Coordinate</label>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $iklans->maps_coord }}" readonly>
                             </div>
                             <div class="row mb-2">
-                                <div class="col">
-                                    <label for="meter" class="form-label">Meter</label>
-                                    <input type="number" class="form-control" id="meter" name="meter" min="1" placeholder="Iklan's Meter">
-                                </div>
-                                <div class="col">
-                                    <label for="year" class="form-label">Year</label>
-                                    <input type="number" class="form-control" id="year" name="year" min="1" placeholder="Iklan's Year">
-                                </div>
+                                <label for="type" class="form-label">Type Permanent/Non-Permanent</label>
+                                <select class="main form-select" id="type" id="type" name="type">
+                                    <option value="" disabled selected>Advertisement Type</option>
+                                    <option value="Permanent">Permanent</option>
+                                    <option value="Non-Permanent">Non-Permanent</option>
+                                </select>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="advert_type" class="form-label">Advertisement Type</label>
+                                <select class="sub form-select" id="advert_type" id="advert_type" name="advert_type">
+                                    <option value="" disabled selected>Advertisement</option>
+                                </select>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="month" class="form-label">Month</label>
+                                <input type="number" class="sub2 form-control year" id="month" name="month" placeholder="Advertisement Month">
+                            </div>
+                            <div class="row mb-2">
+                                <label class="form-label" for="side">Sides</label>
+                                <select class="form-select side" id="side" id="side" name="side">
+                                    <option value="" disabled selected>How many sides</option>
+                                    <option value="1">One Sided</option>
+                                    <option value="2">Two Sided (Front and Rear)</option>
+                                </select>
                             </div>
                             <div class="row mb-2">
                                 <label for="rate_negotiation" class="form-label">Rate Negotiation</label>
-                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" min="{{ $iklans->rate }}" placeholder="Iklan's Rate Negotiation">
+                                <input type="number" class="form-control year" id="rate_negotiation" name="rate_negotiation" placeholder="Advertisement Rate Negotiation">
                             </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-default btn-md rounded-3 w-25">Choose</button>
                         </div>
                     </div>
                 </div>
@@ -98,10 +128,29 @@
             @endphp
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            var today = new Date().toISOString().split('T')[0];
-            $("#start_date").attr('min', today);
+    <script type="text/javascript">
+        $('.main').change(function() {
+            var options = '';
+            if ($(this).val() == 'Permanent') {
+                options = '<option value="Baliho">Baliho</option><option value="Iklan Bando">Iklan Bando</option><option value="Banner">Banner</option><option value="Billboard">Billboard</option><option value="Iklan Tugu">Iklan Tugu</option><option value="Neon Box">Neon Box</option><option value="Logo">Logo</option>';
+            } else if ($(this).val() == 'Non-Permanent') {
+                options = '<option value="Spanduk">Spanduk</option><option value="Banner">Banner</option><option value="Umbul-umbul">Umbul-umbul</option><option value="Balon Udara">Balon Udara</option><option value="Iklan Edaran">Iklan Edaran</option><option value="Logo">Logo</option><option value="Iklan Penunjuk Arah">Iklan Penunjuk Arah</option><option value="Shooting/Foto">Shooting/Foto</option>';
+            }
+            $('.sub').html(options);
+        });
+        $('.main').change(function() {
+            var inputs = '';
+            if ($(this).val() == 'Permanent') {
+                $("#month").attr({
+                    "min": 12
+                });
+            } else if ($(this).val() == 'Non-Permanent') {
+                $("#month").attr({
+                    "max": 12,
+                    "min": 1
+                });
+            }
+            $('.sub2').html(inputs);
         });
     </script>
 </div>

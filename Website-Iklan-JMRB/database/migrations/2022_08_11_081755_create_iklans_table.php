@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('zone');
             $table->string('location');
+            $table->string('maps_coord');
             $table->string('pic_advert',1000);
-            $table->string('rate');
-            $table->string('type');
             $table->string('status');
             $table->timestamps();
         });

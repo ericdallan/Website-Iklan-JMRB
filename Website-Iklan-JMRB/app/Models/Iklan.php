@@ -16,9 +16,8 @@ class Iklan extends Model
         'name',
         'zone',
         'location',
+        'maps_coord',
         'pic_advert',
-        'rate',
-        'type',
         'status',
     ];
     public function toSearchableArray()
