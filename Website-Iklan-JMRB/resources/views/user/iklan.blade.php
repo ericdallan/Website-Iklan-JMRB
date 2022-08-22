@@ -37,7 +37,7 @@
                     <hr>
                     <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
                     <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
-                    <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}"  style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></h6>
+                    <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></h6>
                 </div>
                 <div class="card-footer">
                     <div class="text-start">
@@ -49,16 +49,29 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            @endforeach
+            @php
+            } else{
+            @endphp
+            <p class='text-center'>No record found.</p>
+            @php
+            }
+            @endphp
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{{ route('user/negotiation/create') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$iklans->name}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body mx-3">
-                            <input type="hidden" class="form-control" id="status_negotiation" name="status_negotiation" placeholder="Advertisement Location" value="Tahap Negosiasi" readonly>
+                            <input type="hidden" class="form-control" id="status_negotiation" name="status_negotiation" placeholder="Advertisement Status" value="Tahap Negosiasi" readonly>
+                            <input type="hidden" class="form-control" id="id_iklan" name="id_iklan" placeholder="id_iklan" value="{{$iklans->id_iklan}}" readonly>
+                            <input type="hidden" class="form-control" id="id_user" name="id_user" placeholder="id_user" value="{{ Auth::guard('web')->user()->id_user }}" readonly>
                             <div class="row mb-3">
                                 <div class="text-muted">Preview Foto Iklan</div>
                             </div>
@@ -67,23 +80,23 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" readonly>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $iklans->zone }}" readonly>
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $iklans->zone }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" readonly>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="maps_coord" class="form-label">Maps Coordinate</label>
-                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $iklans->maps_coord }}" readonly>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $iklans->maps_coord }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="type" class="form-label">Type Permanent/Non-Permanent</label>
-                                <select class="main form-select" id="type" id="type" name="type">
+                                <select class="main form-select" id="type" name="type">
                                     <option value="" disabled selected>Advertisement Type</option>
                                     <option value="Permanent">Permanent</option>
                                     <option value="Non-Permanent">Non-Permanent</option>
@@ -91,7 +104,7 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="advert_type" class="form-label">Advertisement Type</label>
-                                <select class="sub form-select" id="advert_type" id="advert_type" name="advert_type">
+                                <select class="sub form-select" id="advert_type" name="advert_type">
                                     <option value="" disabled selected>Advertisement</option>
                                 </select>
                             </div>
@@ -101,31 +114,19 @@
                             </div>
                             <div class="row mb-2">
                                 <label class="form-label" for="side">Sides</label>
-                                <select class="form-select side" id="side" id="side" name="side">
+                                <select class="form-select side" id="sides" name="sides">
                                     <option value="" disabled selected>How many sides</option>
                                     <option value="1">One Sided</option>
                                     <option value="2">Two Sided (Front and Rear)</option>
                                 </select>
                             </div>
-                            <div class="row mb-2">
-                                <label for="rate_negotiation" class="form-label">Rate Negotiation</label>
-                                <input type="number" class="form-control year" id="rate_negotiation" name="rate_negotiation" placeholder="Advertisement Rate Negotiation">
-                            </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="submit" class="btn btn-default btn-md rounded-3 w-25">Choose</button>
+                            <button type="submit" class="btn btn-default btn-md rounded-3">Open Negotiation</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-            @endforeach
-            @php
-            } else{
-            @endphp
-            <p class='text-center'>No record found.</p>
-            @php
-            }
-            @endphp
         </div>
     </div>
     <script type="text/javascript">

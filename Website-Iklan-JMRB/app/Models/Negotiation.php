@@ -17,7 +17,8 @@ class Negotiation extends Model
         'type',
         'advert_type',
         'meter',
-        'year',
+        'month',
+        'sides',
         'rate_negotiation',
         'status_negotiation',
     ];

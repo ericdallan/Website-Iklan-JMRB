@@ -56,7 +56,7 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Password <i class="fs-6 text-muted">(8 characters minimum)</i></label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3 text-center">

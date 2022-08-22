@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('type');
             $table->string('advert_type');
             $table->string('meter');
-            $table->string('year');
-            $table->string('rate_negotiation');
+            $table->string('month');
+            $table->string('sides');
+            $table->string('rate_negotiation')->nullable();
             $table->string('status_negotiation');
             $table->timestamps();
         });

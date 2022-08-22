@@ -59,12 +59,12 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                        <label for="password" class="form-label">Password <i class="fs-6 text-muted">(8 characters minimum)</i></label>
+                        <input type="password" class="form-control" id="password" minlength="8" name="password" placeholder="Enter Password">
                     </div>
                     <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="password_confirmation" name="repassword" placeholder="Re-enter Password">
+                        <label for="password_confirmation" class="form-label">Confirm Password <i class="fs-6 text-muted">(8 characters minimum)</i></label>
+                        <input type="password" class="form-control" id="password_confirmation"  minlength="8" name="repassword" placeholder="Re-enter Password">
                     </div>
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-default text-white mt-3 mb-2 border-0">Create Your Account</button>

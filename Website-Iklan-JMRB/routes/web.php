@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IklanController;
+use App\Http\Controllers\NegotiationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     //Iklan User
     Route::get('user/iklan',[IklanController::class, 'indexUser'])->name('user/iklan');
+    //Negotiation User
+    Route::get('user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
+    Route::post('user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
 });
 
 //Group Route Admin

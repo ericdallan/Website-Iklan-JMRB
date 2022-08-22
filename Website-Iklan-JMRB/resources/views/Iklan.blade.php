@@ -27,7 +27,7 @@
                     <hr>
                     <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
                     <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
-                    <p class="card-text">Harga : <b>{{ $iklans-> rate }}</b></p>
+                    <p class="card-text">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></p>
                 </div>
                 <div class="card-footer">
                     <div class="text-start">
@@ -63,12 +63,12 @@
                                 <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $iklans->zone }}" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Zone</label>
+                                <label for="location" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate" value="{{ $iklans->rate }}" readonly>
+                                <label for="rate" class="form-label">Maps Coodinate</label>
+                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate" value="{{ $iklans->maps_coord }}" readonly>
                             </div>
                         </div>
                     </div>
