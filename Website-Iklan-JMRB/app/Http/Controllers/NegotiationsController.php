@@ -15,17 +15,6 @@ class NegotiationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index(Request $request)
-    // {
-    //     $iklan = Iklan::all();
-    //     if ($request->filled('search')) {
-    //         $iklan = Iklan::search($request->search)->get(); // search by value
-    //     } else {
-    //         $iklan = Iklan::get()->take('10'); // list 10 rows
-    //     }
-    //     return view('admin.iklan', compact('iklan'));
-    // }
-
     public function indexUser()
     {
         $negotiation = DB::table("negotiations")->select('*')
@@ -34,18 +23,21 @@ class NegotiationsController extends Controller
             ->get();
         return view('user.negotiation', compact('negotiation'));
     }
-    public function create_nego(Request $request)
+    public function create_nego (Request $request)
     {
         //validate form
+        $id = $request->id_iklan;
         $request->validate([
             'id_user' => 'required',
             'id_iklan' => 'required',
             'type' => 'required',
             'advert_type' => 'required',
-            'meter' => 'required',
             'month' => 'required',
             'sides' => 'required',
             'status_negotiation' => 'required',
+        ]);
+        Iklan::find($id)->update([
+            'status' => $request->status_negotiation,
         ]);
         //create post
         Negotiation::create([
@@ -53,7 +45,6 @@ class NegotiationsController extends Controller
             'id_user' => $request->id_user,
             'type' => $request->type,
             'advert_type' => $request->advert_type,
-            'meter' => $request->meter,
             'month' => $request->month,
             'sides' => $request->sides,
             'status_negotiation' => $request->status_negotiation

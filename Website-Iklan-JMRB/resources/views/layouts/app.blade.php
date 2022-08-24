@@ -113,7 +113,7 @@
                             <a class="nav-link me-3" href="/about_us">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle me-3"" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle me-3"" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Iklan
                             </a>
                             <ul class="dropdown-menu">
@@ -125,7 +125,7 @@
                             <a class="nav-link me-3" href="{{route('user/negotiation')}}">Negotiation</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle me-3"" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle me-3"" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Pembayaran
                             </a>
                             <ul class="dropdown-menu">

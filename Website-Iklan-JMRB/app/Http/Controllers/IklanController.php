@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Iklan;
+use App\Models\Negotiation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class IklanController extends Controller
@@ -21,13 +24,21 @@ class IklanController extends Controller
         } else {
             $iklan = Iklan::get()->take('10'); // list 10 rows
         }
-        return view('admin.iklan', compact('iklan'));
+        $negotiation = DB::table("negotiations")->select('*')
+            ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
+            ->get();
+        return view('admin.iklan', compact('iklan', 'negotiation'));
     }
 
     public function indexUser()
     {
         $iklan = Iklan::all();
-        return view('user.iklan', compact('iklan'));
+        $negotiation = DB::table("negotiations")->select('*')
+            ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
+            ->join('users', 'negotiations.id_user', '=', 'users.id_user')
+            ->where('negotiations.id_iklan', Auth::guard('web')->user()->id_user)
+            ->get();
+        return view('user.iklan', compact('iklan','negotiation'));
     }
 
     /**

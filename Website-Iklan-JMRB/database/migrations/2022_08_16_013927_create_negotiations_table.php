@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('id_iklan')->unsigned();
             $table->string('type');
             $table->string('advert_type');
-            $table->string('meter');
             $table->string('month');
             $table->string('sides');
             $table->string('rate_negotiation')->nullable();

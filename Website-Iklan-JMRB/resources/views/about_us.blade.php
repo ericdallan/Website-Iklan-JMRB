@@ -15,18 +15,18 @@
     }
 </style>
 <!-- background image -->
-<div class="bg-image mb-4 reveal" style=" background-image: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.52));background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/08/screenshot-1024x768.jpg'); height: 39rem;
+<div class="bg-image mb-4" style=" background-image: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.52));background-image: url('https://www.jmrb.co.id/wp-content/uploads/2021/08/screenshot-1024x768.jpg'); height: 39rem;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;"">
-    <div class=" mask" style="background-color: rgba(0, 0, 0, 0.6); height:39rem;">
-    <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white text-center">
-            <h2 class="mb-3" style="text-shadow :0 0 0.7rem #FECD0A;">Profil Perusahaan</h2>
+    width: 100%;">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); height:39rem;">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white text-center">
+                <h2 class="mb-3" style="text-shadow :0 0 0.7rem #FECD0A;">Profil Perusahaan</h2>
+            </div>
         </div>
     </div>
-</div>
 </div>
 <!-- body image -->
 <div class="reveal">
@@ -112,4 +112,334 @@
     </div>
 </div>
 <!-- tata nilai akhlak -->
+<!-- Jenis-Jenis Iklan -->
+<div class="container">
+    <div class="row mb-4 reveal">
+        <h2 class="fw-bold text-center" style="text-decoration: underline; text-decoration-color:#FECE3D;">Jenis-Jenis Iklan</h2>
+    </div>
+    <div class="row mb-2 reveal">
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Permanen</div>
+            <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom reveal fade-left" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <p class="tata-nilai">Iklan Permanen adalah iklan dengan masa tayang (pemasangan) minimal 12 (dua belas) bulan.</p>
+                <hr>
+                <div class="dropdown text-center">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#0C1531;color:#FECE3D">
+                        Jenis Iklan Permanen
+                    </button>
+                    <ul class="dropdown-menu" style="background-color:#0C1531;">
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BalihoPermanent">Baliho</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#IklanBando">Iklan Bando</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BannerPermanent">Banner</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#Billboard">Billboard</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#IklanTugu">Iklan Tugu</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#NeonBox">Neon Box</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#Logo">Logo</button></li>
+                    </ul>
+                </div>
+                <hr>
+                <ul class="tata-nilai">Baliho <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BalihoPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Iklan Bando <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanBando"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Banner <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BannerPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Billboard <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Billboard"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Iklan Tugu <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanTugu"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Neon Box <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#NeonBox"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Logo <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Logo"><i class="bi bi-arrow-right-short"></i></button></ul>
+            </div>
+        </div>
+        <div class="col">
+            <div class="text-center mx-auto rounded-3 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Non-Permanen</div>
+            <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom reveal fade-right" style="background-color:#FECE3D;width:65%;color:#0C1531">
+                <p class="tata-nilai">Iklan Tidak Permanen adalah iklan dengan masa tayang (pemasangan) kurang dari 12 (dua belas) bulan.</p>
+                <hr>
+                <ul class="tata-nilai">Baliho Non-Permanen <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BalihoNonPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Spanduk <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Spanduk"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Banner Non-Permanen<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BannerNonPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Umbul-Umbul <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Umbul-umbul"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Balon Udara <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BalonUdara"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Iklan Edaran <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanEdaran"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Logo Non-Permanen<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#LogoNonPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Iklan Penunjuk Arah <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanPenunjukArah"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <ul class="tata-nilai">Shooting/Film <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#ShootingFilm"><i class="bi bi-arrow-right-short"></i></button></ul>
+            </div>
+        </div>
+    </div>
+    <div class="permanent">
+        <!-- Modal Baliho Permanent-->
+        <div class="modal fade" id="BalihoPermanent" tabindex="-1" aria-labelledby="BalihoPermanent" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="BalihoPermanent">Baliho - Permanent</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Baliho adalah pesan layanan (biasanya dengan gambar) dan iklan yang terbuat di atas papan kayu atau bahan lain, dipasang menggunakan tiang.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Iklan Bando-->
+        <div class="modal fade" id="IklanBando" tabindex="-1" aria-labelledby="IklanBando" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="IklanBando">Iklan Bando - Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bando adalah jenis konstruksi lainnya yang melintang di atas jalan yang hanya diperbolehkan untuk iklan yang berada di luar ruang bebas.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Banner Permanent-->
+        <div class="modal fade" id="BannerPermanent" tabindex="-1" aria-labelledby="BannerPermanent" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="BannerPermanent">Banner - Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Banner adalah pesan layanan dan iklan yang terbuat dari bahan kain dan/atau bahan lainnya yang dipasang secara horizontal (memanjang) Bangunan Pelengkap Jalan tol atau Sarana Pelengkap Jalan Tol
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Billboard-->
+        <div class="modal fade" id="Billboard" tabindex="-1" aria-labelledby="Billboard" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Billboard">Billboard - Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Billboard adalah iklan yang melekat pada papan, terbuat dari bahan logam atau lainnya seperti plat aluminium, fiberglass atau plastik.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Iklan Tugu-->
+        <div class="modal fade" id="IklanTugu" tabindex="-1" aria-labelledby="IklanTugu" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="IklanTugu">Iklan Tugu - Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Iklan tugu adalah iklan yang berbentuk tugu.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Neon Box-->
+        <div class="modal fade" id="NeonBox" tabindex="-1" aria-labelledby="NeonBox" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="NeonBox">Neon Box - Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Neon Box adalah iklan yang terbuat dari bahan yang bersinar dapat berupa <i>neon sign (internal illumination bilboard</i> atau <i>energized legend billboard</i>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Logo-->
+        <div class="modal fade" id="Logo" tabindex="-1" aria-labelledby="Logo" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Logo">Logo - Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="non-permanent">
+        <!-- Modal Baliho Non-Permanent-->
+        <div class="modal fade" id="BalihoNonPermanent" tabindex="-1" aria-labelledby="BalihoNonPermanent" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="BalihoNonPermanent">Baliho - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Baliho adalah pesan layanan (biasanya dengan gambar) dan iklan yang terbuat di atas papan kayu atau bahan lain, dipasang menggunakan tiang.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Spanduk-->
+        <div class="modal fade" id="Spanduk" tabindex="-1" aria-labelledby="Spanduk" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Spanduk">Spanduk - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Spanduk adalah jenis iklan yang sama dengan banner namun memiliki ukuran yang lebih besar.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Banner Non-Permanent-->
+        <div class="modal fade" id="BannerNonPermanent" tabindex="-1" aria-labelledby="BannerNonPermanent" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="BannerNonPermanent">Banner - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Banner adalah pesan layanan dan iklan yang terbuat dari bahan kain dan/atau bahan lainnya yang dipasang secara horizontal (memanjang) Bangunan Pelengkap Jalan tol atau Sarana Pelengkap Jalan Tol
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Umbul-Umbul -->
+        <div class="modal fade" id="Umbul-umbul" tabindex="-1" aria-labelledby="Umbul-umbul" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Umbul-umbul">Umbul-Umbul - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Umbul-umbul adalah pesan layanan dan iklan yang terbuat dari bahan kain dan/atau bahkan lainnya yang dipasang secara vertikal dengan menggunakan tiang pada jarak-jarak tertentu.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Balon Udara -->
+        <div class="modal fade" id="BalonUdara" tabindex="-1" aria-labelledby="BalonUdara" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="BalonUdara">Balon Udara - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Balon Udara adalah iklan berupa balon dengan ukuran yang cukup besar yang diikat dengan menggunakan alat pengikat serta melayang di udara yang umumnya digabung dengan pesan layanan dari kain yang tergantung di bawahnya.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Iklan Edaran -->
+        <div class="modal fade" id="IklanEdaran" tabindex="-1" aria-labelledby="IklanEdaran" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="IklanEdaran">Iklan Edaran - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Iklan Edaran adalah pesan layanan dan iklan yang berbentuk lembaran lepas atau beberapa halaman dilipat tanpa dijilid, yang diselenggarakan dengan cara diberikan atau diminta.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Logo Non-Permanent -->
+        <div class="modal fade" id="LogoNonPermanent" tabindex="-1" aria-labelledby="LogoNonPermanent" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="LogoNonPermanent">Logo - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Iklan Penunjuk Arah -->
+        <div class="modal fade" id="IklanPenunjukArah" tabindex="-1" aria-labelledby="IklanPenunjukArah" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="IklanPenunjukArah">Iklan Penunjuk Arah - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Shooting/Film -->
+        <div class="modal fade" id="ShootingFilm" tabindex="-1" aria-labelledby="ShootingFilm" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ShootingFilm">Shooting/Film - Non-Permanen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Shooting adalah kegiatan merekam video atau mengambil gambar di wilayah Jalan tol untuk kegiatan komersil.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jenis-Jenis Iklan -->
 @endsection
