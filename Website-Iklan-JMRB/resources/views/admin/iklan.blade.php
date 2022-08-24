@@ -66,7 +66,7 @@
             <div class="card-footer">
                 <div class="row">
                     <div class="text-start">
-                        <p class="card-text text-muted">Total Applicant : {{ count($negotiation) }} </p>
+                        <p class="card-text text-muted">Total Applicant :  </p>
                     </div>
                 </div>
                 <hr class="w-100">

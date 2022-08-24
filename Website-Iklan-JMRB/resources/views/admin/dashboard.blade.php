@@ -143,7 +143,7 @@
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
+                            <a href="{{route('admin/negotiation')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
                             </a>
                         </li>

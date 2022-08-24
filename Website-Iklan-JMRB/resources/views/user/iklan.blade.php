@@ -1,6 +1,11 @@
 @extends('layouts/app')
 @section('content')
 <style>
+     select[readonly] {
+        pointer-events: none;
+        background-color: #e9ecef;
+    }
+
     .form-label {
         color: #0A142F;
         font-weight: bold;
@@ -47,6 +52,20 @@
             </ul>
         </div>
         @endif
+        <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-6 col-md-4 text-end ">
+                <form action="" method="GET">
+                    <div class="input-group rounded" style="width: 21rem;">
+                        <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                            <i class="bi bi-search" type="submit"></i>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="row justify-content-center">
             @php
             if (!$iklan->isEmpty()){

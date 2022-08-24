@@ -24,15 +24,17 @@ class IklanController extends Controller
         } else {
             $iklan = Iklan::get()->take('10'); // list 10 rows
         }
-        $negotiation = DB::table("negotiations")->select('*')
-            ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
-            ->get();
-        return view('admin.iklan', compact('iklan', 'negotiation'));
+        return view('admin.iklan', compact('iklan'));
     }
 
-    public function indexUser()
+    public function indexUser(Request $request)
     {
         $iklan = Iklan::all();
+        if ($request->filled('search')) {
+            $iklan = Iklan::search($request->search)->get(); // search by value
+        } else {
+            $iklan = Iklan::get()->take('10'); // list 10 rows
+        }
         $negotiation = DB::table("negotiations")->select('*')
             ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
             ->join('users', 'negotiations.id_user', '=', 'users.id_user')

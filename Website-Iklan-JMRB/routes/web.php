@@ -45,10 +45,11 @@ Route::middleware(['auth:web'])->group(function () {
     //Logout User
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     //Iklan User
-    Route::get('user/iklan',[IklanController::class, 'indexUser'])->name('user/iklan');
+    Route::get('/user/iklan',[IklanController::class, 'indexUser'])->name('user/iklan');
     //Negotiation User
-    Route::get('user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
-    Route::post('user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
+    Route::get('/user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
+    Route::get('/user/negotiation/detail/{id}',[NegotiationsController::class, 'detail_nego'])->name('user/negotiation/detail');
+    Route::post('/user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
 });
 
 //Group Route Admin
@@ -73,6 +74,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/dashboard/iklan/create',[IklanController::class,'create_iklan'])->name('dashboard/iklan/create');
     Route::post('/dashboard/iklan/update', [IklanController::class, 'update_iklan'])->name('dashboard/iklan/update');
     Route::get('/dashboard/iklan/delete/{id}',[IklanController::class, 'delete_iklan'])->name('dashboard/iklan/delete');
+    //Dashboard Negosiasi
+    Route::get('/admin/negotiation',[NegotiationsController::class, 'indexAdmin'])->name('admin/negotiation');
     //Logout Admin
     Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logoutadmin');
     //Profile Admin

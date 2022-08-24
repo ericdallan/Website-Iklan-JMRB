@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Negotiation extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     protected $table = 'negotiations';
     protected $primaryKey = 'id_negotiation';
 
@@ -22,4 +23,12 @@ class Negotiation extends Model
         'rate_negotiation',
         'status_negotiation',
     ];
+    public function toSearchableArray()
+    {
+        return [
+            'type' => $this->type,
+            'advert_type' => $this->advert_type,
+            'month' => $this->month,
+        ];
+    }
 }
