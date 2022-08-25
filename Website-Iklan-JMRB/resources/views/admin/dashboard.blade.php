@@ -19,122 +19,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 
 <body>
-    <!-- <div class="main-container d-flex">
-        <div class="sidebar" id="side_nav">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a href="/dashboard" class="d-flex justify-content-center align-items-center my-3">
-                        <img src="{{url('Web/logowhite.png')}}">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-pie-chart-fill" width="16" height="16"></i>
-                                    Overview
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-badge-ad-fill" width="16" height="16"></i>
-                                    Iklan
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="far fa-handshake" width="16" height="16"></i>
-                                    Negosiasi
-                                </a>
-                            </li>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-credit-card" width="16" height="16"></i>
-                                    Payment
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-calendar2-event" width="16" height="16"></i>
-                                    Reminder
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-people-fill" width="16" height="16"></i>
-                                    User
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-person-badge-fill" width="16" height="16"></i>
-                                    Admin
-                                </a>
-                            </li>
-                            <hr class="h-color mx-3">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-bar-chart-line-fill" width="16" height="16"></i>
-                                    Chart
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    <i class="bi bi-table" width="16" height="16"></i>
-                                    Table
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="content">
-            <nav class="navbar navbar-expand-lg bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand " href="/"><img src="{{url('Web/logocolor.png')}}" height="30"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ms-auto">
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Profile
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">Profil</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div> -->
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color:#0A142F;">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
-                    <a href="/dashboard" class="d-flex align-items-center py-3 mb-md-0 me-md-auto text-decoration-none">
-                        <img src="{{url('Web/logowhite.png')}}" class="img-fluid" height="30">
-                    </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-2" id="menu">
+                        <li class="nav-item mb-2" class="nav-link text-white align-middle px-0">
+                            <a href="/dashboard" class="d-flex justify-content-center py-3">
+                                <img src="{{url('Web/logowhite.png')}}" class="img-fluid logo">
+                            </a>
+                        </li>
                         <li class="nav-item mb-2">
                             <a href="{{route('dashboard')}}" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-pie-chart-fill"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
+                                <i class="fs-6 bi bi-pie-chart"></i><span class="ms-1 d-none d-sm-inline">Overview</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
@@ -144,17 +44,17 @@
                         </li>
                         <li class="nav-item mb-2">
                             <a href="{{route('admin/negotiation')}}" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
+                                <i class="fs-6 bi bi-briefcase"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Payment</span>
+                                <i class="fs-6 bi bi-credit-card-fill"></i> <span class="ms-1 d-none d-sm-inline">Payment</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-calendar2-event"></i> <span class="ms-1 d-none d-sm-inline">Reminder</span>
+                                <i class="fs-6 bi bi-chat-square-text-fill"></i> <span class="ms-1 d-none d-sm-inline">Chat Room</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">

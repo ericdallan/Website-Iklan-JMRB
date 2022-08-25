@@ -124,6 +124,9 @@
                         <li class="nav-item">
                             <a class="nav-link me-3" href="{{route('user/negotiation')}}">Negotiation</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-3" href="#">Chat Room</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3"" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Pembayaran
