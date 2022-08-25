@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChatroomController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\NegotiationsController;
 
@@ -50,6 +51,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
     Route::get('/user/negotiation/detail/{id}',[NegotiationsController::class, 'detail_nego'])->name('user/negotiation/detail');
     Route::post('/user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
+    //Chatroom User
+    Route::get('/user/chatroom',[ChatroomController::class, 'indexUser'])->name('user/chatroom');
+    Route::post('/user/chatroom/create',[ChatroomController::class, 'createMessageUser'])->name('user/chatroom/create');
 });
 
 //Group Route Admin
