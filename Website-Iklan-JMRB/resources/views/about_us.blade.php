@@ -6,6 +6,10 @@
         font-weight: bold;
     }
 
+    .dropdown-item:hover{
+        cursor: pointer;
+        background-color:rgba(255, 255, 255, 0.5);
+    }
     @media only screen and (max-device-width: 900px),
     screen and (min-width: 200px) {
         .tata-nilai {
@@ -137,14 +141,6 @@
                         <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#Logo">Logo</button></li>
                     </ul>
                 </div>
-                <hr>
-                <ul class="tata-nilai">Baliho <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BalihoPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Iklan Bando <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanBando"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Banner <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BannerPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Billboard <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Billboard"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Iklan Tugu <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanTugu"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Neon Box <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#NeonBox"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Logo <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Logo"><i class="bi bi-arrow-right-short"></i></button></ul>
             </div>
         </div>
         <div class="col">
@@ -152,15 +148,22 @@
             <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom reveal fade-right" style="background-color:#FECE3D;width:65%;color:#0C1531">
                 <p class="tata-nilai">Iklan Tidak Permanen adalah iklan dengan masa tayang (pemasangan) kurang dari 12 (dua belas) bulan.</p>
                 <hr>
-                <ul class="tata-nilai">Baliho Non-Permanen <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BalihoNonPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Spanduk <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Spanduk"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Banner Non-Permanen<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BannerNonPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Umbul-Umbul <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#Umbul-umbul"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Balon Udara <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#BalonUdara"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Iklan Edaran <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanEdaran"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Logo Non-Permanen<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#LogoNonPermanent"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Iklan Penunjuk Arah <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#IklanPenunjukArah"><i class="bi bi-arrow-right-short"></i></button></ul>
-                <ul class="tata-nilai">Shooting/Film <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#ShootingFilm"><i class="bi bi-arrow-right-short"></i></button></ul>
+                <div class="dropdown text-center">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#0C1531;color:#FECE3D">
+                        Jenis Iklan Tidak Permanen
+                    </button>
+                    <ul class="dropdown-menu" style="background-color:#0C1531;">
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BalihoNonPermanent">Baliho Non-Permanen</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#Spanduk">Spanduk</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BannerNonPermanent">Banner Non-Permanen</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#Umbul-umbul">Umbul-Umbul</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BalonUdara">Balon Udara</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#IklanEdaran">Iklan Edaran</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#LogoNonPermanent">Logo Non-Permanen</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#IklanPenunjukArah">Iklan Penunjuk Arah</button></li>
+                        <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#ShootingFilm">Shooting/Film</button></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
