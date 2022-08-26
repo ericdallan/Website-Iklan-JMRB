@@ -75,7 +75,20 @@
                     @foreach($chatroom as $chatrooms)
                     <div class="card my-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $chatrooms-> username }}</h5>
+                            <div class="card-title">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @if(isset($chatrooms->pic_profile) && $chatrooms->pic_profile)
+                                        <img src="/Foto_Profile/Admin/{{$chatrooms->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                                        @else
+                                        <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                                        @endif
+                                    </div>
+                                    <div class="col-md-10 text-start">
+                                        {{ $chatrooms-> username }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer text-end">
                             <a href="{{ route('user/chatroom/detail', ['id'=>$chatrooms->id_chatroom]) }}" class="btn btn-default">Buka Percakapan</a>
@@ -110,7 +123,7 @@
                                     <div class="input-group mb-3">
                                         <input type="hidden" id="id_chatroom" name="id_chatroom" value=" {{ $chatrooms-> id_chatroom }}">
                                         <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}">
-                                        <input type="hidden" id="id_admin" name="id_admin" value="{{ $chatrooms-> id_admin }}">
+                                        <input type="text" id="id_admin" name="id_admin" value="{{ $chatroom_onboards-> id_admin }}">
                                         <input type="hidden" id="from" name="from" value="{{ Auth::guard('web')->user()->username }}">
                                         <input type="hidden" id="for" name="for" value="{{ $chatrooms-> username }}">
                                         <input type="text" class="form-control" id="message" name="message" placeholder="Pesan" aria-label="message" aria-describedby="button-addon2">
