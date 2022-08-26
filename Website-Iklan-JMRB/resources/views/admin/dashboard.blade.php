@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
+                            <a href="{{route('admin/chatroom')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-chat-square-text-fill"></i> <span class="ms-1 d-none d-sm-inline">Chat Room</span>
                             </a>
                         </li>

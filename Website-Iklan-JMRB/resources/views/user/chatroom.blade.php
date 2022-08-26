@@ -13,11 +13,6 @@
         background-color: #0C1531;
         color: #FFFFFF;
     }
-
-    .card-body:hover {
-        background-color: #0C1531;
-        color: #FFFFFF;
-    }
 </style>
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container">
@@ -42,7 +37,7 @@
                 </div>
                 <div class="row my-2 mx-3">
                     <form action="" method="GET">
-                        <div class="input-group rounded" style="width: 21rem;">
+                        <div class="input-group rounded" style="width: 18rem;">
                             <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                             <span class="input-group-text border-0" id="search-addon">
                                 <i class="bi bi-search" type="submit"></i>
@@ -98,9 +93,58 @@
                         </div>
                     </div>
                 </div>
+                <div class="row my-4 mx-3 justify-content-center">
+                    @if(!$chatroom->isEmpty())
+                    @foreach($chatroom as $chatrooms)
+                    <div class="card my-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $chatrooms-> username }}</h5>
+                        </div>
+                        <div class="card-footer text-end">
+                            <a href="{{ route('user/chatroom/detail', ['id'=>$chatrooms->id_chatroom]) }}" class="btn btn-default">Buka Percakapan</a>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <p class='text-center'>Tidak ada chatroom.</p>
+                    @endif
+                </div>
             </div>
-            <div class="col-md-8">
-
+            <div class="col-md-8 my-4">
+                <div class="row">
+                    <div class="container rounded-3">
+                        @if(Route::is('user/chatroom'))
+                        <h5 class="card-title mb-4 text-center my-4">Pilih chatroom yang ingin dilihat</h5>
+                        @endif
+                        @if (!$chatroom->isEmpty())
+                        @if(Route::is('user/chatroom/detail', ['id'=>$chatrooms->id_chatroom]))
+                        @foreach($chatroom_onboard as $chatroom_onboards)
+                        <div class="container my-4 rounded-3" style="background-color:rgb(0,0,0,0.1);">
+                            <div class="text-center py-2">
+                                <h5>{{ $chatroom_onboards->username }}</h5>
+                                <hr style="width: 100%;">
+                            </div>
+                            <div class="chat-input py-1">
+                                @foreach($message as $messages)
+                                <p>[{{ $messages-> updated_at }}] {{ $messages-> username }} : {{ $messages-> message }}</p>
+                                @endforeach
+                                <form action="{{Route('user/chatroom/message/create')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="input-group mb-3">
+                                        <input type="hidden" id="id_chatroom" name="id_chatroom" value=" {{ $chatrooms-> id_chatroom }}">
+                                        <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}">
+                                        <input type="hidden" id="id_admin" name="id_admin" value=" {{ $chatrooms-> id_admin }}">
+                                        <input type="text" class="form-control" id="message" name="message" placeholder="Pesan" aria-label="message" aria-describedby="button-addon2">
+                                        <button class="btn btn-default" type="submit" id="button-addon2">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>

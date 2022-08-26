@@ -22,11 +22,53 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createMessageUser(Request $request)
     {
-        //
+        //validate form
+        $request->validate([
+            'id_chatroom' => 'required',
+            'id_user' => 'required',
+            'id_admin' => 'required',
+            'message' => 'required',
+        ]);
+        //create new message
+        $message = new Message();
+        $message->id_chatroom = $request->id_chatroom;
+        $message->id_user = $request->id_user;
+        $message->id_admin = $request->id_admin;
+        $message->message = $request->message;
+        $message->read = "No";
+        $save = $message->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil Mengirim Pesan !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal Mengirim Pesan');
+        }
     }
-
+    
+    public function createMessageAdmin(Request $request)
+    {
+        //validate form
+        $request->validate([
+            'id_chatroom' => 'required',
+            'id_user' => 'required',
+            'id_admin' => 'required',
+            'message' => 'required',
+        ]);
+        //create new message
+        $message = new Message();
+        $message->id_chatroom = $request->id_chatroom;
+        $message->id_user = $request->id_user;
+        $message->id_admin = $request->id_admin;
+        $message->message = $request->message;
+        $message->read = "No";
+        $save = $message->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil Mengirim Pesan !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal Mengirim Pesan');
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *

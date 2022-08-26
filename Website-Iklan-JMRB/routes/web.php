@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChatroomController;
 use App\Http\Controllers\IklanController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NegotiationsController;
 
 /*
@@ -53,7 +54,10 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
     //Chatroom User
     Route::get('/user/chatroom',[ChatroomController::class, 'indexUser'])->name('user/chatroom');
-    Route::post('/user/chatroom/create',[ChatroomController::class, 'createMessageUser'])->name('user/chatroom/create');
+    Route::post('/user/chatroom/create',[ChatroomController::class, 'createChatroomUser'])->name('user/chatroom/create');
+    Route::get('/user/chatroom/detail/{id}',[ChatroomController::class, 'detail_chatroom'])->name('user/chatroom/detail');
+    //Message User
+    Route::post('/user/chatroom/message/create',[MessageController::class, 'createMessageUser'])->name('user/chatroom/message/create');
 });
 
 //Group Route Admin
@@ -80,6 +84,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/dashboard/iklan/delete/{id}',[IklanController::class, 'delete_iklan'])->name('dashboard/iklan/delete');
     //Dashboard Negosiasi
     Route::get('/admin/negotiation',[NegotiationsController::class, 'indexAdmin'])->name('admin/negotiation');
+    //Dashboard Chatroom Admin
+    Route::get('/admin/chatroom',[ChatroomController::class, 'indexAdmin'])->name('admin/chatroom');
+    Route::post('/admin/chatroom/create',[ChatroomController::class, 'createChatroomAdmin'])->name('admin/chatroom/create');
+    Route::get('/admin/chatroom/detail/{id}',[ChatroomController::class, 'detail_chatroomAdmin'])->name('admin/chatroom/detail');
+    //Message User
+    Route::post('/admin/chatroom/message/create',[MessageController::class, 'createMessageAdmin'])->name('admin/chatroom/message/create');
     //Logout Admin
     Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logoutadmin');
     //Profile Admin
