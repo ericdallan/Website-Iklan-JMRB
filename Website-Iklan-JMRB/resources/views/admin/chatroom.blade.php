@@ -41,27 +41,14 @@
                         </div>
                         <div class="modal-body">
                             @if(!$user->isEmpty())
-                            @foreach($user as $users)
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <input type="hidden" id="id_user" name="id_user" value="{{ $users-> id_user }}">
-                                <input type="hidden" id="id_admin" name="id_admin" value=" {{ Auth::guard('admin')->user()->id_admin }}">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    <div class="row justify-content-center align-middle">
-                                        <div class="col-md-4">
-                                            @if(isset($users->pic_profile) && $users->pic_profile)
-                                            <img src="/Foto_Profile/User/{{$users->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                            @else
-                                            <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                            @endif
-                                        </div>
-                                        <div class="col-md-8 text-start">
-                                            {{ $users-> username }}
-                                        </div>
-                                    </div>
-                                </label>
+                            <div class="form-group">
+                                <select class="form-control" id="position-option" name="id_user" id="id_user">
+                                    @foreach($user as $users)
+                                    <option value="{{ $users->id_user }}">{{ $users->username }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            @endforeach
+                            <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::guard('admin')->user()->id_admin }}">
                             @else
                             <p class='text-center'>No Admin found.</p>
                             @endif

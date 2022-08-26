@@ -59,27 +59,14 @@
                                     </div>
                                     <div class="modal-body">
                                         @if(!$admin->isEmpty())
-                                        @foreach($admin as $admins)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <div class="form-group">
+                                            <select class="form-control" id="position-option" name="id_admin" id="id_admin">
+                                                @foreach ($admin as $admins)
+                                                <option value="{{ $admins->id_admin }}">{{ $admins->username }}</option>
+                                                @endforeach
+                                            </select>
                                             <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}">
-                                            <input type="hidden" id="id_admin" name="id_admin" value=" {{ $admins-> id_admin }}">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                <div class="row justify-content-center align-middle">
-                                                    <div class="col-md-4">
-                                                        @if(isset($admins->pic_profile) && $admins->pic_profile)
-                                                        <img src="/Foto_Profile/User/{{$admins->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                                        @else
-                                                        <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-md-8 text-start">
-                                                        {{ $admins-> username }}
-                                                    </div>
-                                                </div>
-                                            </label>
                                         </div>
-                                        @endforeach
                                         @else
                                         <p class='text-center'>No Admin found.</p>
                                         @endif
