@@ -30,6 +30,8 @@ class MessageController extends Controller
             'id_user' => 'required',
             'id_admin' => 'required',
             'message' => 'required',
+            'from' => 'required',
+            'for' => 'required',
         ]);
         //create new message
         $message = new Message();
@@ -37,6 +39,8 @@ class MessageController extends Controller
         $message->id_user = $request->id_user;
         $message->id_admin = $request->id_admin;
         $message->message = $request->message;
+        $message->from = $request->from;
+        $message->for = $request->for;
         $message->read = "No";
         $save = $message->save();
         if ($save) {
@@ -45,7 +49,7 @@ class MessageController extends Controller
             return redirect()->back()->with('failed', 'Gagal Mengirim Pesan');
         }
     }
-    
+
     public function createMessageAdmin(Request $request)
     {
         //validate form
@@ -54,6 +58,8 @@ class MessageController extends Controller
             'id_user' => 'required',
             'id_admin' => 'required',
             'message' => 'required',
+            'from' => 'required',
+            'for' => 'required',
         ]);
         //create new message
         $message = new Message();
@@ -61,6 +67,8 @@ class MessageController extends Controller
         $message->id_user = $request->id_user;
         $message->id_admin = $request->id_admin;
         $message->message = $request->message;
+        $message->from = $request->from;
+        $message->for = $request->for;
         $message->read = "No";
         $save = $message->save();
         if ($save) {

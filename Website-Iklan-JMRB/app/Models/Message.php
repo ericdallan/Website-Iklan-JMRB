@@ -16,6 +16,8 @@ class Message extends Model
         'id_message',
         'id_user',
         'id_admin',
+        'from',
+        'for',
         'message',
         'read',
     ];

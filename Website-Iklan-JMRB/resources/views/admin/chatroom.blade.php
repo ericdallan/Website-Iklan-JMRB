@@ -95,7 +95,7 @@
                         </div>
                         <div class="chat-input py-1">
                             @foreach($message as $messages)
-                            <p>[{{ strftime("%d %b %Y",strtotime($messages->created_at)) }}] {{ $messages-> username }} : {{ $messages-> message }}</p>
+                            <p>[{{ strftime("%d %b %Y",strtotime($messages->created_at)) }}] {{ $messages-> from }} : {{ $messages-> message }}</p>
                             @endforeach
                             <form action="{{route('admin/chatroom/message/create')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -103,6 +103,8 @@
                                     <input type="hidden" id="id_chatroom" name="id_chatroom" value=" {{ $chatrooms-> id_chatroom }}">
                                     <input type="hidden" id="id_user" name="id_user" value="{{  $users-> id_user }}">
                                     <input type="hidden" id="id_admin" name="id_admin" value=" {{ Auth::guard('admin')->user()->id_admin }}">
+                                    <input type="hidden" id="from" name="from" value="{{ Auth::guard('admin')->user()->username }}">
+                                    <input type="hidden" id="for" name="for" value="{{ $chatrooms-> username }}">
                                     <input type="text" class="form-control" id="message" name="message" placeholder="Pesan" aria-label="message" aria-describedby="button-addon2">
                                     <button class="btn btn-default" type="submit" id="button-addon2">Kirim</button>
                                 </div>

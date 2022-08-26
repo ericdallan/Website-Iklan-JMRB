@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('id_chatroom')->unsigned();
             $table->integer('id_user')->unsigned();
             $table->integer('id_admin')->unsigned();
+            $table->string('from');
+            $table->string('for');
             $table->string('message');
             $table->string('read')->nullable();
             $table->timestamps();

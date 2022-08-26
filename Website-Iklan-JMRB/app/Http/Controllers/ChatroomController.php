@@ -110,7 +110,6 @@ class ChatroomController extends Controller
             ->get();
         $message = DB::table("messages")->select("*")
             ->join('users', 'messages.id_user', '=', 'users.id_user')
-            ->join('admins', 'messages.id_admin', '=', 'admins.id_admin')
             ->where('messages.id_user', Auth::guard('admin')->user()->id_admin)
             ->where('messages.id_chatroom', $id)
             ->get();
