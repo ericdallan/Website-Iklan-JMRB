@@ -106,7 +106,7 @@
                     <tr>
                         <td><?= $num ?></td>
                         <td>@if(isset($admins->pic_profile) && $admins->pic_profile)
-                            <img src="/Foto_Profile/User/{{$admins->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                            <img src="/Foto_Profile/Admin/{{$admins->pic_profile}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
                             @else
                             <img src="{{url('Web/default-user.png')}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
                             @endif
