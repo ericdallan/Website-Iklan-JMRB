@@ -30,22 +30,12 @@
         @endif
         <div class="row rounded-3" style="background-color:#FFFFFF;">
             <div class="col-md-4">
-                <div class="row my-2 mx-3">
+                <div class="row mt-5 mx-3">
                     <div class="justify-content-center text-start" style="color:#0A142F;">
-                        <h3><i class="bi bi-inbox"></i> Chatroom</h3>
+                        <h2><i class="bi bi-inbox"></i> Chatroom</h2>
                     </div>
                 </div>
                 <div class="row my-2 mx-3">
-                    <form action="" method="GET">
-                        <div class="input-group rounded" style="width: 18rem;">
-                            <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <span class="input-group-text border-0" id="search-addon">
-                                <i class="bi bi-search" type="submit"></i>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-                <div class="row my-4 mx-3">
                     <button class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#addModal"><i class="bi bi-plus-circle"></i> Membuat Percakapan</button>
                     <!-- Modal -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

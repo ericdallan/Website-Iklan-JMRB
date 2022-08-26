@@ -48,15 +48,20 @@ class ChatroomController extends Controller
             'id_user' => 'required',
             'id_admin' => 'required',
         ]);
-        //create new chatroom
-        $chatroom = new Chatroom();
-        $chatroom->id_user = $request->id_user;
-        $chatroom->id_admin = $request->id_admin;
-        $save = $chatroom->save();
-        if ($save) {
-            return redirect()->back()->with('success', 'Berhasil Membuat Chatroom !');
+        $id_admin = collect($request->id_admin);
+        if (Chatroom::where('id_admin', $id_admin)->exists()) {
+            return redirect()->back()->with('failed', 'Gagal membuat percakapan, percakapan sudah ada !');
         } else {
-            return redirect()->back()->with('failed', 'Gagal Membuat Chatroom');
+            //create new chatroom
+            $chatroom = new Chatroom();
+            $chatroom->id_user = $request->id_user;
+            $chatroom->id_admin = $request->id_admin;
+            $save = $chatroom->save();
+            if ($save) {
+                return redirect()->back()->with('success', 'Berhasil Membuat Chatroom !');
+            } else {
+                return redirect()->back()->with('failed', 'Gagal Membuat Chatroom');
+            }
         }
     }
     public function createChatroomAdmin(Request $request)
@@ -66,15 +71,21 @@ class ChatroomController extends Controller
             'id_user' => 'required',
             'id_admin' => 'required',
         ]);
-        //create new chatroom
-        $chatroom = new Chatroom();
-        $chatroom->id_user = $request->id_user;
-        $chatroom->id_admin = $request->id_admin;
-        $save = $chatroom->save();
-        if ($save) {
-            return redirect()->back()->with('success', 'Berhasil Membuat Chatroom !');
+        //Validasi id_user
+        $id_user = collect($request->id_user);
+        if (Chatroom::where('id_user', $id_user)->exists()) {
+            return redirect()->back()->with('failed', 'Gagal membuat percakapan, percakapan sudah ada !');
         } else {
-            return redirect()->back()->with('failed', 'Gagal Membuat Chatroom');
+            //create new chatroom
+            $chatroom = new Chatroom();
+            $chatroom->id_user = $request->id_user;
+            $chatroom->id_admin = $request->id_admin;
+            $save = $chatroom->save();
+            if ($save) {
+                return redirect()->back()->with('success', 'Berhasil Membuat Chatroom !');
+            } else {
+                return redirect()->back()->with('failed', 'Gagal Membuat Chatroom');
+            }
         }
     }
     public function detail_chatroom($id)
