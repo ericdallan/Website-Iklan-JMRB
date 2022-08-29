@@ -63,23 +63,25 @@
         </div>
     </div>
     <div class="row my-4">
-        <div class="col-md-4">
-            @if(!$chatroom->isEmpty())
-            @foreach($chatroom as $chatrooms)
-            <div class="card my-2" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $chatrooms-> username }}</h5>
+        <div class="col-6 col-md-4">
+            <div class="row my-2 mx-3">
+                @if(!$chatroom->isEmpty())
+                @foreach($chatroom as $chatrooms)
+                <div class="card my-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $chatrooms-> username }}</h5>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="{{ route('admin/chatroom/detail', ['id'=>$chatrooms->id_chatroom]) }}" class="btn btn-default">Buka</a>
+                    </div>
                 </div>
-                <div class="card-footer text-end">
-                    <a href="{{ route('admin/chatroom/detail', ['id'=>$chatrooms->id_chatroom]) }}" class="btn btn-default">Buka Percakapan</a>
-                </div>
+                @endforeach
+                @else
+                <p class='text-center'>Tidak ada chatroom.</p>
+                @endif
             </div>
-            @endforeach
-            @else
-            <p class='text-center'>Tidak ada chatroom.</p>
-            @endif
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 ">
             <div class="row">
                 <div class="container rounded-3">
                     @if(Route::is('admin/chatroom'))

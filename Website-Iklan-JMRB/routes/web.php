@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChatroomController;
+use App\Http\Controllers\ForumsController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NegotiationsController;
@@ -58,6 +59,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/user/chatroom/detail/{id}',[ChatroomController::class, 'detail_chatroom'])->name('user/chatroom/detail');
     //Message User
     Route::post('/user/chatroom/message/create',[MessageController::class, 'createMessageUser'])->name('user/chatroom/message/create');
+    //Forum USer
+    Route::get('/user/forum',[ForumsController::class,'index'])->name('user/forum');
+    Route::post('/user/forum/create',[ForumsController::class,'create'])->name('user/forum/create');
 });
 
 //Group Route Admin

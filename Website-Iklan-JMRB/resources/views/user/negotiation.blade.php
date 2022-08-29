@@ -57,7 +57,7 @@
                     </div>
                     @endforeach
                     @else
-                    <p class='text-center'>No record found.</p>
+                    <p class='text-center'>Tidak ada negosiasi.</p>
                     @endif
                 </div>
             </div>
