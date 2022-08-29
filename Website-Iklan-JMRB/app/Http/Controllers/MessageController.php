@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class MessageController extends Controller
 {
@@ -32,7 +33,9 @@ class MessageController extends Controller
             'message' => 'required',
             'from' => 'required',
             'for' => 'required',
+            'time' => 'required',
         ]);
+        $date = Carbon::now();
         //create new message
         $message = new Message();
         $message->id_chatroom = $request->id_chatroom;
@@ -41,7 +44,7 @@ class MessageController extends Controller
         $message->message = $request->message;
         $message->from = $request->from;
         $message->for = $request->for;
-        $message->read = "No";
+        $message->time =  $request->time;
         $save = $message->save();
         if ($save) {
             return redirect()->back()->with('success', 'Berhasil Mengirim Pesan !');
@@ -60,6 +63,7 @@ class MessageController extends Controller
             'message' => 'required',
             'from' => 'required',
             'for' => 'required',
+            'time' => 'required',
         ]);
         //create new message
         $message = new Message();
@@ -69,7 +73,7 @@ class MessageController extends Controller
         $message->message = $request->message;
         $message->from = $request->from;
         $message->for = $request->for;
-        $message->read = "No";
+        $message->time = $request->time;
         $save = $message->save();
         if ($save) {
             return redirect()->back()->with('success', 'Berhasil Mengirim Pesan !');

@@ -6,10 +6,11 @@
         font-weight: bold;
     }
 
-    .dropdown-item:hover{
+    .dropdown-item:hover {
         cursor: pointer;
-        background-color:rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.5);
     }
+
     @media only screen and (max-device-width: 900px),
     screen and (min-width: 200px) {
         .tata-nilai {
@@ -124,12 +125,12 @@
     <div class="row mb-2 reveal">
         <div class="col">
             <div class="text-center mx-auto rounded-3 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Permanen</div>
-            <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom reveal fade-left" style="background-color:#FECE3D;width:65%;color:#0C1531">
+            <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
                 <p class="tata-nilai">Iklan Permanen adalah iklan dengan masa tayang (pemasangan) minimal 12 (dua belas) bulan.</p>
                 <hr>
                 <div class="dropdown text-center">
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#0C1531;color:#FECE3D">
-                        Jenis Iklan Permanen
+                        Jenis Iklan
                     </button>
                     <ul class="dropdown-menu" style="background-color:#0C1531;">
                         <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BalihoPermanent">Baliho</button></li>
@@ -145,12 +146,12 @@
         </div>
         <div class="col">
             <div class="text-center mx-auto rounded-3 fw-bold fs-3" style="background-color:#0C1531;width:75%;color:#FECE3D">Non-Permanen</div>
-            <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom reveal fade-right" style="background-color:#FECE3D;width:65%;color:#0C1531">
+            <div class="text-start mx-auto px-5 py-3 mb-5 rounded-bottom" style="background-color:#FECE3D;width:65%;color:#0C1531">
                 <p class="tata-nilai">Iklan Tidak Permanen adalah iklan dengan masa tayang (pemasangan) kurang dari 12 (dua belas) bulan.</p>
                 <hr>
                 <div class="dropdown text-center">
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#0C1531;color:#FECE3D">
-                        Jenis Iklan Tidak Permanen
+                        Jenis Iklan
                     </button>
                     <ul class="dropdown-menu" style="background-color:#0C1531;">
                         <li><button class="dropdown-item tata-nilai" style="color:#FECE3D" type="button" data-bs-toggle="modal" data-bs-target="#BalihoNonPermanent">Baliho Non-Permanen</button></li>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreChatroomRequest;
 use App\Http\Requests\UpdateChatroomRequest;
 use App\Models\User;
+use DateTime;
 
 class ChatroomController extends Controller
 {
@@ -49,7 +50,7 @@ class ChatroomController extends Controller
             'id_admin' => 'required',
         ]);
         $id_admin = collect($request->id_admin);
-        if (Chatroom::where('id_admin', $id_admin)->exists()) {
+        if (Chatroom::where('id_user','=',( Auth::user('web')->id_user))->where('id_admin','=',$id_admin)->first()) {
             return redirect()->back()->with('failed', 'Gagal membuat percakapan, percakapan sudah ada !');
         } else {
             //create new chatroom
@@ -73,7 +74,7 @@ class ChatroomController extends Controller
         ]);
         //Validasi id_user
         $id_user = collect($request->id_user);
-        if (Chatroom::where('id_user', $id_user)->exists()) {
+        if (Chatroom::where('id_admin','=',( Auth::user('admin')->id_admin))->where('id_user','=',$id_user)->first()) {
             return redirect()->back()->with('failed', 'Gagal membuat percakapan, percakapan sudah ada !');
         } else {
             //create new chatroom
@@ -115,13 +116,13 @@ class ChatroomController extends Controller
             ->where('chatrooms.id_admin', Auth::guard('admin')->user()->id_admin)
             ->get();
         $chatroom_onboard = DB::table("chatrooms")->select('*')
-            ->join('admins', 'chatrooms.id_admin', '=', 'admins.id_admin')
+            ->join('users', 'chatrooms.id_user', '=', 'users.id_user')
             ->where('chatrooms.id_admin', Auth::guard('admin')->user()->id_admin)
             ->where('chatrooms.id_chatroom', $id)
             ->get();
         $message = DB::table("messages")->select("*")
-            ->join('users', 'messages.id_user', '=', 'users.id_user')
-            ->where('messages.id_user', Auth::guard('admin')->user()->id_admin)
+            ->join('admins', 'messages.id_admin', '=', 'admins.id_admin')
+            ->where('messages.id_admin', Auth::guard('admin')->user()->id_admin)
             ->where('messages.id_chatroom', $id)
             ->get();
         return view('admin.chatroom', compact('chatroom', 'chatroom_onboard', 'user', 'message'));

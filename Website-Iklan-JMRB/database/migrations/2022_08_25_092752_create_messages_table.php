@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('from');
             $table->string('for');
             $table->string('message');
-            $table->string('read')->nullable();
+            $table->string('time');
             $table->timestamps();
         });
     }

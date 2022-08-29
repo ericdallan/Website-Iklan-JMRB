@@ -19,7 +19,7 @@ class Message extends Model
         'from',
         'for',
         'message',
-        'read',
+        'time',
     ];
     public function toSearchableArray()
     {
