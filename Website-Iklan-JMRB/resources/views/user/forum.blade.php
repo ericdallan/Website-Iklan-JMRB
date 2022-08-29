@@ -44,8 +44,8 @@
             </div>
             <div class="col-6 col-md-4 text-end mb-2">
                 <form action="" method="GET">
-                    <div class="btn-group" style="width: 21rem;">
-                        <button class="btn btn-default dropdown-toggle" type="button" name="search" data-bs-toggle="dropdown" aria-expanded="false" aria-describedby="search-addon">
+                    <div class="btn-group " style="width: 21rem;">
+                        <button class="btn btn-default dropdown-toggle" type="button" name="search" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" aria-describedby="search-addon">
                             Kategori
                         </button>
                         <ul class="dropdown-menu">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="text-end">
-                        <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Open</a>
+                        <a class="btn btn-default btn-sm w-50 rounded-3" href="{{route('user/forum/detail',['id' => $forums->id_forum])}}">Open</a>
                     </div>
                 </div>
             </div>

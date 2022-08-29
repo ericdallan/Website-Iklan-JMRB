@@ -61,6 +61,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/user/chatroom/message/create',[MessageController::class, 'createMessageUser'])->name('user/chatroom/message/create');
     //Forum USer
     Route::get('/user/forum',[ForumsController::class,'index'])->name('user/forum');
+    Route::get('/user/forum/detail/{id}',[ForumsController::class,'indexDetail'])->name('user/forum/detail');
     Route::post('/user/forum/create',[ForumsController::class,'create'])->name('user/forum/create');
 });
 

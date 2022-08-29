@@ -23,6 +23,11 @@ class ForumsController extends Controller
         return view('user.forum', compact('forum'));
     }
 
+    public function indexDetail($id)
+    {
+        $forum = Forums::find($id);
+        return view('user.detail_forum', compact('forum'));
+    }
     /**
      * Show the form for creating a new resource.
      *
