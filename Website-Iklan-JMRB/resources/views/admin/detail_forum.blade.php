@@ -1,4 +1,5 @@
-@extends('layouts/app')
+@extends('admin/layout_profile')
+@section('title', 'Detail Forum')
 @section('content')
 <style>
     .btn-default {
@@ -37,16 +38,22 @@
             </ul>
         </div>
         @endif
-        <div class="row rounded-3 mx-5" style="background-color:#FFFFFF;">
+        <div class="row mx-5" style="background-color:#FFFFFF;">
             <div class="card my-3">
                 <div class="card-header text-center">
                     <h5 class="card-title text-center">{{$forum->title}}</h5>
                     <p>Diposting oleh : <b>{{$forum->owner}}</b><i> ({{strftime("%d %b %Y, %H:%M:%S",strtotime($forum->time))}})</i></p>
                     <hr>
                     @if(isset($forums->pic_forum) && $forums->pic_forum)
-                    <img src="/Dokumen/Forum/{{$forums->pic_forum}}" alt="hugenerd" width="100" height="100">
+                    <figure class="figure">
+                        <img src="/Dokumen/Forum/{{$forums->pic_forum}}" alt="hugenerd" width="100" height="100">
+                        <figcaption class="figure-caption">Uploaded Image.</figcaption>
+                    </figure>
                     @else
-                    <img src="{{url('Web/forum.png')}}" alt="hugenerd" width="100" height="100">
+                    <figure class="figure">
+                        <img src="{{url('Web/forum.png')}}" alt="hugenerd" width="100" height="100">
+                        <figcaption class="figure-caption">Default Image.</figcaption>
+                    </figure>
                     @endif
                 </div>
                 <div class="card-body mx-3">
@@ -61,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{route('user/forum/replay/create')}}" method="POST" id="body" name="body" enctype="multipart/form-data">
+                <form action="{{route('admin/forum/replay/create')}}" method="POST" id="body" name="body" enctype="multipart/form-data">
                     @csrf
                     <div class="container my-2">
                         <div class="mx-4">
@@ -77,8 +84,8 @@
                             </div>
                             <input type="hidden" id="id_forum" name="id_forum" value="{{$forum->id_forum}}">
                             <input type="hidden" id="time_reply" name="time_reply" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
-                            <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}">
-                            <input type="hidden" id="owner_reply" name="owner_reply" value="{{ Auth::guard('web')->user()->username }}">
+                            <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::guard('admin')->user()->id_admin }}">
+                            <input type="hidden" id="owner_reply" name="owner_reply" value="{{ Auth::guard('admin')->user()->username }}">
                             <div class="row mb-3 justify-content-center">
                                 <button type="submit" class="btn btn-default btn-sm rounded-3 w-25">Reply</button>
                             </div>
@@ -94,7 +101,7 @@
             <div class="container" id="body-reply" name="body-reply">
                 <div class="card my-2">
                     <div class="card-header">
-                        <p class="card-text">Balasan dari <b>{{$replays-> owner_reply}}</b><i> ({{strftime("%d %b %Y, %H:%M:%S",strtotime($replays->time_reply))}})</i></p>
+                        <p class="card-text">Balasan dari <b>{{$replays-> owner_reply}}</b><i> ({{strftime("%d %b %Y, %H:%M:%S",strtotime($replays->time_reply))}})</i>{{$replays-> id_forum}}</p>
                         @if(isset($replays->reply_pict) && $replays->reply_pict)
                         <img src="/Dokumen/Forum/Replay/{{$replays->reply_pict}}" alt="hugenerd" width="100" height="100">
                         @else
@@ -119,24 +126,7 @@
                 $("#reply").show();
                 $("#body").hide();
             });
-            $("#share_body").hide();
-            $("#share").click(function(e) {
-                $("#share_body").show();
-                $("#share").hide();
-            });
-            $("#close2").click(function(e) {
-                $("#share").show();
-                $("#share_body").hide();
-            });
         });
-    </script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        function copyToClipboard() {
-            var valueText = $("#share").select().val();
-            document.execCommand("copy");
-            alert("data '" + valueText + "' berhasil di salin")
-        }
     </script>
 </div>
 @endsection

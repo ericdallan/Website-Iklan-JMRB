@@ -35,7 +35,6 @@ class MessageController extends Controller
             'for' => 'required',
             'time' => 'required',
         ]);
-        $date = Carbon::now();
         //create new message
         $message = new Message();
         $message->id_chatroom = $request->id_chatroom;

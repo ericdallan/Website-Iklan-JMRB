@@ -11,6 +11,7 @@ use App\Http\Controllers\ForumsController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NegotiationsController;
+use App\Http\Controllers\ReplaysController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,8 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/user/forum',[ForumsController::class,'index'])->name('user/forum');
     Route::get('/user/forum/detail/{id}',[ForumsController::class,'indexDetail'])->name('user/forum/detail');
     Route::post('/user/forum/create',[ForumsController::class,'create'])->name('user/forum/create');
+    //Replay Forum User
+    Route::post('/user/forum/replay/create',[ReplaysController::class,'createReplay'])->name('user/forum/replay/create');
 });
 
 //Group Route Admin
@@ -95,6 +98,11 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/chatroom/detail/{id}',[ChatroomController::class, 'detail_chatroomAdmin'])->name('admin/chatroom/detail');
     //Message User
     Route::post('/admin/chatroom/message/create',[MessageController::class, 'createMessageAdmin'])->name('admin/chatroom/message/create');
+    //Forum USer
+    Route::get('/admin/forum',[ForumsController::class,'indexAdmin'])->name('admin/forum');
+    Route::get('/admin/forum/detail/{id}',[ForumsController::class,'indexDetailAdmin'])->name('admin/forum/detail');
+    //Replay Forum User
+    Route::post('/admin/forum/replay/create',[ReplaysController::class,'createReplayAdmin'])->name('admin/forum/replay/create');
     //Logout Admin
     Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logoutadmin');
     //Profile Admin

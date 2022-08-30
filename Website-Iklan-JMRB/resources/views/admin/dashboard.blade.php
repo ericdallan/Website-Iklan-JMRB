@@ -58,6 +58,11 @@
                             </a>
                         </li>
                         <li class="nav-item mb-2">
+                            <a href="{{route('admin/forum')}}" class="nav-link text-white align-middle px-0">
+                                <i class="fs-6 bi bi-wechat"></i> <span class="ms-1 d-none d-sm-inline">Forum</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
                             <a href="{{route('dashboard/user')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">User</span>
                             </a>

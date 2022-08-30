@@ -116,7 +116,7 @@
                             </div>
                             <div class="chat-input py-1">
                                 @foreach($message as $messages)
-                                <p>[{{ $messages->time }}] {{ $messages-> from }} : {{ $messages-> message }}</p>
+                                <p>[{{strftime("%d %b %Y, %H:%M:%S",strtotime($messages->time)) }}] {{ $messages-> from }} : {{ $messages-> message }}</p>
                                 @endforeach
                                 <form action="{{Route('user/chatroom/message/create')}}" method="POST" enctype="multipart/form-data">
                                     @csrf

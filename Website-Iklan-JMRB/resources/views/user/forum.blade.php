@@ -66,9 +66,10 @@
             if (!$forum->isEmpty()){
             @endphp
             @foreach($forum as $forums)
-            <div class="card mx-4 my-4" style="width: 20rem;">
+            <div class="card mx-3 my-4" style="width: 21rem;">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ $forums-> title }}</h5>
+                    <p>Diposting oleh : <b>{{$forums->owner}}</b> <i>({{strftime("%d %b %Y, %H:%M:%S",strtotime($forums->time))}})</i></p>
                     <hr>
                     <div class="text-center">
                         @if(isset($forums->pic_forum) && $forums->pic_forum)
@@ -133,6 +134,7 @@
                             </div>
                             <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
                             <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}">
+                            <input type="hidden" id="owner" name="owner" value="{{ Auth::guard('web')->user()->username }}">
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="submit" class="btn btn-default btn-sm rounded-3 w-25">Create</button>
