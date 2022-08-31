@@ -13,11 +13,13 @@ class Iklan extends Model
     protected $primaryKey = 'id_iklan';
 
     protected $fillable = [
+        'id_user',
         'name',
         'zone',
         'location',
         'maps_coord',
         'pic_advert',
+        'survey_date',
         'status',
     ];
     public function toSearchableArray()

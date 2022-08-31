@@ -71,6 +71,11 @@
             opacity: 1;
         }
     }
+    .dropdown-item:focus,
+    .dropdown-item:hover{
+        background-color: #0A142F;
+        color: #FFFFFF;
+    }
 </style>
 
 <body>
@@ -118,7 +123,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('user/iklan')}}">Iklan</a></li>
-                                <li><a class="dropdown-item" href="#">MyIklan</a></li>
+                                <li><a class="dropdown-item" href="{{route('user/survey')}}">Survey Iklan</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

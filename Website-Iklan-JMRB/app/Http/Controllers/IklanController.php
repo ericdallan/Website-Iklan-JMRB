@@ -27,20 +27,36 @@ class IklanController extends Controller
         return view('admin.iklan', compact('iklan'));
     }
 
-    public function indexUser(Request $request)
+    public function indexUser()
     {
-        $iklan = Iklan::all();
+        $iklan = DB::table("iklans")->select('*')
+            ->join('users', 'iklans.id_user', '=', 'users.id_user')
+            ->where('iklans.id_user', Auth::guard('web')->user()->id_user)
+            ->get();
+        return view('user.iklan', compact('iklan'));
+    }
+
+    public function surveyUser()
+    {
+        $iklan = DB::table("iklans")->select('*')
+            ->join('users', 'iklans.id_user', '=', 'users.id_user')
+            ->where('iklans.id_user', Auth::guard('web')->user()->id_user)
+            ->get();
+
+        return view('user.survey', compact('iklan'));
+    }
+
+    public function surveyAdmin(Request $request)
+    {
+        $iklan = DB::table("iklans")->select('*')
+            ->join('users','iklans.id_user','=','users.id_user')
+            ->get();
         if ($request->filled('search')) {
             $iklan = Iklan::search($request->search)->get(); // search by value
         } else {
             $iklan = Iklan::get()->take('10'); // list 10 rows
         }
-        $negotiation = DB::table("negotiations")->select('*')
-            ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
-            ->join('users', 'negotiations.id_user', '=', 'users.id_user')
-            ->where('negotiations.id_iklan', Auth::guard('web')->user()->id_user)
-            ->get();
-        return view('user.iklan', compact('iklan','negotiation'));
+        return view('admin.survey', compact('iklan'));
     }
 
     /**
@@ -52,20 +68,24 @@ class IklanController extends Controller
     {
         //validate form
         $request->validate([
+            'id_user' => 'required',
             'name' => 'required',
             'zone' => 'required',
             'location' => 'required',
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'status' => 'required',
-            'maps_coord'=>'required',
+            'maps_coord' => 'required',
+            'survey_date' => 'required',
         ]);
         //create post
         $iklan = new Iklan();
         $iklan->name = $request->name;
+        $iklan->id_user = $request->id_user;
         $iklan->zone = $request->zone;
         $iklan->location = $request->location;
         $iklan->status = $request->status;
-        $iklan->maps_coord= $request->maps_coord;
+        $iklan->maps_coord = $request->maps_coord;
+        $iklan->survey_date = $request->survey_date;
         //Pic Location
         $picAdvert = $request->pic_advert;
         if ($picAdvert != "") {
@@ -96,14 +116,59 @@ class IklanController extends Controller
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'status' => 'required',
             'maps_coord' => 'required',
+            'survey_date' => 'required',
         ]);
-        //create post
+        //create Iklan
         Iklan::find($id)->update([
             'name' => $request->name,
             'zone' => $request->zone,
             'location' => $request->location,
             'status' => $request->status,
             'maps_coord' => $request->maps_coord,
+            'survey_date' => $request->survey_date,
+        ]);
+        //Upload Foto Profile
+        $iklan = Iklan::find($id);
+        //Pic Location
+        $picAdvert = $request->pic_advert;
+        if ($picAdvert != "") {
+            if ($iklan->puc != '' && $iklan->pic_advert != null) {
+                $path = public_path('Dokumen/Iklan');
+                $filePic = $path . $iklan->pic_advert;
+                unlink($filePic);
+            }
+            $picAdvert = $picAdvert->getClientOriginalName();
+            $iklan->pic_advert = $picAdvert;
+            $request->pic_advert->move(public_path('Dokumen/Iklan'), $picAdvert);
+            $save = $iklan->save();
+        }
+        $save = $iklan->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil melakukan update iklan !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal melakukan update iklan');
+        }
+    }
+    public function update_survey(Request $request)
+    {
+        $id = $request->id;
+        $request->validate([
+            'name' => 'required',
+            'zone' => 'required',
+            'location' => 'required',
+            'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'status' => 'required',
+            'maps_coord' => 'required',
+            'survey_date' => 'required',
+        ]);
+        //create Iklan
+        Iklan::find($id)->update([
+            'name' => $request->name,
+            'zone' => $request->zone,
+            'location' => $request->location,
+            'status' => $request->status,
+            'maps_coord' => $request->maps_coord,
+            'survey_date' => $request->survey_date,
         ]);
         //Upload Foto Profile
         $iklan = Iklan::find($id);
@@ -129,10 +194,10 @@ class IklanController extends Controller
     }
     public function delete_iklan(Iklan $iklan, $id)
     {
-        if($iklan=Iklan::find($id)){
+        if ($iklan = Iklan::find($id)) {
             $iklan->delete();
             return redirect()->back()->with('success', 'Iklan berhasil dihapus !');
-        }else{
+        } else {
             return redirect()->back()->with('failed', 'Iklan gagal dihapus !');
         }
     }

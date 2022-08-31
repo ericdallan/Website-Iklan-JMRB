@@ -28,9 +28,9 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-2" id="menu">
                         <li class="nav-item mb-2" class="nav-link text-white align-middle px-0">
-                            <a href="/dashboard" class="d-flex justify-content-center py-3">
+                            <!-- <a href="/dashboard" class="d-flex justify-content-center py-3">
                                 <img src="{{url('Web/logowhite.png')}}" class="img-fluid logo">
-                            </a>
+                            </a> -->
                         </li>
                         <li class="nav-item mb-2">
                             <a href="{{route('dashboard')}}" class="nav-link text-white align-middle px-0">
@@ -39,7 +39,12 @@
                         </li>
                         <li class="nav-item mb-2">
                             <a href="{{route('dashboard/iklan')}}" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Advertisement</span>
+                                <i class="fs-6 bi bi-badge-ad-fill"></i> <span class="ms-1 d-none d-sm-inline">Iklan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="{{route('dashboard/survey')}}" class="nav-link text-white align-middle px-0">
+                                <i class="fs-6 bi bi-calendar-date"></i> <span class="ms-1 d-none d-sm-inline">Jadwal Survey</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
@@ -49,7 +54,7 @@
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-credit-card-fill"></i> <span class="ms-1 d-none d-sm-inline">Payment</span>
+                                <i class="fs-6 bi bi-credit-card-fill"></i> <span class="ms-1 d-none d-sm-inline">Pembayaran</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
@@ -70,16 +75,6 @@
                         <li class="nav-item mb-2">
                             <a href="{{route('dashboard/admin')}}" class="nav-link text-white align-middle px-0">
                                 <i class="fs-6 bi bi-person-badge-fill"></i> <span class="ms-1 d-none d-sm-inline">Admin</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-bar-chart-line-fill"></i> <span class="ms-1 d-none d-sm-inline">Chart</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-table"></i> <span class="ms-1 d-none d-sm-inline">Table</span>
                             </a>
                         </li>
                     </ul>
@@ -136,6 +131,15 @@
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('failed') }}
                         <div type="button" class="btn-close rounded-4" data-bs-dismiss="alert" aria-label="Close"></div>
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                     @endif
                     @yield('content')

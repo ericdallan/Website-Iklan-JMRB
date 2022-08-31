@@ -50,6 +50,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     //Iklan User
     Route::get('/user/iklan',[IklanController::class, 'indexUser'])->name('user/iklan');
+    Route::post('/user/iklan/create',[IklanController::class,'create_iklan'])->name('user/iklan/create');
+    //Survey User
+    Route::get('/user/survey',[IklanController::class, 'surveyUser'])->name('user/survey');
     //Negotiation User
     Route::get('/user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
     Route::get('/user/negotiation/detail/{id}',[NegotiationsController::class, 'detail_nego'])->name('user/negotiation/detail');
@@ -90,6 +93,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/dashboard/iklan/create',[IklanController::class,'create_iklan'])->name('dashboard/iklan/create');
     Route::post('/dashboard/iklan/update', [IklanController::class, 'update_iklan'])->name('dashboard/iklan/update');
     Route::get('/dashboard/iklan/delete/{id}',[IklanController::class, 'delete_iklan'])->name('dashboard/iklan/delete');
+    //Survey User
+    Route::get('/dashboard/survey',[IklanController::class, 'surveyAdmin'])->name('dashboard/survey');
+    Route::post('/dashboard/survey/update/{id}', [IklanController::class, 'update_survey'])->name('dashboard/survey/update');
     //Dashboard Negosiasi
     Route::get('/admin/negotiation',[NegotiationsController::class, 'indexAdmin'])->name('admin/negotiation');
     //Dashboard Chatroom Admin

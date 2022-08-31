@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('iklans', function (Blueprint $table) {
             $table->id('id_iklan');
+            $table->integer('id_user')->unsigned();
             $table->string('name');
             $table->string('zone');
             $table->string('location');
             $table->string('maps_coord');
-            $table->string('pic_advert',1000);
+            $table->string('survey_date');
+            $table->string('pic_advert',1000)->nullable();
             $table->string('status');
             $table->timestamps();
         });
