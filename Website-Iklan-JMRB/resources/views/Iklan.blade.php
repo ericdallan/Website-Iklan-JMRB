@@ -51,8 +51,12 @@
                             <div class="row mb-3">
                                 <div class="text-muted">Preview Foto Iklan</div>
                             </div>
-                            <div class="d-flex justify-content-center align-self-center mb-3" style="height:14rem;">
-                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" class="img-fluid rounded" alt="">
+                            <div class="d-flex justify-content-center align-self-center mb-3">
+                                @if(isset($iklans->pic_advert) && $iklans->pic_advert)
+                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
+                                @else
+                                <p>Tidak ada foto iklan</p>
+                                @endif
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
@@ -67,8 +71,8 @@
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="rate" class="form-label">Maps Coodinate</label>
-                                <input type="text" class="form-control" id="rate" name="rate" placeholder="Advertisement Rate" value="{{ $iklans->maps_coord }}" readonly>
+                                <label for="maps_coord" class="form-label">Maps Coodinate</label>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Rate" value="{{ $iklans->maps_coord }}" readonly>
                             </div>
                         </div>
                     </div>

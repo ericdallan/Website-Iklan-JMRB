@@ -7,13 +7,13 @@
         pointer-events: none;
         background-color: #e9ecef;
     }
+
     .form-label {
         color: #0A142F;
         font-weight: bold;
     }
 
     input[type="text"],
-    input[type="file"],
     input[type="number"],
     input[type="datetime-local"] {
         background-color: #D9D9D9;
@@ -45,6 +45,20 @@
             </form>
         </div>
         <div class="col-6 col-md-4 text-end text-white">
+            <form action="" method="GET">
+                <div class="btn-group " style="width: 18rem;">
+                    <button class="btn btn-default dropdown-toggle" type="button" name="search" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" aria-describedby="search-addon">
+                        Kategori
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/iklan">All</a></li>
+                        <li><a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/iklan?search=Tahap+Survey">Tahap Survey</a></li>
+                        <li><a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/iklan?search=Tahap+Negosiasi">Tahap Negosiasi</a></li>
+                        <li><a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/iklan?search=Diterima">Diterima</a></li>
+                        <li><a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/iklan?search=Ditolak">Ditolak</a></li>
+                    </ul>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -64,7 +78,6 @@
             <div class="card-footer">
                 <div class="row">
                     <div class="text-start">
-                        <p class="card-text text-muted">Total Applicant : </p>
                     </div>
                 </div>
                 <hr class="w-100">
@@ -93,9 +106,9 @@
                             <div class="row mb-3">
                                 <div class="text-muted">Preview Foto Iklan</div>
                             </div>
-                            <div class="d-flex justify-content-center align-self-center mb-3" style="height:14rem;">
+                            <div class="d-flex justify-content-center align-self-center mb-3">
                                 @if(isset($iklans->pic_advert) && $iklans->pic_advert)
-                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="100" height="100">
+                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
                                 @else
                                 <p>Tidak ada foto iklan</p>
                                 @endif

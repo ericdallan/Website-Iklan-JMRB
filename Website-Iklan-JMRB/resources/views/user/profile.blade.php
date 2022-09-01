@@ -99,7 +99,7 @@
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
                         <div class="row mb-4">
                             <label for="company_desc" class="form-label">Company Description</label>
-                            <input name="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}" readonly ></input>
+                            <input type="text" class="form-control" id="company_desc" placeholder="Your Company Description" value="{{ Auth::guard('web')->user()->company_desc }}" readonly ></input>
                         </div>
                     </div>
                 </div>

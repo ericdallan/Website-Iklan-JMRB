@@ -75,7 +75,6 @@ class IklanController extends Controller
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'status' => 'required',
             'maps_coord' => 'required',
-            'survey_date' => 'required',
         ]);
         //create post
         $iklan = new Iklan();
@@ -116,7 +115,9 @@ class IklanController extends Controller
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'status' => 'required',
             'maps_coord' => 'required',
-            'survey_date' => 'required',
+            'survey_date' => 'required|date|after:tomorrow',
+        ],[
+            'survey_date.after' => 'Minimal tanggal survey 1 hari dari hari ini'
         ]);
         //create Iklan
         Iklan::find($id)->update([
@@ -159,7 +160,9 @@ class IklanController extends Controller
             'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'status' => 'required',
             'maps_coord' => 'required',
-            'survey_date' => 'required',
+            'survey_date' => 'required|date|after:tomorrow',
+        ],[
+            'survey_date.after' => 'Minimal tanggal survey 1 hari dari hari ini'
         ]);
         //create Iklan
         Iklan::find($id)->update([
@@ -187,9 +190,86 @@ class IklanController extends Controller
         }
         $save = $iklan->save();
         if ($save) {
-            return redirect()->back()->with('success', 'Berhasil melakukan update iklan !');
+            return redirect()->back()->with('success', 'Berhasil melakukan update survey !');
         } else {
-            return redirect()->back()->with('failed', 'Gagal melakukan update iklan');
+            return redirect()->back()->with('failed', 'Gagal melakukan update survey !');
+        }
+    }
+    public function update_surveyUser(Request $request)
+    {
+        $id = $request->id;
+        $request->validate([
+            'name' => 'required',
+            'zone' => 'required',
+            'location' => 'required',
+            'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'status' => 'required',
+            'maps_coord' => 'required',
+            'survey_date' => 'required|date|after:tomorrow',
+        ],[
+            'survey_date.after' => 'Minimal tanggal survey 1 hari dari hari ini'
+        ]);
+        //create Iklan
+        Iklan::find($id)->update([
+            'name' => $request->name,
+            'zone' => $request->zone,
+            'location' => $request->location,
+            'status' => $request->status,
+            'maps_coord' => $request->maps_coord,
+            'survey_date' => $request->survey_date,
+        ]);
+        //Upload Foto Profile
+        $iklan = Iklan::find($id);
+        //Pic Location
+        $picAdvert = $request->pic_advert;
+        if ($picAdvert != "") {
+            if ($iklan->puc != '' && $iklan->pic_advert != null) {
+                $path = public_path('Dokumen/Iklan');
+                $filePic = $path . $iklan->pic_advert;
+                unlink($filePic);
+            }
+            $picAdvert = $picAdvert->getClientOriginalName();
+            $iklan->pic_advert = $picAdvert;
+            $request->pic_advert->move(public_path('Dokumen/Iklan'), $picAdvert);
+            $save = $iklan->save();
+        }
+        $save = $iklan->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil melakukan update survey !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal melakukan update survey !');
+        }
+    }
+    public function UploadBA_Survey(Request $request)
+    {
+        $id = $request->id;
+        $request->validate([
+            'ba_survey' => 'required',
+        ]);
+        //create Iklan
+        Iklan::find($id)->update([
+            'ba_survey' => $request->ba_survey,
+        ]);
+        //Upload Foto Profile
+        $iklan = Iklan::find($id);
+        //Pic Location
+        $ba_Survey = $request->ba_survey;
+        if ($ba_Survey != "") {
+            if ($iklan->puc != '' && $iklan->ba_survey != null) {
+                $path = public_path('Dokumen/BA_Survey');
+                $filePic = $path . $iklan->ba_survey;
+                unlink($filePic);
+            }
+            $ba_Survey = $ba_Survey->getClientOriginalName();
+            $iklan->ba_survey = $ba_Survey;
+            $request->ba_survey->move(public_path('Dokumen/BA_Survey'), $ba_Survey);
+            $save = $iklan->save();
+        }
+        $save = $iklan->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil melakukan update survey !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal melakukan update survey !');
         }
     }
     public function delete_iklan(Iklan $iklan, $id)

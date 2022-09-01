@@ -3,7 +3,7 @@
 <style>
     select[readonly] {
         pointer-events: none;
-        background-color: #e9ecef;
+        background-color: #D9D9D9;
     }
 
     .form-label {
@@ -11,8 +11,8 @@
         font-weight: bold;
     }
 
-    input[type="text"],
-    .rate {
+    #name,
+    #status{
         background-color: #D9D9D9;
     }
 
@@ -70,17 +70,72 @@
                     <h6 class="card-subtitle my-3 text-muted">Status : {{ $iklans-> status }}</h6>
                 </div>
                 <div class="card-footer">
-                    <div class="text-end">
-                        @if ($iklans->status == 'Tahap Survey')
-                        <button class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}" disabled>Pilih</button>
-                        @else
-                        <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $iklans->id_iklan }}">Pilih</a>
-                        @endif
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}">Detail</a>
+                        </div>
+                        <div class="col-6 text-end">
+                            @if ($iklans->status == 'Tahap Survey' or $iklans->status == 'Tahap Negosiasi' or $iklans->status =='Survey Ditolak')
+                            <button class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Choose{{ $iklans->id_iklan }}" disabled>Pilih</button>
+                            @else
+                            <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Choose{{ $iklans->id_iklan }}">Pilih</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Modal Detail-->
-            <div class="modal fade" id="exampleModal{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="Detail{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail {{$iklans->name}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <input type="hidden" class="form-control" id="status_negotiation" name="status_negotiation" placeholder="Advertisement Status" value="Tahap Negosiasi" readonly>
+                            <input type="hidden" class="form-control" id="id_iklan" name="id_iklan" placeholder="id_iklan" value="{{$iklans->id_iklan}}" readonly>
+                            <input type="hidden" class="form-control" id="id_user" name="id_user" placeholder="id_user" value="{{ Auth::guard('web')->user()->id_user }}" readonly>
+                            <div class="row mb-3">
+                                <div class="text-muted">Preview Foto Iklan</div>
+                            </div>
+                            <div class="d-flex justify-content-center align-self-center mb-3">
+                                @if(isset($iklans->pic_advert) && $iklans->pic_advert)
+                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
+                                @else
+                                <p>Tidak ada foto iklan</p>
+                                @endif
+                            </div>
+                            <div class="row mb-2">
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nama Iklan" value="{{ $iklans->name }}" disabled="disabled" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="zone" class="form-label">Zona</label>
+                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Zona Iklan" value="{{ $iklans->zone }}" disabled="disabled" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="location" class="form-label">Lokasi</label>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Lokasi Iklan" value="{{ $iklans->location }}" disabled="disabled" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="maps_coord" class="form-label">Koordinat Maps</label>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Koordinat Iklan" value="{{ $iklans->maps_coord }}" disabled="disabled" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="survey_date" class="form-label">Tanggal Survey</label>
+                                <input type="datetime-local" class="form-control" step="any" id="survey_date" name="survey_date" value="{{ $iklans->survey_date }}" disabled="disabled" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="status" name="status" value="{{ $iklans->status }}" disabled="disabled" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Pilih-->
+            <div class="modal fade" id="Choose{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form action="{{ route('user/negotiation/create') }}" method="POST" enctype="multipart/form-data">
@@ -96,9 +151,9 @@
                                 <div class="row mb-3">
                                     <div class="text-muted">Preview Foto Iklan</div>
                                 </div>
-                                <div class="d-flex justify-content-center align-self-center mb-3" style="height:14rem;">
+                                <div class="d-flex justify-content-center align-self-center mb-3">
                                     @if(isset($iklans->pic_advert) && $iklans->pic_advert)
-                                    <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="100" height="100">
+                                    <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
                                     @else
                                     <p>Tidak ada foto iklan</p>
                                     @endif
@@ -132,10 +187,6 @@
                                     <select class="sub form-select" id="advert_type" name="advert_type">
                                         <option value="" disabled selected>Advertisement</option>
                                     </select>
-                                </div>
-                                <div class="row mb-2">
-                                    <label for="month" class="form-label">Bulan</label>
-                                    <input type="number" class="sub2 form-control year" id="month" name="month" placeholder="Advertisement Month">
                                 </div>
                                 <div class="row mb-2">
                                     <label class="form-label" for="side">Sisi</label>
@@ -200,10 +251,6 @@
                             <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Koordinat Iklan">
                         </div>
                         <div class="row mb-2">
-                            <label for="survey_date" class="form-label">Tanggal Survey</label>
-                            <input type="datetime-local" class="form-control" step="any" id="survey_date" name="survey_date">
-                        </div>
-                        <div class="row mb-2">
                             <label for="status" class="form-label">Status</label>
                             <input type="text" class="form-control" id="status" name="status" placeholder="Advertisement Status" value="Tahap Survey" readonly>
                         </div>
@@ -225,20 +272,6 @@
             }
             $('.sub').html(options);
         });
-        $('.main').change(function() {
-            var inputs = '';
-            if ($(this).val() == 'Permanent') {
-                $("#month").attr({
-                    "min": 12
-                });
-            } else if ($(this).val() == 'Non-Permanent') {
-                $("#month").attr({
-                    "max": 12,
-                    "min": 1
-                });
-            }
-            $('.sub2').html(inputs);
-        });
         $('.main3').change(function() {
             var options = '';
             if ($(this).val() == 'I') {
@@ -252,9 +285,6 @@
             }
             $('.sub3').html(options);
         });
-        var today = new Date().toISOString().slice(0, 16);
-
-        document.getElementsByName("survey_date")[0].min = today;
     </script>
 </div>
 @endsection

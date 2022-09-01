@@ -43,7 +43,6 @@
                             <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $negotiations-> location }}</h6>
                             <h6 class="card-subtitle my-3 text-muted">Type : {{ $negotiations-> type }}</h6>
                             <h6 class="card-subtitle my-3 text-muted">Advertisement Type : {{ $negotiations-> advert_type }}</h6>
-                            <h6 class="card-subtitle my-3 text-muted">Month : {{ $negotiations-> month }}</h6>
                             <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $negotiations-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $negotiations-> maps_coord }}</a></h6>
                             <h6 class="card-subtitle my-3 text-muted">Status : {{ $negotiations-> status }}</h6>
                         </div>
@@ -81,10 +80,13 @@
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
                                             <input type="number" class="form-control" id="rate_negotiation">
                                         </div>
+                                        @if ($negotiation_onboards->type == 'Permanent')
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Upload Dokumen Teknis</label>
                                             <input class="form-control" type="file" id="formFile">
                                         </div>
+                                        @else
+                                        @endif
                                     </div>
                                 </form>
                             </div>

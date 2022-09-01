@@ -87,7 +87,7 @@
                         </div>
                         <div class="row mb-4">
                             <label for="division" class="form-label">Division</label>
-                            <input name="text" class="form-control" id="division" placeholder="Your Company Divison" value="{{ Auth::guard('admin')->user()->division }}" readonly ></input>
+                            <input type="text" class="form-control" id="division" placeholder="Your Company Division" value="{{ Auth::guard('admin')->user()->division }}" readonly >
                         </div>
                     </div>
                 </div>

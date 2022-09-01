@@ -18,7 +18,6 @@ class Negotiation extends Model
         'type',
         'advert_type',
         'meter',
-        'month',
         'sides',
         'rate_negotiation',
         'status_negotiation',
@@ -28,7 +27,6 @@ class Negotiation extends Model
         return [
             'type' => $this->type,
             'advert_type' => $this->advert_type,
-            'month' => $this->month,
         ];
     }
 }

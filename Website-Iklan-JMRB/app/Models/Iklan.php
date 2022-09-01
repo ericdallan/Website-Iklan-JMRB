@@ -21,13 +21,15 @@ class Iklan extends Model
         'pic_advert',
         'survey_date',
         'status',
+        'ba_survey',
     ];
     public function toSearchableArray()
     {
         return [
             'name' => $this->name,
             'zone' => $this->zone,
-            'location' => $this->location,
+            'location' => $this->location,  
+            'status' => $this->status,
         ];
     }
 }

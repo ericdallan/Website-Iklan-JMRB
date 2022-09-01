@@ -65,7 +65,6 @@ class NegotiationsController extends Controller
             'id_iklan' => 'required',
             'type' => 'required',
             'advert_type' => 'required',
-            'month' => 'required',
             'sides' => 'required',
             'status_negotiation' => 'required',
         ]);
@@ -78,7 +77,6 @@ class NegotiationsController extends Controller
             'id_user' => $request->id_user,
             'type' => $request->type,
             'advert_type' => $request->advert_type,
-            'month' => $request->month,
             'sides' => $request->sides,
             'status_negotiation' => $request->status_negotiation
         ]);

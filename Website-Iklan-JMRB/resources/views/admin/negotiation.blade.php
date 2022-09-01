@@ -44,7 +44,6 @@
                 <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $negotiations-> location }}</h6>
                 <h6 class="card-subtitle my-3 text-muted">Type : {{ $negotiations-> type }}</h6>
                 <h6 class="card-subtitle my-3 text-muted">Advertisement Type : {{ $negotiations-> advert_type }}</h6>
-                <h6 class="card-subtitle my-3 text-muted">Month : {{ $negotiations-> month }}</h6>
                 <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $negotiations-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $negotiations-> maps_coord }}</a></h6>
                 <h6 class="card-subtitle my-3 text-muted">Status : {{ $negotiations-> status }}</h6>
             </div>
@@ -74,8 +73,12 @@
                             <div class="row mb-3">
                                 <div class="text-muted">Preview Foto Iklan</div>
                             </div>
-                            <div class="d-flex justify-content-center align-self-center mb-3" style="height:14rem;">
-                                <img src="/Dokumen/Iklan/{{$negotiations->pic_advert}}" class="img-fluid rounded" alt="">
+                            <div class="d-flex justify-content-center align-self-center mb-3">
+                                @if(isset($negotiations->pic_advert) && $negotiations->pic_advert)
+                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
+                                @else
+                                <p>Tidak ada foto iklan</p>
+                                @endif
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
@@ -106,10 +109,6 @@
                                 <select class="sub form-select" id="advert_type" name="advert_type" readonly>
                                     <option value="{{ $negotiations->advert_type }}">{{ $negotiations->advert_type }}</option>
                                 </select>
-                            </div>
-                            <div class="row mb-2">
-                                <label for="month" class="form-label">Month</label>
-                                <input type="number" class="sub2 form-control year" id="month" name="month" value="{{ $negotiations->month }}" placeholder="Advertisement Month" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label class="form-label" for="side">Sides</label>

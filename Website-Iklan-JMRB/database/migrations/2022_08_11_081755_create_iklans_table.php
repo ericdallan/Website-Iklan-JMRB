@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('zone');
             $table->string('location');
             $table->string('maps_coord');
-            $table->string('survey_date');
+            $table->string('survey_date')->nullable();
             $table->string('pic_advert',1000)->nullable();
             $table->string('status');
+            $table->string('ba_survey',10000)->nullable();
             $table->timestamps();
         });
     }

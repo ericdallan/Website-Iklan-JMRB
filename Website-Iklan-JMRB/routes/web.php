@@ -53,6 +53,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/user/iklan/create',[IklanController::class,'create_iklan'])->name('user/iklan/create');
     //Survey User
     Route::get('/user/survey',[IklanController::class, 'surveyUser'])->name('user/survey');
+    Route::post('/user/survey/update/{id}', [IklanController::class, 'update_surveyUser'])->name('user/survey/update');
     //Negotiation User
     Route::get('/user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
     Route::get('/user/negotiation/detail/{id}',[NegotiationsController::class, 'detail_nego'])->name('user/negotiation/detail');
@@ -86,28 +87,30 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/dashboard/admin',[AdminController::class, 'dashboard_admin'])->name('dashboard/admin');
     Route::post('/dashboard/admin/create',[AdminController::class, 'create_admin'])->name('dashboard/admin/create');
     Route::get('/dashboard/admin/delete/{id}',[AdminController::class, 'delete_admin'])->name('dashboard/admin/delete');
-    //Dashboard List User
+    //Dashboard List Admin
     Route::get('/dashboard/user',[AdminController::class, 'dashboard_user'])->name('dashboard/user');
     //Dashboard Iklan
     Route::get('/dashboard/iklan',[IklanController::class, 'index'])->name('dashboard/iklan');
     Route::post('/dashboard/iklan/create',[IklanController::class,'create_iklan'])->name('dashboard/iklan/create');
     Route::post('/dashboard/iklan/update', [IklanController::class, 'update_iklan'])->name('dashboard/iklan/update');
     Route::get('/dashboard/iklan/delete/{id}',[IklanController::class, 'delete_iklan'])->name('dashboard/iklan/delete');
-    //Survey User
+    //Survey Admin
     Route::get('/dashboard/survey',[IklanController::class, 'surveyAdmin'])->name('dashboard/survey');
     Route::post('/dashboard/survey/update/{id}', [IklanController::class, 'update_survey'])->name('dashboard/survey/update');
+    //Upload BA Survey Admin
+    Route::post('/dashboard/survey/upload/{id}', [IklanController::class, 'UploadBA_Survey'])->name('dashboard/survey/upload');
     //Dashboard Negosiasi
     Route::get('/admin/negotiation',[NegotiationsController::class, 'indexAdmin'])->name('admin/negotiation');
     //Dashboard Chatroom Admin
     Route::get('/admin/chatroom',[ChatroomController::class, 'indexAdmin'])->name('admin/chatroom');
     Route::post('/admin/chatroom/create',[ChatroomController::class, 'createChatroomAdmin'])->name('admin/chatroom/create');
     Route::get('/admin/chatroom/detail/{id}',[ChatroomController::class, 'detail_chatroomAdmin'])->name('admin/chatroom/detail');
-    //Message User
+    //Message Admin
     Route::post('/admin/chatroom/message/create',[MessageController::class, 'createMessageAdmin'])->name('admin/chatroom/message/create');
-    //Forum USer
+    //Forum Admin
     Route::get('/admin/forum',[ForumsController::class,'indexAdmin'])->name('admin/forum');
     Route::get('/admin/forum/detail/{id}',[ForumsController::class,'indexDetailAdmin'])->name('admin/forum/detail');
-    //Replay Forum User
+    //Replay Forum Admin
     Route::post('/admin/forum/replay/create',[ReplaysController::class,'createReplayAdmin'])->name('admin/forum/replay/create');
     //Logout Admin
     Route::post('/logout/admin', [AdminController::class, 'logout'])->name('logoutadmin');
