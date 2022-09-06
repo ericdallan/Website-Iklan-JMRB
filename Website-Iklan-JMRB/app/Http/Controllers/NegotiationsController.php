@@ -25,7 +25,7 @@ class NegotiationsController extends Controller
         }
         $negotiation = DB::table("negotiations")->select('*')
             ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
-            ->join('users','negotiations.id_user','=','users.id_user')
+            ->join('users', 'negotiations.id_user', '=', 'users.id_user')
             ->get();
         return view('admin.negotiation', compact('negotiation2', 'negotiation'));
     }
@@ -41,7 +41,7 @@ class NegotiationsController extends Controller
             ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
             ->where('negotiations.id_user', Auth::guard('web')->user()->id_user)
             ->get();
-        return view('user.negotiation', compact('iklan','negotiation'));
+        return view('user.negotiation', compact('iklan', 'negotiation'));
     }
     public function detail_nego($id)
     {
@@ -81,5 +81,50 @@ class NegotiationsController extends Controller
             'status_negotiation' => $request->status_negotiation
         ]);
         return redirect()->back()->with('success', 'Berhasil membuat negosiasi !');
+    }
+    public function update_nego(Request $request)
+    {
+        $id = $request->id_iklan;
+        $request->validate([
+            'id_user' => 'required',
+            'id_iklan' => 'required',
+            'rate_negotiation' => 'required',
+        ]);
+        Negotiation::find($id)->update([
+            'rate_negotiation' => $request->rate_negotiation,
+            'dokumen_teknis' => $request->dokumen_teknis,
+            'status_negotiation' => 'Pengajuan Negosiasi User'
+        ]);
+        $negosiasi = Negotiation::find($id);
+        $dokumen_teknis = $request->dokumen_teknis;
+        if ($dokumen_teknis != "") {
+            if ($negosiasi->puc != '' && $negosiasi->dokumen_teknis != null) {
+                $path = public_path('Dokumen/Dokumen_Teknis');
+                $filePic = $path . $negosiasi->dokumen_teknis;
+                unlink($filePic);
+            }
+            $dokumen_teknis = $dokumen_teknis->getClientOriginalName();
+            $negosiasi->dokumen_teknis = $dokumen_teknis;
+            $request->dokumen_teknis->move(public_path('Dokumen/Dokumen_Teknis'), $dokumen_teknis);
+            $save = $negosiasi->save();
+        }
+        $save = $negosiasi->save();
+        if ($save) {
+            return redirect()->back()->with('success', 'Berhasil mengajukan negosiasi !');
+        } else {
+            return redirect()->back()->with('failed', 'Gagal mengajukan negosiasi !');
+        }
+    }
+    public function update_negoAdmin(Request $request)
+    {
+        $id = $request->id_negotiation;
+        $request->validate([
+            'rate_negotiation' => 'required',
+        ]);
+        Negotiation::find($id)->update([
+            'rate_negotiation' => $request->rate_negotiation,
+            'status_negotiation' => $request->status_negotiation,
+        ]);
+        return redirect()->back()->with('success', 'Berhasil melakukan update negosiasi !');
     }
 }

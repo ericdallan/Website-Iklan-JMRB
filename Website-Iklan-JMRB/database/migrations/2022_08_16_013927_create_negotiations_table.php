@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('sides');
             $table->string('rate_negotiation')->nullable();
             $table->string('status_negotiation');
+            $table->string('dokumen_teknis')->nullable();
             $table->timestamps();
         });
     }

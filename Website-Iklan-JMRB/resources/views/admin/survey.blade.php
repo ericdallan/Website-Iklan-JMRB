@@ -174,10 +174,24 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body mx-3">
+                                                @if($iklans->ba_survey != '')
+                                                <div class="row mb-2">
+                                                    <div class="mt-2">
+                                                        <label class="form-label"><strong>BA Survey</strong> <i class="" style="color:#636363;">file ter-upload : {{$iklans->ba_survey}}</i> </label>
+                                                        <embed src="/Dokumen/BA_Survey/{{$iklans->ba_survey}}" style="width:100%;height:250px;" type="application/pdf">
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        <label for="uploadFile" class="form-label">Ganti File</label>
+                                                        <input onbeforeeditfocus="return false;" type="file" name="ba_survey" id="uploadFile">
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                @if($iklans->ba_survey == '')
                                                 <div class="row mb-2">
                                                     <label for="ba_survey" class="form-label">Berita Acara Survey</label>
                                                     <input type="file" class="form-control" id="ba_survey" name="ba_survey" placeholder="Nama Survey">
                                                 </div>
+                                                @endif
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center">
                                                 <button type="submit" class="btn btn-default btn-md rounded-3">Upload</button>

@@ -250,7 +250,7 @@ class IklanController extends Controller
         Iklan::find($id)->update([
             'ba_survey' => $request->ba_survey,
         ]);
-        //Upload Foto Profile
+        //Upload BA Survey
         $iklan = Iklan::find($id);
         //Pic Location
         $ba_Survey = $request->ba_survey;

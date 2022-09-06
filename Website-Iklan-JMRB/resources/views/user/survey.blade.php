@@ -99,15 +99,16 @@
                                 </td>
                                 <td>{{$iklans->status}}</td>
                                 <td>
-                                    @if(isset($iklans->survey_date) && $iklans->survey_date)   
-                                    <a class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}">Detail</a></td>
-                                    @else
-                                    <button class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}" disabled>Detail</button>
-                                    @endif
+                                    @if(isset($iklans->survey_date) && $iklans->survey_date)
+                                    <a class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}">Detail</a>
+                                </td>
+                                @else
+                                <button class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}" disabled>Detail</button>
+                                @endif
                                 </td>
                                 <td>
                                     @if(isset($iklans->ba_survey) && $iklans->ba_survey)
-                                    <a class="btn btn-success btn-sm" href="/Dokumen/BA_Survey/{{ $iklans->ba_survey }}" style="text-decoration: none;" download>BA Survey</a>
+                                    <a class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#BA_Survey{{ $iklans->id_iklan }}">BA Survey</a>
                                     @else
                                     <button class="btn btn-danger btn-sm" href="" style="text-decoration: none;" disabled>BA Survey</button>
                                     @endif
@@ -191,6 +192,29 @@
                                                 @endif
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal BA Survey -->
+                            <div class="modal fade" id="BA_Survey{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">BA Survey</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mt-2">
+                                                <label class="form-label"><strong>BA Survey</strong> <i class="fs-6" style="color:#636363;">file ter-upload : {{$iklans->ba_survey}}</i> </label>
+                                                <embed src="/Dokumen/BA_Survey/{{$iklans->ba_survey}}" style="width:100%;height:250px;" type="application/pdf">
+                                            </div>
+                                            <div class="mt-2 text-center">
+                                                <a class="btn btn-success btn-sm" href="/Dokumen/BA_Survey/{{ $iklans->ba_survey }}" download>Unduh</a>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

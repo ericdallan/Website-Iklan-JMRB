@@ -142,7 +142,7 @@
                             </div>
                             <div class="row mb-2">
                                 <label class="form-label" for="status">Status</label>
-                                <select class="form-select" id="status" id="status" name="status">
+                                <select class="form-select" id="status" name="status">
                                     <option value="Tahap Survey" {{($iklans->status == 'Tahap Survey') ? "selected":'' }}>Tahap Survey</option>
                                     <option value="Tahap Negosiasi" {{($iklans->status == 'Tahap Negosiasi') ? "selected":'' }}>Tahap Negosiasi</option>
                                     <option value="Close" {{($iklans->status == 'Close') ? "selected":'' }}>Close</option>

@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminController;   
 use App\Http\Controllers\ChatroomController;
 use App\Http\Controllers\ForumsController;
 use App\Http\Controllers\IklanController;
@@ -58,6 +58,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/user/negotiation',[NegotiationsController::class, 'indexUser'])->name('user/negotiation');
     Route::get('/user/negotiation/detail/{id}',[NegotiationsController::class, 'detail_nego'])->name('user/negotiation/detail');
     Route::post('/user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
+    Route::post('/user/negotiation/update',[NegotiationsController::class, 'update_nego'])->name('user/negotiation/update');
     //Chatroom User
     Route::get('/user/chatroom',[ChatroomController::class, 'indexUser'])->name('user/chatroom');
     Route::post('/user/chatroom/create',[ChatroomController::class, 'createChatroomUser'])->name('user/chatroom/create');
@@ -101,6 +102,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/dashboard/survey/upload/{id}', [IklanController::class, 'UploadBA_Survey'])->name('dashboard/survey/upload');
     //Dashboard Negosiasi
     Route::get('/admin/negotiation',[NegotiationsController::class, 'indexAdmin'])->name('admin/negotiation');
+    Route::post('/admin/negotiation/update',[NegotiationsController::class, 'update_negoAdmin'])->name('admin/negotiation/update');
     //Dashboard Chatroom Admin
     Route::get('/admin/chatroom',[ChatroomController::class, 'indexAdmin'])->name('admin/chatroom');
     Route::post('/admin/chatroom/create',[ChatroomController::class, 'createChatroomAdmin'])->name('admin/chatroom/create');

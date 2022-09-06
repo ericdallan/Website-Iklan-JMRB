@@ -21,6 +21,7 @@ class Negotiation extends Model
         'sides',
         'rate_negotiation',
         'status_negotiation',
+        'dokumen_teknis',
     ];
     public function toSearchableArray()
     {

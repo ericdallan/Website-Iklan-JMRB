@@ -13,7 +13,7 @@
         font-weight: bold;
     }
 
-    input[type="number"] {
+    #maps_coord {
         background-color: #e9ecef;
     }
 
@@ -40,12 +40,12 @@
             <div class="card-body">
                 <h3 class="card-title fw-bold">{{ $negotiations-> name }}</h3>
                 <hr>
-                <h6 class="card-subtitle my-3 text-muted">Zone : {{ $negotiations-> zone }}</h6>
-                <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $negotiations-> location }}</h6>
-                <h6 class="card-subtitle my-3 text-muted">Type : {{ $negotiations-> type }}</h6>
-                <h6 class="card-subtitle my-3 text-muted">Advertisement Type : {{ $negotiations-> advert_type }}</h6>
-                <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $negotiations-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $negotiations-> maps_coord }}</a></h6>
-                <h6 class="card-subtitle my-3 text-muted">Status : {{ $negotiations-> status }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Zona : {{ $negotiations-> zone }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Lokasi : KM {{ $negotiations-> location }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Tipe : {{ $negotiations-> type }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Tipe Iklan : {{ $negotiations-> advert_type }}</h6>
+                <h6 class="card-subtitle my-3 text-muted">Koordinat Maps : <a href="https://www.google.com/search?q={{ $negotiations-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $negotiations-> maps_coord }}</a></h6>
+                <h6 class="card-subtitle my-3 text-muted">Status Negosiasi : {{ $negotiations-> status_negotiation }}</h6>
             </div>
             <div class="card-footer">
                 <div class="row align-items-center">
@@ -63,8 +63,9 @@
         <div class="modal fade" id="exampleModal{{ $negotiations->id_negotiation }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin/negotiation/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id_negotiation" id="id_negotiation" value="{{$negotiations->id_negotiation}}">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$negotiations->name}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -81,23 +82,23 @@
                                 @endif
                             </div>
                             <div class="row mb-2">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $negotiations->name }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="zone" class="form-label">Zone</label>
+                                <label for="zone" class="form-label">Zona</label>
                                 <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $negotiations->zone }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="location" class="form-label">Location</label>
+                                <label for="location" class="form-label">Lokasi</label>
                                 <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $negotiations->location }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="maps_coord" class="form-label">Maps Coordinate</label>
+                                <label for="maps_coord" class="form-label">Koordinat Maps</label>
                                 <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $negotiations->maps_coord }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
-                                <label for="type" class="form-label">Type Permanent/Non-Permanent</label>
+                                <label for="type" class="form-label">Tipe Permanen/Non-Permanen</label>
                                 <select class="main form-select" id="type" name="type" readonly>
                                     <option value="" disabled selected>Advertisement Type</option>
                                     <option value="Permanent" {{($negotiations->type == 'Permanent') ? "selected":'' }}>Permanent</option>
@@ -105,22 +106,65 @@
                                 </select>
                             </div>
                             <div class="row mb-2">
-                                <label for="advert_type" class="form-label">Advertisement Type</label>
+                                <label for="advert_type" class="form-label">Tipe Iklan</label>
                                 <select class="sub form-select" id="advert_type" name="advert_type" readonly>
                                     <option value="{{ $negotiations->advert_type }}">{{ $negotiations->advert_type }}</option>
                                 </select>
                             </div>
                             <div class="row mb-2">
-                                <label class="form-label" for="side">Sides</label>
+                                <label class="form-label" for="side">Sisi</label>
                                 <select class="form-select side" id="sides" name="sides" readonly>
                                     <option value="" disabled selected>How many sides</option>
                                     <option value="1" {{($negotiations->sides == '1') ? "selected":'' }}>One Sided</option>
                                     <option value="2" {{($negotiations->sides == '2') ? "selected":'' }}>Two Sided (Front and Rear)</option>
                                 </select>
                             </div>
+                            @if ($negotiations->status_negotiation == 'Negosiasi Diterima')
+                            <div class="row mb-2">
+                                <label for="rate_negotiation" class="form-label">Negosiasi Harga</label>
+                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" placeholder="Advertisement Coordinate" value="{{ $negotiations->rate_negotiation }}" readonly>
+                            </div>
+                            @else
+                            <div class="row mb-2">
+                                <label for="rate_negotiation" class="form-label">Negosiasi Harga</label>
+                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" placeholder="Advertisement Coordinate" value="{{ $negotiations->rate_negotiation }}">
+                            </div>
+                            @endif
+                            @if ($negotiations->type == 'Permanent')
+                            <div class="row mb-3">
+                                <label for="formFile" class="form-label">Dokumen Teknis</label>
+                                <embed src="/Dokumen/Dokumen_Teknis/{{$negotiations->dokumen_teknis}}" style="width:100%;height:250px;" type="application/pdf">
+                            </div>
+                            @else
+                            @endif
+                            @if ($negotiations->status_negotiation == 'Negosiasi Diterima')
+                            <div class="row mb-3">
+                                <label class="form-label" for="status_negotiation">Status Negosiasi</label>
+                                <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation" readonly>
+                                    <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
+                                    <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                    <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }}>Pengajuan Negosiasi Admin</option>
+                                    <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }}>Terima Pengajuan Negosiasi</option>
+                                </select>
+                            </div>
+                            @else
+                            <div class="row mb-3">
+                                <label class="form-label" for="status_negotiation">Status Negosiasi</label>
+                                <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation">
+                                    <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
+                                    <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                    <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }}>Pengajuan Negosiasi Admin</option>
+                                    <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }}>Terima Pengajuan Negosiasi</option>
+                                </select>
+                            </div>
+                            @endif
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="submit" class="btn btn-default btn-md rounded-3">Open Negotiation</button>
+                            @if ($negotiations->status_negotiation == 'Negosiasi Diterima')
+                            <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Submit</button>
+                            @else
+                            <button type="submit" class="btn btn-default btn-md rounded-3">Submit</button>
+                            @endif
                         </div>
                     </form>
                 </div>
