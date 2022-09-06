@@ -109,6 +109,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/negotiation/update',[NegotiationsController::class, 'update_negoAdmin'])->name('admin/negotiation/update');
     //Dashboard History Negosiasi Admin
     Route::get('/admin/negotiation/history',[HistoryNegotiationsController::class, 'indexAdmin'])->name('admin/negotiation/history');
+    Route::get('/admin/negotiation/history/detail/{id}',[HistoryNegotiationsController::class, 'detail_historyAdmin'])->name('admin/negotiation/history/detail');
     //Dashboard Chatroom Admin
     Route::get('/admin/chatroom',[ChatroomController::class, 'indexAdmin'])->name('admin/chatroom');
     Route::post('/admin/chatroom/create',[ChatroomController::class, 'createChatroomAdmin'])->name('admin/chatroom/create');

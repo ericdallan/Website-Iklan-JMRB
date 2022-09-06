@@ -28,13 +28,26 @@ class HistoryNegotiationsController extends Controller
         $history = DB::table("negotiations")->select('*')
             ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
             ->join('users', 'negotiations.id_user', '=', 'users.id_user')
-            ->join('history_negotiations','history_negotiations.id_negotiation','=','history_negotiations.id_negotiation')
+            ->get();
+            return view('admin.history_negosiasi', compact('history'));
+    }
+
+    public function detail_historyAdmin($id)
+    {
+        $history = DB::table("negotiations")->select('*')
+            ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
+            ->join('users','negotiations.id_user','=','users.id_user')
+            ->get();
+        $history_onboard = DB::table("negotiations")->select('*')
+            ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
+            ->where('negotiations.id_negotiation', $id)
             ->get();
         $history_list = DB::table("history_negotiations")->select('*')
             ->join('negotiations', 'history_negotiations.id_negotiation', '=', 'negotiations.id_negotiation')
             ->join('iklans', 'negotiations.id_iklan', '=', 'iklans.id_iklan')
+            ->where('history_negotiations.id_negotiation', $id)
             ->get();
-            return view('admin.history_negosiasi', compact('history','history_list'));
+        return view('admin.history_negosiasi', compact('history', 'history_onboard','history_list'));
     }
 
     public function detail_history($id)

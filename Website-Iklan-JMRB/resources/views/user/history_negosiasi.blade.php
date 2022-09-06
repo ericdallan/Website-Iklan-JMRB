@@ -76,7 +76,7 @@
                             @if (!$history->isEmpty())
                             @if(Route::is('user/negotiation/history/detail', ['id'=>$historys->id_negotiation]))
                             @foreach($history_onboard as $history_onboards)
-                            <div class="container my-4 rounded-3">
+                            <div class="container rounded-3">
                                 <div class="text-center py-2">
                                     <h5>Histori Negosiasi {{ $history_onboards->name }}</h5>
                                     <hr style="width: 100%;">
@@ -96,25 +96,26 @@
                                                 foreach ($history_list as $history_lists) {
                                                     $num++;
                                                 ?>
-                                                <tr>
-                                                    <td><?= $num ?></td>
-                                                    <td>{{$history_lists->HistoryRate_negotiation}}</td>
-                                                    <td>{{$history_lists->HistoryStatus_negotiation}}</td>
-                                                    <td>[{{strftime("%d %b %Y, %H:%M:%S",strtotime($history_lists->time)) }}</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?= $num ?></td>
+                                                        <td>{{$history_lists->HistoryRate_negotiation}}</td>
+                                                        <td>{{$history_lists->HistoryStatus_negotiation}}</td>
+                                                        <td>{{strftime("%d %b %Y, %H:%M:%S",strtotime($history_lists->time)) }}</td>
+                                                    </tr>
                                                 <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                @endforeach
-                                @endif
-                                @endif
                             </div>
+                            @endforeach
+                            @endif
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
