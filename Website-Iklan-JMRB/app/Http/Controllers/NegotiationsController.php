@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistoryNegotiations;
 use App\Models\Iklan;
 use App\Models\Negotiation;
 use Illuminate\Http\Request;
@@ -90,10 +91,19 @@ class NegotiationsController extends Controller
             'id_iklan' => 'required',
             'rate_negotiation' => 'required',
         ]);
+        //Update Negosiasi User
         Negotiation::find($id)->update([
             'rate_negotiation' => $request->rate_negotiation,
             'dokumen_teknis' => $request->dokumen_teknis,
             'status_negotiation' => 'Pengajuan Negosiasi User'
+        ]);
+        // Membuat History Negosiasi
+        HistoryNegotiations::create([
+            'id_negotiation' => $request->id_negotiation,
+            'id_user' => $request->id_user,
+            'HistoryRate_negotiation' => $request->rate_negotiation,
+            'HistoryStatus_negotiation' => $request->status_negotiation,
+            'time' => $request->time
         ]);
         $negosiasi = Negotiation::find($id);
         $dokumen_teknis = $request->dokumen_teknis;
@@ -124,6 +134,14 @@ class NegotiationsController extends Controller
         Negotiation::find($id)->update([
             'rate_negotiation' => $request->rate_negotiation,
             'status_negotiation' => $request->status_negotiation,
+        ]);
+         // Membuat History Negosiasi
+         HistoryNegotiations::create([
+            'id_negotiation' => $request->id_negotiation,
+            'id_user' => $request->id_user,
+            'HistoryRate_negotiation' => $request->rate_negotiation,
+            'HistoryStatus_negotiation' => $request->status_negotiation,
+            'time' => $request->time
         ]);
         return redirect()->back()->with('success', 'Berhasil melakukan update negosiasi !');
     }

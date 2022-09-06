@@ -10,11 +10,6 @@
         color: #0A142F;
         font-weight: bold;
     }
-
-    #status_negotiation {
-        background-color: #e9ecef;
-    }
-
     .btn-default {
         background-color: #0C1531;
         color: #FFFFFF;
@@ -101,9 +96,16 @@
                                         <input type="hidden" class="form-control" id="id_user" value="{{$negotiation_onboards->id_user}}" name="id_user">
                                         <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_iklan}}" name="id_iklan">
                                         <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_negotiation}}" name="id_negotiation">
+                                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
                                         <div class="mb-3">
-                                            <label for="status_negotiation" class="form-label">Status Negosiasi</label>
-                                            <input type="text" class="form-control" id="status_negotiation" value="{{$negotiation_onboards->status_negotiation}}" name="status_negotiation" readonly>
+                                            <label class="form-label" for="status_negotiation">Status Negosiasi</label>
+                                            <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation">
+                                                <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
+                                                <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                                <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }} disabled>Pengajuan Negosiasi Admin</option>
+                                                <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }}>Terima Pengajuan Negosiasi</option>
+                                                <option value="Negosiasi Ditolak" {{($negotiations->status_negotiation == 'Negosiasi Ditolak') ? "selected":'' }}>Tolak Pengajuan Negosiasi</option>
+                                            </select>
                                         </div>
                                         @if($negotiation_onboards->rate_negotiation != '' && $negotiation_onboards->status_negotiation == 'Pengajuan Negosiasi User')
                                         <div class="mb-3">

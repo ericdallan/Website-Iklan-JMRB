@@ -75,7 +75,7 @@
                             <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}">Detail</a>
                         </div>
                         <div class="col-6 text-end">
-                            @if ($iklans->status == 'Tahap Survey' or $iklans->status == 'Tahap Negosiasi' or $iklans->status =='Survey Ditolak')
+                            @if ($iklans->status == 'Tahap Survey' or $iklans->status == 'Tahap Negosiasi' or $iklans->status =='Survey Ditolak' or $iklans->status =='Pengajuan Jadwal')
                             <button class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Choose{{ $iklans->id_iklan }}" disabled>Pilih</button>
                             @else
                             <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Choose{{ $iklans->id_iklan }}">Pilih</a>

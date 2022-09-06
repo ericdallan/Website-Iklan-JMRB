@@ -66,6 +66,8 @@
                     <form action="{{route('admin/negotiation/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id_negotiation" id="id_negotiation" value="{{$negotiations->id_negotiation}}">
+                        <input type="hidden" name="id_user" id="id_user" value="{{$negotiations->id_user}}">
+                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$negotiations->name}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -142,7 +144,7 @@
                                 <label class="form-label" for="status_negotiation">Status Negosiasi</label>
                                 <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation" readonly>
                                     <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
-                                    <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                    <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }} disabled>Pengajuan Negosiasi User</option>
                                     <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }}>Pengajuan Negosiasi Admin</option>
                                     <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }}>Terima Pengajuan Negosiasi</option>
                                 </select>
@@ -152,9 +154,10 @@
                                 <label class="form-label" for="status_negotiation">Status Negosiasi</label>
                                 <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation">
                                     <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
-                                    <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                    <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }} disabled>Pengajuan Negosiasi User</option>
                                     <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }}>Pengajuan Negosiasi Admin</option>
                                     <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }}>Terima Pengajuan Negosiasi</option>
+                                    <option value="Negosiasi Ditolak" {{($negotiations->status_negotiation == 'Negosiasi Ditolak') ? "selected":'' }}>Tolak Pengajuan Negosiasi</option>
                                 </select>
                             </div>
                             @endif

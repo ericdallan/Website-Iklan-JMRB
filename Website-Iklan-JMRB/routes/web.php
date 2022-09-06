@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;   
 use App\Http\Controllers\ChatroomController;
 use App\Http\Controllers\ForumsController;
+use App\Http\Controllers\HistoryNegotiationsController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NegotiationsController;
@@ -59,6 +60,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/user/negotiation/detail/{id}',[NegotiationsController::class, 'detail_nego'])->name('user/negotiation/detail');
     Route::post('/user/negotiation/create',[NegotiationsController::class, 'create_nego'])->name('user/negotiation/create');
     Route::post('/user/negotiation/update',[NegotiationsController::class, 'update_nego'])->name('user/negotiation/update');
+    //History Negotiation User
+    Route::get('/user/negotiation/history',[HistoryNegotiationsController::class, 'index'])->name('user/negotiation/history');
+    Route::get('/user/negotiation/history/detail/{id}',[HistoryNegotiationsController::class, 'detail_history'])->name('user/negotiation/history/detail');
     //Chatroom User
     Route::get('/user/chatroom',[ChatroomController::class, 'indexUser'])->name('user/chatroom');
     Route::post('/user/chatroom/create',[ChatroomController::class, 'createChatroomUser'])->name('user/chatroom/create');
@@ -103,6 +107,8 @@ Route::middleware(['auth:admin'])->group(function () {
     //Dashboard Negosiasi
     Route::get('/admin/negotiation',[NegotiationsController::class, 'indexAdmin'])->name('admin/negotiation');
     Route::post('/admin/negotiation/update',[NegotiationsController::class, 'update_negoAdmin'])->name('admin/negotiation/update');
+    //Dashboard History Negosiasi Admin
+    Route::get('/admin/negotiation/history',[HistoryNegotiationsController::class, 'indexAdmin'])->name('admin/negotiation/history');
     //Dashboard Chatroom Admin
     Route::get('/admin/chatroom',[ChatroomController::class, 'indexAdmin'])->name('admin/chatroom');
     Route::post('/admin/chatroom/create',[ChatroomController::class, 'createChatroomAdmin'])->name('admin/chatroom/create');

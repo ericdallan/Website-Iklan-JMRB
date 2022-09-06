@@ -71,8 +71,9 @@
             opacity: 1;
         }
     }
+
     .dropdown-item:focus,
-    .dropdown-item:hover{
+    .dropdown-item:hover {
         background-color: #0A142F;
         color: #FFFFFF;
     }
@@ -126,8 +127,14 @@
                                 <li><a class="dropdown-item" href="{{route('user/survey')}}">Survey Iklan</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-3" href="{{route('user/negotiation')}}">Negotiation</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle me-3"" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Negosiasi
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('user/negotiation')}}">Negosiasi</a></li>
+                                <li><a class="dropdown-item" href="{{route('user/negotiation/history')}}">Histori Negosiasi</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3"" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false">
