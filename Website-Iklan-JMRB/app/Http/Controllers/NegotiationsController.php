@@ -79,6 +79,7 @@ class NegotiationsController extends Controller
             'type' => $request->type,
             'advert_type' => $request->advert_type,
             'sides' => $request->sides,
+            'time' => $request->time,
             'status_negotiation' => $request->status_negotiation
         ]);
         return redirect()->back()->with('success', 'Berhasil membuat negosiasi !');

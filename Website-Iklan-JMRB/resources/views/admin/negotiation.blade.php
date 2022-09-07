@@ -139,6 +139,12 @@
                             </div>
                             @else
                             @endif
+                            @if ($negotiations->type == 'Permanent')
+                            <div class="row mb-3 text-center">
+                                <a class="btn btn-success btn-sm" href="/Dokumen/Dokumen_Teknis/{{ $negotiations->dokumen_teknis }}" download>Unduh</a>
+                            </div>
+                            @else
+                            @endif
                             @if ($negotiations->status_negotiation == 'Negosiasi Diterima')
                             <div class="row mb-3">
                                 <label class="form-label" for="status_negotiation">Status Negosiasi</label>
