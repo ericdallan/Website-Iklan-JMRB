@@ -95,7 +95,7 @@
                                     <div class="mx-4">
                                         <input type="hidden" class="form-control" id="id_user" value="{{$negotiation_onboards->id_user}}" name="id_user">
                                         <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_iklan}}" name="id_iklan">
-                                        <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_negotiation}}" name="id_negotiation">
+                                        <input type="hidden" class="form-control" id="id_negotiation" value="{{$negotiation_onboards->id_negotiation}}" name="id_negotiation">
                                         <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
                                         <div class="mb-3">
                                             <label class="form-label" for="status_negotiation">Status Negosiasi</label>
@@ -109,7 +109,7 @@
                                         </div>
                                         @if($negotiation_onboards->rate_negotiation != '' && $negotiation_onboards->status_negotiation == 'Pengajuan Negosiasi User')
                                         <div class="mb-3">
-                                            <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
+                                            <label for="rate_negotiation" class="form-label">Harga Negosiasi <i class="" style="color:#636363;">(Menunggu Balasan Negosiasi Admin)</i></label>
                                             <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}" readonly>
                                         </div>
                                         @endif
@@ -119,19 +119,19 @@
                                             <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}">
                                         </div>
                                         @endif
-                                        @if($negotiation_onboards->rate_negotiation == '')
+                                        @if($negotiation_onboards->rate_negotiation != '' && $negotiation_onboards->status_negotiation == 'Negosiasi Diterima')
                                         <div class="mb-3">
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
-                                            <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation">
+                                            <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}">
                                         </div>
                                         @endif
-                                        @if($negotiation_onboards->type == 'Permanent' && $negotiation_onboards->dokumen_teknis == '')
+                                        @if($negotiation_onboards->status_negotiation == 'Tahap Pembayaran')
                                         <div class="mb-3">
-                                            <label for="formFile" class="form-label">Upload Dokumen Teknis</label>
-                                            <input type="file" class="form-control" id="dokumen_teknis" name="dokumen_teknis">
+                                            <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
+                                            <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}">
                                         </div>
                                         @endif
-                                        @if($negotiation_onboards->type == 'Permanent' && $negotiation_onboards->dokumen_teknis != '')
+                                        @if($negotiation_onboards->type == 'Permanent')
                                         <div class="mb-3">
                                             <div class="mt-2">
                                                 <label class="form-label"><strong>Dokumen Teknis</strong> <i class="" style="color:#636363;">file ter-upload : {{$negotiation_onboards->dokumen_teknis}}</i></label>
@@ -143,7 +143,9 @@
                                             </div>
                                         </div>
                                         @endif
-                                        @if($negotiation_onboards->status_negotiation == 'Pengajuan Negosiasi User')
+                                        @if($negotiation_onboards->type == 'Non-Permanent')
+                                        @endif
+                                        @if($negotiation_onboards->status_negotiation == 'Negosiasi Diterima' or $negotiation_onboards->status_negotiation == 'Negosiasi Ditolak')
                                         <div class="mb-3">
                                             <div class="row align-item-center">
                                                 <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Submit</button>
@@ -161,6 +163,13 @@
                                         <div class="mb-3">
                                             <div class="row align-item-center">
                                                 <button type="submit" class="btn btn-default btn-md rounded-3">Submit</button>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if($negotiation_onboards->status_negotiation == 'Pengajuan Negosiasi User')
+                                        <div class="mb-3">
+                                            <div class="row align-item-center">
+                                                <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Submit</button>
                                             </div>
                                         </div>
                                         @endif

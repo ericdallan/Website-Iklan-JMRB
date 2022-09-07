@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\HistoryNegotiations;
 use App\Models\Iklan;
 use App\Models\Negotiation;
+use App\Models\Pembayarans;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -95,8 +97,7 @@ class NegotiationsController extends Controller
         //Update Negosiasi User
         Negotiation::find($id)->update([
             'rate_negotiation' => $request->rate_negotiation,
-            'dokumen_teknis' => $request->dokumen_teknis,
-            'status_negotiation' => 'Pengajuan Negosiasi User'
+            'status_negotiation' => $request->status_negotiation,
         ]);
         // Membuat History Negosiasi
         HistoryNegotiations::create([
@@ -136,8 +137,8 @@ class NegotiationsController extends Controller
             'rate_negotiation' => $request->rate_negotiation,
             'status_negotiation' => $request->status_negotiation,
         ]);
-         // Membuat History Negosiasi
-         HistoryNegotiations::create([
+        // Membuat History Negosiasi
+        HistoryNegotiations::create([
             'id_negotiation' => $request->id_negotiation,
             'id_user' => $request->id_user,
             'HistoryRate_negotiation' => $request->rate_negotiation,

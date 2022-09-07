@@ -31,28 +31,6 @@
 </style>
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
     <div class="container">
-        @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session('failed'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('failed') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
         <div class="row mb-2">
             @if (!$iklan->isEmpty())
             <div class="table-responsive-lg rounded-3" style="background-color:#FFFFFF;">

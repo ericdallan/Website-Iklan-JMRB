@@ -53,7 +53,7 @@
                             <ul class="collapse show nav flex-column ms-1 my-3" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="{{route('admin/negotiation')}}" class="nav-link text-white align-middle px-0">
-                                        <i class="fs-6 bi bi-briefcase"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
+                                        <i class="fs-6 bi bi-briefcase-fill"></i> <span class="ms-1 d-none d-sm-inline">Negosiasi</span>
                                     </a>
                                 </li>
                                 <li class="w-100">
@@ -64,9 +64,20 @@
                             </ul>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white align-middle px-0">
-                                <i class="fs-6 bi bi-credit-card-fill"></i> <span class="ms-1 d-none d-sm-inline">Pembayaran</span>
-                            </a>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 text-white align-middle px-0">
+                                <i class="fs-6 bi bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Pembayaran</span> </a>
+                            <ul class="collapse show nav flex-column ms-1 my-3" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="{{route('admin/pembayaran')}}" class="nav-link text-white align-middle px-0">
+                                        <i class="fs-6 bi bi-credit-card-fill"></i> <span class="ms-1 d-none d-sm-inline">Pembayaran</span>
+                                    </a>
+                                </li>
+                                <li class="w-100">
+                                    <a href="{{route('admin/pembayaran/history')}}" class="nav-link text-white align-middle px-0">
+                                        <i class="fs-6 bi bi-clock-history"></i> <span class="ms-1 d-none d-sm-inline">Histori Pembayaran</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="{{route('admin/chatroom')}}" class="nav-link text-white align-middle px-0">

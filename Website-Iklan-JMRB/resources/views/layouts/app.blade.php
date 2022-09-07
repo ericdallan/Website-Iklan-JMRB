@@ -150,8 +150,8 @@
                                 Pembayaran
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Pembayaran</a></li>
-                                <li><a class="dropdown-item" href="#">MyPembayaran</a></li>
+                                <li><a class="dropdown-item" href="{{route('user/pembayaran')}}">Pembayaran</a></li>
+                                <li><a class="dropdown-item" href="{{route('user/myPembayaran')}}">MyPembayaran</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

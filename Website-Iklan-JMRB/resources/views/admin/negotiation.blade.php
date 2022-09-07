@@ -1,7 +1,7 @@
 @extends('admin/dashboard')
 @section('content')
-@section('title', 'Dashboard-Negotiation')
-@section('subtitle', 'Negotiation')
+@section('title', 'Dashboard-Negosiasi')
+@section('subtitle', 'Negosiasi')
 <style>
     select[readonly] {
         pointer-events: none;
@@ -61,12 +61,13 @@
         </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal{{ $negotiations->id_negotiation }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <form action="{{route('admin/negotiation/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id_negotiation" id="id_negotiation" value="{{$negotiations->id_negotiation}}">
                         <input type="hidden" name="id_user" id="id_user" value="{{$negotiations->id_user}}">
+                        <input type="hidden" name="id_iklan" id="id_iklan" value="{{$negotiations->id_iklan}}">
                         <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$negotiations->name}}</h5>
