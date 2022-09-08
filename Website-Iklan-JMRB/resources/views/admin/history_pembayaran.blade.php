@@ -55,7 +55,7 @@
                             <td>{{$pembayarans->advert_type}}</td>
                             <td>{{$pembayarans->zone}}</td>
                             <td>{{$pembayarans->location}}</td>
-                            <td>{{$pembayarans->rate_negotiation}}</td>
+                            <td>Rp. {{ number_format($pembayarans->rate_negotiation,0,',','.') }}</td>
                             <td>{{$pembayarans->status_pembayaran}}</td>
                             <td><a class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pembayarans->id_pembayaran }}">Detail</td>
                         </tr>
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="row mb-2">
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
-                                            <input type="text" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{ $pembayarans->rate_negotiation }}" disabled="disabled" readonly>
+                                            <input type="text" class="form-control" id="rate_negotiation" name="rate_negotiation" value="Rp. {{ number_format($pembayarans->rate_negotiation,0,',','.') }}" disabled="disabled" readonly>
                                         </div>
                                         <div class="row mb-2">
                                             <label for="status_pembayaran" class="form-label">Status Pembayaran</label>

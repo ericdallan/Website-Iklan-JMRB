@@ -107,6 +107,12 @@
                                                 <option value="Negosiasi Ditolak" {{($negotiations->status_negotiation == 'Negosiasi Ditolak') ? "selected":'' }}>Tolak Pengajuan Negosiasi</option>
                                             </select>
                                         </div>
+                                        @if($negotiation_onboards->rate_negotiation == '' && $negotiation_onboards->status_negotiation == 'Tahap Negosiasi')
+                                        <div class="mb-3">
+                                            <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
+                                            <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation">
+                                        </div>
+                                        @endif
                                         @if($negotiation_onboards->rate_negotiation != '' && $negotiation_onboards->status_negotiation == 'Pengajuan Negosiasi User')
                                         <div class="mb-3">
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi <i class="" style="color:#636363;">(Menunggu Balasan Negosiasi Admin)</i></label>

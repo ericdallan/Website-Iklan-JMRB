@@ -1,7 +1,7 @@
 @extends('admin/dashboard')
 @section('content')
-@section('title', 'Dashboard-Iklan')
-@section('subtitle', 'Advertisement')
+@section('title', 'Dashboard-Survey')
+@section('subtitle', 'Survey')
 <style>
     select[readonly] {
         pointer-events: none;
@@ -157,7 +157,11 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center">
+                                                @if ($iklans->status == 'Tahap Survey' or $iklans->status == 'Pengajuan Jadwal')
                                                 <button type="submit" class="btn btn-default btn-md rounded-3">Update</button>
+                                                @else
+                                                <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Update</button>
+                                                @endif
                                             </div>
                                         </form>
                                     </div>

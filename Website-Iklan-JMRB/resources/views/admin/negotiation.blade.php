@@ -141,8 +141,10 @@
                             @else
                             @endif
                             @if ($negotiations->type == 'Permanent')
-                            <div class="row mb-3 text-center">
-                                <a class="btn btn-success btn-sm" href="/Dokumen/Dokumen_Teknis/{{ $negotiations->dokumen_teknis }}" download>Unduh</a>
+                            <div class="row mb-3 align-items-center">
+                                <div class="text-center">
+                                    <a class="btn btn-success btn-sm" href="/Dokumen/Dokumen_Teknis/{{ $negotiations->dokumen_teknis }}" download>Unduh Dokumen Teknis</a>
+                                </div>
                             </div>
                             @else
                             @endif
@@ -170,7 +172,7 @@
                             @endif
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            @if ($negotiations->status_negotiation == 'Negosiasi Diterima')
+                            @if ($negotiations->status_negotiation == 'Pembayaran Diterima' or $negotiations->status_negotiation == 'Pembayaran Ditolak' or $negotiations->status_negotiation == 'Pembayaran Kurang' or $negotiations->status_negotiation == 'Tahap Pembayaran')
                             <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Submit</button>
                             @else
                             <button type="submit" class="btn btn-default btn-md rounded-3">Submit</button>

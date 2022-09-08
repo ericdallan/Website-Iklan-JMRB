@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Forums;
+use App\Models\HistoryNegotiations;
+use App\Models\Negotiation;
+use App\Models\Pembayarans;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -22,9 +27,16 @@ class AdminController extends Controller
     {
         //show dashboard admin
         $iklan = Iklan::all();
-        $admin = Admin::all();
+        $pembayaran = DB::table('pembayarans')->select('*')
+            ->where('status_pembayaran', '=', 'Pembayaran Diterima')
+            ->select('rate_negotiation')
+            ->sum('rate_negotiation');
+        $forum = Forums::all();
+        $negosiasi = HistoryNegotiations::all();
         $user = User::all();
-        return view('admin.overview', compact('iklan','admin','user'));
+        $chart = DB::table('iklan')->select('*')
+            ->get();
+        return view('admin.overview', compact('iklan', 'pembayaran', 'forum', 'negosiasi', 'user'));
     }
     public function dashboard_admin(Request $request)
     {
@@ -160,10 +172,10 @@ class AdminController extends Controller
     }
     public function delete_admin(Admin $admin, $id)
     {
-        if($admin=Admin::find($id)){
+        if ($admin = Admin::find($id)) {
             $admin->delete();
             return redirect()->back()->with('success', 'Admin berhasil dihapus !');
-        }else{
+        } else {
             return redirect()->back()->with('failed', 'Admin gagal dihapus !');
         }
     }

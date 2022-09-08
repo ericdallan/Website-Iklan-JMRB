@@ -68,7 +68,7 @@
                                             <th scope="col">Time</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="align-middle text-center">
                                         <?php
                                         $num = 0;
                                         foreach ($history_list as $history_lists) {
@@ -76,7 +76,7 @@
                                         ?>
                                             <tr>
                                                 <td><?= $num ?></td>
-                                                <td>{{$history_lists->HistoryRate_negotiation}}</td>
+                                                <td>Rp. {{ number_format($history_lists->HistoryRate_negotiation,0,',','.')}}</td>
                                                 <td>{{$history_lists->HistoryStatus_negotiation}}</td>
                                                 <td>{{strftime("%d %b %Y, %H:%M:%S",strtotime($history_lists->time)) }}</td>
                                             </tr>

@@ -68,6 +68,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body mx-3">
+                            <input type="hidden" class="form-control" id="id_negotiation" name="id_negotiation" value="{{ $pembayarans->id_negotiation }}">
+                            <input type="hidden" class="form-control" id="id_iklan" name="id_iklan" value="{{ $pembayarans->id_iklan }}">
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $pembayarans->name }}" disabled="disabled" readonly>
@@ -86,7 +88,7 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
-                                <input type="text" class="form-control" id="rate_negotiation" name="rate_negotiation"value="{{ $pembayarans->rate_negotiation }}" readonly>
+                                <input type="text" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{ $pembayarans->rate_negotiation }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="time" class="form-label">Waktu Pembayaran</label>
@@ -96,13 +98,17 @@
                                 <label class="form-label">Bukti Pembayaran</label>
                                 <embed src="/Dokumen/Bukti_Pembayaran/{{$pembayarans->bukti_pembayaran}}" style="width:100%;height:250px;">
                             </div>
+                            <div class="row mb-2 align-items-center">
+                                <div class="text-center">
+                                    <a class="btn btn-success btn-md" href="/Dokumen/Bukti_Pembayaran/{{$pembayarans->bukti_pembayaran}}" download>Unduh Bukti Pembayaran</a>
+                                </div>
+                            </div>
                             <div class="row mb-3">
                                 <label class="form-label" for="status_pembayaran">Status Pembayaran</label>
                                 <select class="form-select" id="status_pembayaran" id="status_pembayaran" name="status_pembayaran">
                                     <option value="Menunggu Konfirmasi Pembayaran" {{($pembayarans->status_pembayaran == 'Menunggu Konfirmasi Pembayaran') ? "selected":'' }} disabled>Menunggu Konfirmasi Pembayaran</option>
                                     <option value="Pembayaran Diterima" {{($pembayarans->status_pembayaran == 'Tahap Pembayaran Diterima') ? "selected":'' }}>Terima Pembayaran</option>
                                     <option value="Pembayaran Ditolak" {{($pembayarans->status_pembayaran == 'Pembayaran Ditolak') ? "selected":'' }}>Tolak Pembayaran</option>
-                                    <option value="Pembayaran Kurang" {{($pembayarans->status_pembayaran == 'Pembayaran Kurang') ? "selected":'' }}>Pembayaran Kurang</option>
                                 </select>
                             </div>
                         </div>

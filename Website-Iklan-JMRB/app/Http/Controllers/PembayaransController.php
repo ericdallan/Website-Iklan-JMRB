@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Iklan;
 use App\Models\Negotiation;
 use App\Models\Pembayarans;
 use Illuminate\Http\Request;
@@ -82,6 +83,7 @@ class PembayaransController extends Controller
     public function create_pembayaranUser(Request $request)
     {
         $id = $request->id_negotiation;
+        $id2 = $request->id_iklan; 
         $request->validate([
             'id_user' => 'required',
             'id_iklan' => 'required',
@@ -91,6 +93,9 @@ class PembayaransController extends Controller
         ]);
         Negotiation::find($id)->update([
             'status_negotiation' => 'Tahap Pembayaran',
+        ]);
+        Iklan::find($id2)->update([
+            'status' => 'Tahap Pembayaran',
         ]);
         $pembayaran = Pembayarans::create([
             'id_iklan' => $request->id_iklan,
@@ -122,11 +127,19 @@ class PembayaransController extends Controller
     public function updatePembayaran(Request $request)
     {
         $id = $request->id_pembayaran;
+        $id2 = $request->id_negotiation;
+        $id3 = $request->id_iklan;
         $request->validate([
             'status_pembayaran' => 'required',
         ]);
         Pembayarans::find($id)->update([
             'status_pembayaran' => $request->status_pembayaran,
+        ]);
+        Negotiation::find($id2)->update([
+            'status_negotiation' => $request->status_pembayaran,
+        ]);
+        Iklan::find($id3)->update([
+            'status' => $request->status_pembayaran,
         ]);
         return redirect()->back()->with('success', 'Berhasil melakukan konfirmasi pembayaran !');
     }
