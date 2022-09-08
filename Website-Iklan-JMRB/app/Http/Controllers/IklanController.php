@@ -105,51 +105,6 @@ class IklanController extends Controller
             return redirect()->back()->with('failed', 'Gagal membuat iklan');
         }
     }
-    public function update_iklan(Request $request)
-    {
-        $id = $request->id;
-        $request->validate([
-            'name' => 'required',
-            'zone' => 'required',
-            'location' => 'required',
-            'pic_advert' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'status' => 'required',
-            'maps_coord' => 'required',
-            'survey_date' => 'required|date|after:tomorrow',
-        ],[
-            'survey_date.after' => 'Minimal tanggal survey 1 hari dari hari ini'
-        ]);
-        //create Iklan
-        Iklan::find($id)->update([
-            'name' => $request->name,
-            'zone' => $request->zone,
-            'location' => $request->location,
-            'status' => $request->status,
-            'maps_coord' => $request->maps_coord,
-            'survey_date' => $request->survey_date,
-        ]);
-        //Upload Foto Profile
-        $iklan = Iklan::find($id);
-        //Pic Location
-        $picAdvert = $request->pic_advert;
-        if ($picAdvert != "") {
-            if ($iklan->puc != '' && $iklan->pic_advert != null) {
-                $path = public_path('Dokumen/Iklan');
-                $filePic = $path . $iklan->pic_advert;
-                unlink($filePic);
-            }
-            $picAdvert = $picAdvert->getClientOriginalName();
-            $iklan->pic_advert = $picAdvert;
-            $request->pic_advert->move(public_path('Dokumen/Iklan'), $picAdvert);
-            $save = $iklan->save();
-        }
-        $save = $iklan->save();
-        if ($save) {
-            return redirect()->back()->with('success', 'Berhasil melakukan update iklan !');
-        } else {
-            return redirect()->back()->with('failed', 'Gagal melakukan update iklan');
-        }
-    }
     public function update_survey(Request $request)
     {
         $id = $request->id;

@@ -3,8 +3,8 @@
 @section('title', 'Dashboard-Overview')
 @section('subtitle', 'Overview')
 <div class="container">
-    <div class="row justify-content-center my-2">
-        <div class="col mb-2">
+    <div class="row my-2">
+        <div class="col mb-2 d-flex justify-content-center">
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-header">
                     <h5 class="card-title">Total Iklan</h5>
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="col mb-2">
+        <div class="col mb-2 d-flex justify-content-center">
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-header">
                     <h5 class="card-title">Total Pendapatan</h5>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="col mb-2">
+        <div class="col mb-2 d-flex justify-content-center">
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-header">
                     <h5 class="card-title">Total Pengguna</h5>
@@ -35,8 +35,9 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center my-2">
-        <div class="col-4 mb-2">
+    <hr style="width:100%;">
+    <div class="row my-2">
+        <div class="col mb-2 d-flex justify-content-center">
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-header">
                     <h5 class="card-title">Total Negosiasi</h5>
@@ -46,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 mb-2">
+        <div class="col mb-2 d-flex justify-content-center">
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-header">
                     <h5 class="card-title">Total Forum</h5>
@@ -56,6 +57,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row my-2">
     </div>
 </div>
 @endsection

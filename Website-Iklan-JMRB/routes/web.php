@@ -104,7 +104,6 @@ Route::middleware(['auth:admin'])->group(function () {
     //Dashboard Iklan
     Route::get('/dashboard/iklan', [IklanController::class, 'index'])->name('dashboard/iklan');
     Route::post('/dashboard/iklan/create', [IklanController::class, 'create_iklan'])->name('dashboard/iklan/create');
-    Route::post('/dashboard/iklan/update', [IklanController::class, 'update_iklan'])->name('dashboard/iklan/update');
     Route::get('/dashboard/iklan/delete/{id}', [IklanController::class, 'delete_iklan'])->name('dashboard/iklan/delete');
     //Survey Admin
     Route::get('/dashboard/survey', [IklanController::class, 'surveyAdmin'])->name('dashboard/survey');

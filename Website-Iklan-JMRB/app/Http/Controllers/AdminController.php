@@ -34,8 +34,6 @@ class AdminController extends Controller
         $forum = Forums::all();
         $negosiasi = HistoryNegotiations::all();
         $user = User::all();
-        $chart = DB::table('iklan')->select('*')
-            ->get();
         return view('admin.overview', compact('iklan', 'pembayaran', 'forum', 'negosiasi', 'user'));
     }
     public function dashboard_admin(Request $request)
