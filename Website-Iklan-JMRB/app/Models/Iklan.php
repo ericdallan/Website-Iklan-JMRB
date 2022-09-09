@@ -22,6 +22,7 @@ class Iklan extends Model
         'survey_date',
         'status',
         'ba_survey',
+        'expired_date',
     ];
     public function toSearchableArray()
     {

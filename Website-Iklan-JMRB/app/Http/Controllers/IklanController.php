@@ -18,12 +18,9 @@ class IklanController extends Controller
      */
     public function index(Request $request)
     {
-        $iklan = Iklan::all();
-        if ($request->filled('search')) {
-            $iklan = Iklan::search($request->search)->get(); // search by value
-        } else {
-            $iklan = Iklan::get()->take('10'); // list 10 rows
-        }
+        $iklan = DB::table("iklans")->select('*')
+            ->join('users', 'iklans.id_user', '=', 'users.id_user')
+            ->get();
         return view('admin.iklan', compact('iklan'));
     }
 
@@ -49,7 +46,7 @@ class IklanController extends Controller
     public function surveyAdmin(Request $request)
     {
         $iklan = DB::table("iklans")->select('*')
-            ->join('users','iklans.id_user','=','users.id_user')
+            ->join('users', 'iklans.id_user', '=', 'users.id_user')
             ->get();
         if ($request->filled('search')) {
             $iklan = Iklan::search($request->search)->get(); // search by value
@@ -105,6 +102,35 @@ class IklanController extends Controller
             return redirect()->back()->with('failed', 'Gagal membuat iklan');
         }
     }
+    public function update_iklan(Request $request)
+    {
+        //validate form
+        $id = $request->id;
+        $request->validate([
+            'status' => 'required',
+        ]);
+        Iklan::find($id)->update([
+            'expired_date' => $request->expired_date,
+            'status' => $request->status,
+        ]);
+        return redirect()->back()->with('success', 'Berhasil melakukan pengajuan perpanjangan iklan !');
+    }
+    public function update_iklanPerbaruan(Request $request)
+    {
+        //validate form
+        $id = $request->id;
+        $request->validate([
+            'status' => 'required',
+        ]);
+        Iklan::find($id)->update([
+            'expired_date' => $request->expired_date,
+            'status' => $request->status,
+        ]);
+        Negotiation::find($id)->update([
+            'status_negotiation' => $request->status_negotiation
+        ]);
+        return redirect()->back()->with('success', 'Berhasil melakukan pengajuan perpanjangan iklan !');
+    }
     public function update_survey(Request $request)
     {
         $id = $request->id;
@@ -116,7 +142,7 @@ class IklanController extends Controller
             'status' => 'required',
             'maps_coord' => 'required',
             'survey_date' => 'required|date|after:tomorrow',
-        ],[
+        ], [
             'survey_date.after' => 'Minimal tanggal survey 1 hari dari hari ini'
         ]);
         //create Iklan
@@ -161,7 +187,7 @@ class IklanController extends Controller
             'status' => 'required',
             'maps_coord' => 'required',
             'survey_date' => 'required|date|after:tomorrow',
-        ],[
+        ], [
             'survey_date.after' => 'Minimal tanggal survey 1 hari dari hari ini'
         ]);
         //create Iklan

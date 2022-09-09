@@ -97,6 +97,14 @@
                                             <input type="text" class="form-control" id="rate_negotiation" name="rate_negotiation" value="Rp. {{ number_format($pembayarans->rate_negotiation,0,',','.') }}" disabled="disabled" readonly>
                                         </div>
                                         <div class="row mb-2">
+                                            <label for="time" class="form-label">Waktu Pembayaran</label>
+                                            <input type="text" class="form-control" id="time" name="time" value="{{strftime("%d %b %Y, %H:%M:%S",strtotime($pembayarans->time)) }}" disabled="disabled" readonly>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="expired_date" class="form-label">Tenggat Iklan</label>
+                                            <input type="text" class="form-control" id="expired_date" name="expired_date" value="{{strftime("%d %b %Y, %H:%M:%S",strtotime($pembayarans->expired_date)) }}" disabled="disabled" readonly>
+                                        </div>
+                                        <div class="row mb-2">
                                             <label for="status_pembayaran" class="form-label">Status Pembayaran</label>
                                             <input type="text" class="form-control" id="status_pembayaran" name="status_pembayaran" value="{{ $pembayarans->status_pembayaran }}" disabled="disabled" readonly>
                                         </div>

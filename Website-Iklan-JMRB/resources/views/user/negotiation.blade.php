@@ -10,6 +10,7 @@
         color: #0A142F;
         font-weight: bold;
     }
+
     .btn-default {
         background-color: #0C1531;
         color: #FFFFFF;
@@ -97,16 +98,29 @@
                                         <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_iklan}}" name="id_iklan">
                                         <input type="hidden" class="form-control" id="id_negotiation" value="{{$negotiation_onboards->id_negotiation}}" name="id_negotiation">
                                         <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
+                                        @if($negotiation_onboards->rate_negotiation == '' && $negotiation_onboards->status_negotiation == 'Tahap Negosiasi')
                                         <div class="mb-3">
                                             <label class="form-label" for="status_negotiation">Status Negosiasi</label>
                                             <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation">
                                                 <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
-                                                <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Tahap Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                                <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
+                                                <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }} disabled>Pengajuan Negosiasi Admin</option>
+                                                <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }} disabled>Terima Pengajuan Negosiasi</option>
+                                                <option value="Negosiasi Ditolak" {{($negotiations->status_negotiation == 'Negosiasi Ditolak') ? "selected":'' }} disabled>Tolak Pengajuan Negosiasi</option>
+                                            </select>
+                                        </div>
+                                        @elseif($negotiation_onboards->rate_negotiation != '' && $negotiation_onboards->status_negotiation != 'Tahap Negosiasi')
+                                        <div class="mb-3">
+                                            <label class="form-label" for="status_negotiation">Status Negosiasi</label>
+                                            <select class="form-select" id="status_negotiation" id="status_negotiation" name="status_negotiation">
+                                                <option value="Tahap Negosiasi" {{($negotiations->status_negotiation == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
+                                                <option value="Pengajuan Negosiasi User" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi User') ? "selected":'' }}>Pengajuan Negosiasi User</option>
                                                 <option value="Pengajuan Negosiasi Admin" {{($negotiations->status_negotiation == 'Pengajuan Negosiasi Admin') ? "selected":'' }} disabled>Pengajuan Negosiasi Admin</option>
                                                 <option value="Negosiasi Diterima" {{($negotiations->status_negotiation == 'Negosiasi Diterima') ? "selected":'' }}>Terima Pengajuan Negosiasi</option>
                                                 <option value="Negosiasi Ditolak" {{($negotiations->status_negotiation == 'Negosiasi Ditolak') ? "selected":'' }}>Tolak Pengajuan Negosiasi</option>
                                             </select>
                                         </div>
+                                        @endif
                                         @if($negotiation_onboards->rate_negotiation == '' && $negotiation_onboards->status_negotiation == 'Tahap Negosiasi')
                                         <div class="mb-3">
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
@@ -131,13 +145,19 @@
                                             <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}">
                                         </div>
                                         @endif
+                                        @if($negotiation_onboards->rate_negotiation != '' && $negotiation_onboards->status_negotiation == 'Tahap Negosiasi Perbaruan')
+                                        <div class="mb-3">
+                                            <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
+                                            <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}">
+                                        </div>
+                                        @endif
                                         @if($negotiation_onboards->status_negotiation == 'Tahap Pembayaran')
                                         <div class="mb-3">
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
                                             <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$negotiation_onboards->rate_negotiation}}">
                                         </div>
                                         @endif
-                                        @if($negotiation_onboards->type == 'Permanent')
+                                        @if($negotiation_onboards->type == 'Permanent' && $negotiation_onboards->dokumen_teknis != '')
                                         <div class="mb-3">
                                             <div class="mt-2">
                                                 <label class="form-label"><strong>Dokumen Teknis</strong> <i class="" style="color:#636363;">file ter-upload : {{$negotiation_onboards->dokumen_teknis}}</i></label>
@@ -146,6 +166,14 @@
                                             <div class="mt-2">
                                                 <label for="dokumen_teknis" class="form-label">Ganti File</label>
                                                 <input onbeforeeditfocus="return false;" type="file" name="dokumen_teknis" id="dokumen_teknis">
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if($negotiation_onboards->type == 'Permanent' && $negotiation_onboards->status_negotiation == 'Tahap Negosiasi' && $negotiation_onboards->dokumen_teknis == '')
+                                        <div class="mb-3">
+                                            <div class="mt-2">
+                                                <label class="form-label">Dokumen Teknis</label>
+                                                <input type="file" name="dokumen_teknis" id="dokumen_teknis">
                                             </div>
                                         </div>
                                         @endif
@@ -176,6 +204,13 @@
                                         <div class="mb-3">
                                             <div class="row align-item-center">
                                                 <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Submit</button>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if($negotiation_onboards->status_negotiation == 'Tahap Negosiasi Perbaruan')
+                                        <div class="mb-3">
+                                            <div class="row align-item-center">
+                                                <button type="submit" class="btn btn-default btn-md rounded-3">Submit</button>
                                             </div>
                                         </div>
                                         @endif

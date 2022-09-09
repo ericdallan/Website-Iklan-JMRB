@@ -125,12 +125,12 @@
                             @if ($negotiations->status_negotiation == 'Negosiasi Diterima')
                             <div class="row mb-2">
                                 <label for="rate_negotiation" class="form-label">Negosiasi Harga</label>
-                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" placeholder="Advertisement Coordinate" value="{{ $negotiations->rate_negotiation }}" readonly>
+                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{ $negotiations->rate_negotiation }}" readonly>
                             </div>
                             @else
                             <div class="row mb-2">
                                 <label for="rate_negotiation" class="form-label">Negosiasi Harga</label>
-                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" placeholder="Advertisement Coordinate" value="{{ $negotiations->rate_negotiation }}">
+                                <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{ $negotiations->rate_negotiation }}">
                             </div>
                             @endif
                             @if ($negotiations->type == 'Permanent')

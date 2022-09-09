@@ -140,6 +140,7 @@ class PembayaransController extends Controller
         ]);
         Iklan::find($id3)->update([
             'status' => $request->status_pembayaran,
+            'expired_date' => $request->expired_date,
         ]);
         return redirect()->back()->with('success', 'Berhasil melakukan konfirmasi pembayaran !');
     }

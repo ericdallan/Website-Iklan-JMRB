@@ -12,7 +12,7 @@
     }
 
     #name,
-    #status{
+    #status {
         background-color: #D9D9D9;
     }
 
@@ -68,6 +68,10 @@
                     <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
                     <h6 class="card-subtitle my-3 text-muted">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></h6>
                     <h6 class="card-subtitle my-3 text-muted">Status : {{ $iklans-> status }}</h6>
+                    @if($iklans->expired_date != '')
+                    <h6 class="card-subtitle my-3 text-muted">Tenggat Iklan : {{strftime("%d %b %Y, %H:%M:%S",strtotime($iklans->expired_date)) }}</h6>
+                    @else
+                    @endif
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -75,7 +79,7 @@
                             <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}">Detail</a>
                         </div>
                         <div class="col-6 text-end">
-                            @if ($iklans->status == 'Tahap Survey' or $iklans->status == 'Tahap Negosiasi' or $iklans->status =='Survey Ditolak' or $iklans->status =='Pengajuan Jadwal' or $iklans->status =='Pembayaran Diterima' )
+                            @if ($iklans->status == 'Tahap Survey' or $iklans->status == 'Tahap Negosiasi' or $iklans->status =='Survey Ditolak' or $iklans->status =='Pengajuan Jadwal' or $iklans->status =='Pembayaran Diterima' or $iklans->status == 'Tahap Negosiasi Perbaruan')
                             <button class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Choose{{ $iklans->id_iklan }}" disabled>Pilih</button>
                             @else
                             <a class="btn btn-default btn-sm w-50 rounded-3" data-bs-toggle="modal" data-bs-target="#Choose{{ $iklans->id_iklan }}">Pilih</a>
@@ -127,6 +131,10 @@
                                 <input type="datetime-local" class="form-control" step="any" id="survey_date" name="survey_date" value="{{ $iklans->survey_date }}" disabled="disabled" readonly>
                             </div>
                             <div class="row mb-2">
+                                <label for="expired_date" class="form-label">Tenggat Iklan</label>
+                                <input type="datetime-local" class="form-control" step="any" id="expired_date" name="expired_date" value="{{ $iklans->expired_date }}" disabled="disabled" readonly>
+                            </div>
+                            <div class="row mb-2">
                                 <label for="status" class="form-label">Status</label>
                                 <input type="text" class="form-control" id="status" name="status" value="{{ $iklans->status }}" disabled="disabled" readonly>
                             </div>
@@ -138,6 +146,7 @@
             <div class="modal fade" id="Choose{{ $iklans->id_iklan }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
+                        @if($iklans->expired_date == '')
                         <form action="{{ route('user/negotiation/create') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-header">
@@ -201,6 +210,56 @@
                                 <button type="submit" class="btn btn-default btn-md rounded-3">Open Negotiation</button>
                             </div>
                         </form>
+                        @elseif($iklans->expired_date != '')
+                        <form action="{{ route('user/iklan/update/perbaruan') }}" method="POST" method="multipart/form-data">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail {{$iklans->name}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body mx-3">
+                                <input type="hidden" class="form-control" id="status_negotiation" name="status_negotiation" placeholder="Advertisement Status" value="Tahap Negosiasi Perbaruan" readonly>
+                                <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}">
+                                <div class="row mb-3">
+                                    <div class="text-muted">Preview Foto Iklan</div>
+                                </div>
+                                <div class="d-flex justify-content-center align-self-center mb-3">
+                                    @if(isset($iklans->pic_advert) && $iklans->pic_advert)
+                                    <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
+                                    @else
+                                    <p>Tidak ada foto iklan</p>
+                                    @endif
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nama Iklan" value="{{ $iklans->name }}" disabled="disabled" readonly>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="zone" class="form-label">Zona</label>
+                                    <input type="text" class="form-control" id="zone" name="zone" placeholder="Zona Iklan" value="{{ $iklans->zone }}" disabled="disabled" readonly>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="location" class="form-label">Lokasi</label>
+                                    <input type="text" class="form-control" id="location" name="location" placeholder="Lokasi Iklan" value="{{ $iklans->location }}" disabled="disabled" readonly>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="maps_coord" class="form-label">Koordinat Maps</label>
+                                    <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Koordinat Iklan" value="{{ $iklans->maps_coord }}" disabled="disabled" readonly>
+                                </div>
+                                <div class="row mb-2">
+                                    <label class="form-label" for="status">Status</label>
+                                    <select class="form-select" id="status" name="status">
+                                        <option value="Tahap Pengajuan Pembaruan" {{($iklans->status == 'Tahap Pengajuan Pembaruan') ? "selected":'' }} disabled>Pengajuan Pembaruan</option>
+                                        <option value="Tahap Negosiasi" {{($iklans->status == 'Tahap Negosiasi') ? "selected":'' }}>Perbarui Iklan</option>
+                                        <option value="Iklan Tidak Diperpanjang" {{($iklans->status == 'Iklan Tidak Diperpanjang') ? "selected":'' }}>Tidak Perbarui Iklan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn btn-default btn-md rounded-3">Update</button>
+                            </div>
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -103,6 +103,10 @@
                                     <a class="btn btn-success btn-md" href="/Dokumen/Bukti_Pembayaran/{{$pembayarans->bukti_pembayaran}}" download>Unduh Bukti Pembayaran</a>
                                 </div>
                             </div>
+                            <div class="row mb-2">
+                                <label for="expired_date" class="form-label">Tenggat Iklan</label>
+                                <input type="datetime-local" class="form-control" step="any" id="expired_date" name="expired_date" value="{{ $pembayarans->expired_date }}">
+                            </div>
                             <div class="row mb-3">
                                 <label class="form-label" for="status_pembayaran">Status Pembayaran</label>
                                 <select class="form-select" id="status_pembayaran" id="status_pembayaran" name="status_pembayaran">

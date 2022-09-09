@@ -39,6 +39,7 @@
                             <th scope="col">Zone</th>
                             <th scope="col">Location</th>
                             <th scope="col">Negosiasi Harga</th>
+                            <th scope="col">Tanggal Pembayaran</th>
                             <th scope="col">Status Pembayaran</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -56,6 +57,12 @@
                                 <td>{{$pembayarans->zone}}</td>
                                 <td>{{$pembayarans->location}}</td>
                                 <td>Rp. {{ number_format($pembayarans->rate_negotiation,0,',','.') }}</td>
+                                <td>@if(isset($pembayarans->time) && $pembayarans->time)
+                                    {{{strftime("%d %b %Y, %H:%M:%S",strtotime($pembayarans->time))}}}
+                                    @else
+                                    Menunggu Pembayaran
+                                    @endif
+                                </td>
                                 <td>{{$pembayarans->status_pembayaran}}</td>
                                 <td><a class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pembayarans->id_pembayaran }}">Detail</td>
                             </tr>

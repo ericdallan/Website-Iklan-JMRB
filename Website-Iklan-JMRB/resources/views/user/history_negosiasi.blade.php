@@ -98,7 +98,8 @@
                                                 ?>
                                                     <tr>
                                                         <td><?= $num ?></td>
-                                                        <td>{{$history_lists->HistoryRate_negotiation}}</td>
+                                                        <td>Rp. {{ number_format($history_lists->HistoryRate_negotiation,0,',','.') }}
+                                                        </td>
                                                         <td>{{$history_lists->HistoryStatus_negotiation}}</td>
                                                         <td>{{strftime("%d %b %Y, %H:%M:%S",strtotime($history_lists->time)) }}</td>
                                                     </tr>

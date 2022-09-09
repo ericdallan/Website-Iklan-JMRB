@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('pic_advert',1000)->nullable();
             $table->string('status');
             $table->string('ba_survey',10000)->nullable();
+            $table->string('expired_date')->nullable();
             $table->timestamps();
         });
     }

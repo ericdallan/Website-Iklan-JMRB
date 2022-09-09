@@ -33,21 +33,13 @@
     }
 </style>
 <div class="container">
-    <div class="row my-4">
+    <div class="row justify-content-center my-4">
         <div class="col-md-8">
-            <form action="" method="GET">
-                <div class="input-group rounded" style="width: 18rem;">
-                    <input type="text" name="search" class="form-control rounded" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <span class="input-group-text border-0" id="search-addon">
-                        <i class="bi bi-search" type="submit"></i>
-                    </span>
-                </div>
-            </form>
         </div>
-        <div class="col-6 col-md-4 text-end text-white">
+        <div class="col-md-12 text-end text-white">
             <form action="" method="GET">
                 <div class="btn-group " style="width: 18rem;">
-                    <button class="btn btn-default dropdown-toggle" type="button" name="search" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" aria-describedby="search-addon">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" name="search" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" aria-describedby="search-addon">
                         Kategori
                     </button>
                     <ul class="dropdown-menu">
@@ -76,8 +68,9 @@
                 <h6 class="card-subtitle my-3 text-muted">Status : {{ $iklans-> status }}</h6>
             </div>
             <div class="card-footer">
-                <div class="row">
-                    <div class="text-start">
+                <div class="row align-items-center">
+                    <div class="text-center">
+                        <h6 class="card-subtitle my-3 text-muted">User : {{ $iklans-> username }}</h6>
                     </div>
                 </div>
                 <hr class="w-100">
@@ -99,54 +92,76 @@
                         <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$iklans->name}}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body mx-3">
-                        <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}">
-                        <div class="row mb-3">
-                            <div class="text-muted">Preview Foto Iklan</div>
-                        </div>
-                        <div class="d-flex justify-content-center align-self-center mb-3">
-                            @if(isset($iklans->pic_advert) && $iklans->pic_advert)
-                            <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
-                            @else
-                            <p>Tidak ada foto iklan</p>
+                    <form action="{{route('dashboard/iklan/update')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body mx-3">
+                            <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}">
+                            <div class="row mb-3">
+                                <div class="text-muted">Preview Foto Iklan</div>
+                            </div>
+                            <div class="d-flex justify-content-center align-self-center mb-3">
+                                @if(isset($iklans->pic_advert) && $iklans->pic_advert)
+                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
+                                @else
+                                <p>Tidak ada foto iklan</p>
+                                @endif
+                            </div>
+                            <div class="row mb-2">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="form-label" for="zone">Zone</label>
+                                <select class="main form-select" id="zone" id="zone" name="zone" readonly>
+                                    <option value="I" {{($iklans->zone == 'I') ? "selected":'' }}>I</option>
+                                    <option value="II" {{($iklans->zone == 'II') ? "selected":'' }}>II</option>
+                                    <option value="III" {{($iklans->zone == 'III') ? "selected":'' }}>III</option>
+                                    <option value="IV" {{($iklans->zone == 'IV') ? "selected":'' }}>IV</option>
+                                </select>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="location" class="form-label">Location (KM) </label>
+                                <select class="sub form-select" id="location" id="location" name="location" readonly>
+                                    <option value="{{ $iklans->location }}">{{ $iklans->location }}</option>
+                                </select>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="maps_coord" class="form-label">Maps Coordinate</label>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $iklans->maps_coord }}">
+                            </div>
+                            <div class="row mb-2">
+                                <label for="survey_date" class="form-label">Tanggal Survey</label>
+                                <input type="datetime-local" class="form-control" step="any" id="survey_date" name="survey_date" value="{{ $iklans->survey_date }}" readonly>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="expired_date" class="form-label">Tenggat Iklan</label>
+                                <input type="datetime-local" class="form-control" step="any" id="expired_date" name="expired_date" value="{{ $iklans->survey_date }}" readonly>
+                            </div>
+                            @if($iklans->expired_date == '')
+                            <div class="row mb-2">
+                                <label class="form-label" for="status">Status</label>
+                                <select class="form-select" id="status" name="status" readonly>
+                                    <option value="Pembayaran Diterima" {{($iklans->status == 'Pembayaran Diterima') ? "selected":'' }}>Pembayaran Diterima</option>
+                                    <option value="Tahap Negosiasi" {{($iklans->status == 'Tahap Negosiasi') ? "selected":'' }}>Tahap Negosiasi</option>
+                                    <option value="Tahap Pembayaran" {{($iklans->status == 'Tahap Pembayaran') ? "selected":'' }}>Tahap Pembayaran</option>
+                                </select>
+                            </div>
+                            @elseif($iklans->expired_date != '')
+                            <div class="row mb-2">
+                                <label class="form-label" for="status">Status</label>
+                                <select class="form-select" id="status" name="status">
+                                    <option value="Pembayaran Diterima" {{($iklans->status == 'Pembayaran Diterima') ? "selected":'' }} disabled>Pembayaran Diterima</option>
+                                    <option value="Tahap Negosiasi" {{($iklans->status == 'Tahap Negosiasi') ? "selected":'' }} disabled>Tahap Negosiasi</option>
+                                    <option value="Tahap Pembayaran" {{($iklans->status == 'Tahap Pembayaran') ? "selected":'' }} disabled>Tahap Pembayaran</option>
+                                    <option value="Tahap Pengajuan Pembaruan" {{($iklans->status == 'Tahap Pengajuan Pembaruan') ? "selected":'' }}>Pengajuan Pembaruan</option>
+                                </select>
+                            </div>
                             @endif
                         </div>
-                        <div class="row mb-2">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" readonly>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-default btn-md rounded-3">Open Negotiation</button>
                         </div>
-                        <div class="row mb-2">
-                            <label class="form-label" for="zone">Zone</label>
-                            <select class="main form-select" id="zone" id="zone" name="zone" readonly>
-                                <option value="I" {{($iklans->zone == 'I') ? "selected":'' }}>I</option>
-                                <option value="II" {{($iklans->zone == 'II') ? "selected":'' }}>II</option>
-                                <option value="III" {{($iklans->zone == 'III') ? "selected":'' }}>III</option>
-                                <option value="IV" {{($iklans->zone == 'IV') ? "selected":'' }}>IV</option>
-                            </select>
-                        </div>
-                        <div class="row mb-2">
-                            <label for="location" class="form-label">Location (KM) </label>
-                            <select class="sub form-select" id="location" id="location" name="location" readonly>
-                                <option value="{{ $iklans->location }}">{{ $iklans->location }}</option>
-                            </select>
-                        </div>
-                        <div class="row mb-2">
-                            <label for="maps_coord" class="form-label">Maps Coordinate</label>
-                            <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Coordinate" value="{{ $iklans->maps_coord }}">
-                        </div>
-                        <div class="row mb-2">
-                            <label for="survey_date" class="form-label">Tanggal Survey</label>
-                            <input type="datetime-local" class="form-control" step="any" id="survey_date" name="survey_date" value="{{ $iklans->survey_date }}" readonly>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="form-label" for="status">Status</label>
-                            <select class="form-select" id="status" name="status" readonly>
-                                <option value="Pembayaran Diterima" {{($iklans->status == 'Pembayaran Diterima') ? "selected":'' }}>Pembayaran Diterima</option>
-                                <option value="Tahap Negosiasi" {{($iklans->status == 'Tahap Negosiasi') ? "selected":'' }}>Tahap Negosiasi</option>
-                                <option value="Tahap Pembayaran" {{($iklans->status == 'Tahap Pembayaran') ? "selected":'' }}>Tahap Pembayaran</option>
-                            </select>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
