@@ -28,10 +28,15 @@
                     <h6 class="card-subtitle my-3 text-muted">Zone : {{ $iklans-> zone }}</h6>
                     <h6 class="card-subtitle my-3 text-muted">Location : KM {{ $iklans-> location }}</h6>
                     <p class="card-text">Coordinate : <a href="https://www.google.com/search?q={{ $iklans-> maps_coord }}" style="color:#0C1531;text-decoration:none;">{{ $iklans-> maps_coord }}</a></p>
+                    @if($iklans->expired_date != '')
+                    <h6 class="card-subtitle my-3 text-muted">Tenggat Iklan : {{strftime("%d %b %Y, %H:%M:%S",strtotime($iklans->expired_date)) }}</h6>
+                    @else
+                    <h6 class="card-subtitle my-3 text-muted">Tenggat Iklan : Masih Tahap Negosiasi</h6>
+                    @endif
                 </div>
                 <div class="card-footer">
                     <div class="text-start">
-                        <p class="card-text text-muted">Total Applicant : </p>
+                        <p class="card-text text-muted">Pemilik : {{ $iklans-> username }}</p>
                     </div>
                     <hr>
                     <div class="text-end">
@@ -60,19 +65,19 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $iklans->name }}" readonly>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $iklans->name }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="zone" class="form-label">Zone</label>
-                                <input type="text" class="form-control" id="zone" name="zone" placeholder="Advertisement Zone" value="{{ $iklans->zone }}" readonly>
+                                <input type="text" class="form-control" id="zone" name="zone" value="{{ $iklans->zone }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Advertisement Location" value="{{ $iklans->location }}" readonly>
+                                <input type="text" class="form-control" id="location" name="location" value="{{ $iklans->location }}" readonly>
                             </div>
                             <div class="row mb-2">
                                 <label for="maps_coord" class="form-label">Maps Coodinate</label>
-                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Advertisement Rate" value="{{ $iklans->maps_coord }}" readonly>
+                                <input type="text" class="form-control" id="maps_coord" name="maps_coord" value="{{ $iklans->maps_coord }}" readonly>
                             </div>
                         </div>
                     </div>

@@ -4,18 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Iklan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
     public function landing_page()
     {
         return view('landing_page');
@@ -26,19 +18,9 @@ class HomeController extends Controller
     }
     public function iklan()
     {
-        $iklan = Iklan::all();
+        $iklan = DB::table("iklans")->select('*')
+            ->join('users', 'iklans.id_user', '=', 'users.id_user')
+            ->get();
         return view('iklan', compact('iklan'));
     }
-    // public function LoginUser()
-    // {
-    //     return view('user.login_user');
-    // }
-    // public function RegisterUser()
-    // {
-    //     return view('user.register_user');
-    // }
-    // public function LoginAdmin()
-    // {
-    //     return view('admin.login_admin');
-    // }
 }
