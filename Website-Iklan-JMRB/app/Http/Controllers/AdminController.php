@@ -34,7 +34,22 @@ class AdminController extends Controller
         $forum = Forums::all();
         $negosiasi = HistoryNegotiations::all();
         $user = User::all();
-        return view('admin.overview', compact('iklan', 'pembayaran', 'forum', 'negosiasi', 'user'));
+
+        //chart
+        $chart = Iklan::select(DB::raw("zone as zones"), DB::raw("COUNT(*) as count"))
+            ->groupBy('zones')
+            ->orderBy('count')
+            ->get();
+        $dataPoints = [];
+        foreach ($chart as $charts) {
+            $dataPoints[] = [
+                "name" => $charts['zones'],
+                "y" => floatval($charts['count'])
+            ];
+        }
+        return view('admin.overview', compact('iklan', 'pembayaran', 'forum', 'chart' ,'negosiasi', 'user'), [
+            "data" => json_encode($dataPoints)
+        ]);
     }
     public function dashboard_admin(Request $request)
     {
