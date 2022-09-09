@@ -218,8 +218,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body mx-3">
-                                <input type="hidden" class="form-control" id="status_negotiation" name="status_negotiation" placeholder="Advertisement Status" value="Tahap Negosiasi Perbaruan" readonly>
-                                <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}">
+                                <input type="hidden" id="id_iklan" name="id_iklan" value="{{ $iklans->id_iklan }}">
+                                <input type="hidden" id="status_negotiation" name="status_negotiation" value="Tahap Negosiasi">
                                 <div class="row mb-3">
                                     <div class="text-muted">Preview Foto Iklan</div>
                                 </div>
@@ -245,6 +245,10 @@
                                 <div class="row mb-2">
                                     <label for="maps_coord" class="form-label">Koordinat Maps</label>
                                     <input type="text" class="form-control" id="maps_coord" name="maps_coord" placeholder="Koordinat Iklan" value="{{ $iklans->maps_coord }}" disabled="disabled" readonly>
+                                </div>
+                                <div class="row mb-2">
+                                    <label for="expired_date" class="form-label">Tenggat Iklan</label>
+                                    <input type="datetime-local" class="form-control" step="any" id="expired_date" name="expired_date" value="{{ $iklans->expired_date }}" readonly>
                                 </div>
                                 <div class="row mb-2">
                                     <label class="form-label" for="status">Status</label>

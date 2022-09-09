@@ -88,7 +88,7 @@ class NegotiationsController extends Controller
     }
     public function update_nego(Request $request)
     {
-        $id = $request->id_iklan;
+        $id = $request->id_negotiation;
         $request->validate([
             'id_user' => 'required',
             'id_iklan' => 'required',

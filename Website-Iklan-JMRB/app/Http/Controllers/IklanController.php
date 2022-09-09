@@ -118,7 +118,7 @@ class IklanController extends Controller
     public function update_iklanPerbaruan(Request $request)
     {
         //validate form
-        $id = $request->id;
+        $id = $request->id_iklan;
         $request->validate([
             'status' => 'required',
         ]);
@@ -126,9 +126,9 @@ class IklanController extends Controller
             'expired_date' => $request->expired_date,
             'status' => $request->status,
         ]);
-        Negotiation::find($id)->update([
-            'status_negotiation' => $request->status_negotiation
-        ]);
+        DB::table('negotiations')
+              ->where('id_iklan', $id)
+              ->update(['status_negotiation' => $request->status_negotiation]);
         return redirect()->back()->with('success', 'Berhasil melakukan pengajuan perpanjangan iklan !');
     }
     public function update_survey(Request $request)

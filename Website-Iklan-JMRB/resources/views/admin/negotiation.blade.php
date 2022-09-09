@@ -79,7 +79,7 @@
                             </div>
                             <div class="d-flex justify-content-center align-self-center mb-3">
                                 @if(isset($negotiations->pic_advert) && $negotiations->pic_advert)
-                                <img src="/Dokumen/Iklan/{{$iklans->pic_advert}}" alt="hugenerd" width="200" height="200">
+                                <img src="/Dokumen/Iklan/{{$negotiations->pic_advert}}" alt="hugenerd" width="200" height="200">
                                 @else
                                 <p>Tidak ada foto iklan</p>
                                 @endif

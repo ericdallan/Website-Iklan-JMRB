@@ -135,7 +135,7 @@
                             </div>
                             <div class="row mb-2">
                                 <label for="expired_date" class="form-label">Tenggat Iklan</label>
-                                <input type="datetime-local" class="form-control" step="any" id="expired_date" name="expired_date" value="{{ $iklans->survey_date }}" readonly>
+                                <input type="datetime-local" class="form-control" step="any" id="expired_date" name="expired_date" value="{{ $iklans->expired_date }}" readonly>
                             </div>
                             @if($iklans->expired_date == '')
                             <div class="row mb-2">
@@ -159,7 +159,11 @@
                             @endif
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
+                            @if($iklans->status == 'Tahap Survey')
+                            <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Open Negotiation</button>
+                            @elseif($iklans->status == 'Pembayaran Diterima')
                             <button type="submit" class="btn btn-default btn-md rounded-3">Open Negotiation</button>
+                            @endif
                         </div>
                     </form>
                 </div>

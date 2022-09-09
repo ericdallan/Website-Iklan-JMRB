@@ -79,10 +79,9 @@
                                 <td>
                                     @if(isset($iklans->survey_date) && $iklans->survey_date)
                                     <a class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}">Detail</a>
-                                </td>
-                                @else
-                                <button class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}" disabled>Detail</button>
-                                @endif
+                                    @else
+                                    <button class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#Detail{{ $iklans->id_iklan }}" disabled>Detail</button>
+                                    @endif
                                 </td>
                                 <td>
                                     @if(isset($iklans->ba_survey) && $iklans->ba_survey)
@@ -163,7 +162,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center">
-                                                @if ($iklans->status == 'Survey Diterima' or $iklans->status == 'Tahap Negosiasi')
+                                                @if ($iklans->status == 'Survey Diterima' or $iklans->status == 'Tahap Negosiasi' or $iklans->status == 'Pembayaran Diterima' or $iklans->status == 'Tahap Pengajuan Pembaruan')
                                                 <button type="submit" class="btn btn-default btn-md rounded-3" disabled>Update</button>
                                                 @else
                                                 <button type="submit" class="btn btn-default btn-md rounded-3">Update</button>
