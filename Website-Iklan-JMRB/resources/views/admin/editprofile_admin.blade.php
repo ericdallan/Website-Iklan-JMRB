@@ -25,6 +25,27 @@
     }
 </style>
 <div class="py-5" style="background-color:rgba(12, 21, 49, 0.5)">
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    @if (session('failed'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('failed') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="container rounded-4" style="background-color:#FFFFFF;">
         <div class="container mx-auto">
             <form action="{{route('admin/profile/update')}}" method="POST" enctype="multipart/form-data">
@@ -59,10 +80,17 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
+                        @if(Auth::guard('admin')->user()->username == 'SuperAdmin')
+                        <div class="row mb-4">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" value="{{ Auth::guard('admin')->user()->username }}" readonly>
+                        </div>
+                        @else
                         <div class="row mb-4">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" value="{{ Auth::guard('admin')->user()->username }}">
                         </div>
+                        @endif
                         <div class="row mb-4">
                             <label for="first_name" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Your First Name" value="{{ Auth::guard('admin')->user()->first_name }}">

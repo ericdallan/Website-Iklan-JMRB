@@ -60,7 +60,7 @@
     </div>
     <hr style="width:100%;">
     <div class="row my-4">
-        <h2 style="text-align: center;">Pie Chart Integration in Laravel 8</h2>
+        <h2 style="text-align: center;">Zona Iklan Jasa Marga Cabang Purbaleunyi</h2>
         <div class="col-md-10 offset-md-1">
             <div class="panel panel-default">
                 <div class="panel-body">
