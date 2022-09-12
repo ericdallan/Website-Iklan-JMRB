@@ -218,8 +218,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body mx-3">
-                                <input type="hidden" id="id_iklan" name="id_iklan" value="{{ $iklans->id_iklan }}">
-                                <input type="hidden" id="status_negotiation" name="status_negotiation" value="Tahap Negosiasi">
+                                <input type="hidden" id="id_iklan" name="id_iklan" value="{{ $iklans->id_iklan }}" readonly>
+                                <input type="hidden" id="status_negotiation" name="status_negotiation" value="Tahap Negosiasi" readonly>
                                 <div class="row mb-3">
                                     <div class="text-muted">Preview Foto Iklan</div>
                                 </div>

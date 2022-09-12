@@ -62,14 +62,14 @@
                 <div class="modal-content">
                     <form action="{{route('admin/pembayaran/create')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id_pembayaran" id="id_pembayaran" value="{{$pembayarans->id_pembayaran}}">
+                        <input type="hidden" name="id_pembayaran" id="id_pembayaran" value="{{$pembayarans->id_pembayaran}}" readonly>
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$pembayarans->name}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body mx-3">
-                            <input type="hidden" class="form-control" id="id_negotiation" name="id_negotiation" value="{{ $pembayarans->id_negotiation }}">
-                            <input type="hidden" class="form-control" id="id_iklan" name="id_iklan" value="{{ $pembayarans->id_iklan }}">
+                            <input type="hidden" class="form-control" id="id_negotiation" name="id_negotiation" value="{{ $pembayarans->id_negotiation }}" readonly>
+                            <input type="hidden" class="form-control" id="id_iklan" name="id_iklan" value="{{ $pembayarans->id_iklan }}" readonly>
                             <div class="row mb-2">
                                 <label for="name" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Advertisement Name" value="{{ $pembayarans->name }}" disabled="disabled" readonly>

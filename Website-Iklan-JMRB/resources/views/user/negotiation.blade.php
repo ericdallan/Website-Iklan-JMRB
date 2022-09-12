@@ -94,10 +94,10 @@
                                 <form action="{{route('user/negotiation/update')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mx-4">
-                                        <input type="hidden" class="form-control" id="id_user" value="{{$negotiation_onboards->id_user}}" name="id_user">
-                                        <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_iklan}}" name="id_iklan">
-                                        <input type="hidden" class="form-control" id="id_negotiation" value="{{$negotiation_onboards->id_negotiation}}" name="id_negotiation">
-                                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
+                                        <input type="hidden" class="form-control" id="id_user" value="{{$negotiation_onboards->id_user}}" name="id_user" readonly>
+                                        <input type="hidden" class="form-control" id="id_iklan" value="{{$negotiation_onboards->id_iklan}}" name="id_iklan" readonly>
+                                        <input type="hidden" class="form-control" id="id_negotiation" value="{{$negotiation_onboards->id_negotiation}}" name="id_negotiation" readonly>
+                                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}" readonly>
                                         @if($negotiation_onboards->rate_negotiation == '' && $negotiation_onboards->status_negotiation == 'Tahap Negosiasi')
                                         <div class="mb-3">
                                             <label class="form-label" for="status_negotiation">Status Negosiasi</label>

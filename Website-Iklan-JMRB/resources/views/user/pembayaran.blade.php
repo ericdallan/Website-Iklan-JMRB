@@ -96,10 +96,10 @@
                                 <form action="{{route('user/pembayaran/create')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mx-4">
-                                        <input type="hidden" class="form-control" id="id_user" value="{{$pembayaran_onboards->id_user}}" name="id_user">
-                                        <input type="hidden" class="form-control" id="id_iklan" value="{{$pembayaran_onboards->id_iklan}}" name="id_iklan">
-                                        <input type="hidden" class="form-control" id="id_negotiation" value="{{$pembayaran_onboards->id_negotiation}}" name="id_negotiation">
-                                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
+                                        <input type="hidden" class="form-control" id="id_user" value="{{$pembayaran_onboards->id_user}}" name="id_user" readonly>
+                                        <input type="hidden" class="form-control" id="id_iklan" value="{{$pembayaran_onboards->id_iklan}}" name="id_iklan" readonly>
+                                        <input type="hidden" class="form-control" id="id_negotiation" value="{{$pembayaran_onboards->id_negotiation}}" name="id_negotiation" readonly>
+                                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}" readonly>
                                         <div class="row mb-3">
                                             <label for="rate_negotiation" class="form-label">Harga Negosiasi</label>
                                             <input type="number" class="form-control" id="rate_negotiation" name="rate_negotiation" value="{{$pembayaran_onboards->rate_negotiation}}" readonly>

@@ -132,9 +132,9 @@
                                     <option value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
-                            <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
-                            <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}">
-                            <input type="hidden" id="owner" name="owner" value="{{ Auth::guard('web')->user()->username }}">
+                            <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}" readonly>
+                            <input type="hidden" id="id_user" name="id_user" value="{{ Auth::guard('web')->user()->id_user }}" readonly>
+                            <input type="hidden" id="owner" name="owner" value="{{ Auth::guard('web')->user()->username }}" readonly>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="submit" class="btn btn-default btn-sm rounded-3 w-25">Create</button>

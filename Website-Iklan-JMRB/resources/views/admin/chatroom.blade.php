@@ -48,7 +48,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::guard('admin')->user()->id_admin }}">
+                            <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::guard('admin')->user()->id_admin }}" readonly>
                             @else
                             <p class='text-center'>No Admin found.</p>
                             @endif
@@ -102,12 +102,12 @@
                             <form action="{{route('admin/chatroom/message/create')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="input-group mb-3">
-                                    <input type="hidden" id="id_chatroom" name="id_chatroom" value=" {{ $chatroom_onboards-> id_chatroom }}">
-                                    <input type="hidden" id="id_user" name="id_user" value="{{  $chatroom_onboards-> id_user }}">
-                                    <input type="hidden" id="id_admin" name="id_admin" value=" {{ Auth::guard('admin')->user()->id_admin }}">
-                                    <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
-                                    <input type="hidden" id="from" name="from" value="{{ Auth::guard('admin')->user()->username }}">
-                                    <input type="hidden" id="for" name="for" value="{{ $chatrooms-> username }}">
+                                    <input type="hidden" id="id_chatroom" name="id_chatroom" value=" {{ $chatroom_onboards-> id_chatroom }}" readonly>
+                                    <input type="hidden" id="id_user" name="id_user" value="{{  $chatroom_onboards-> id_user }}" readonly>
+                                    <input type="hidden" id="id_admin" name="id_admin" value=" {{ Auth::guard('admin')->user()->id_admin }}" readonly>
+                                    <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}" readonly>
+                                    <input type="hidden" id="from" name="from" value="{{ Auth::guard('admin')->user()->username }}" readonly>
+                                    <input type="hidden" id="for" name="for" value="{{ $chatrooms-> username }}" readonly>
                                     <input type="text" class="form-control" id="message" name="message" placeholder="Pesan" aria-label="message" aria-describedby="button-addon2">
                                     <button class="btn btn-default" type="submit" id="button-addon2">Kirim</button>
                                 </div>

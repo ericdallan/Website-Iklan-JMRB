@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
-                        <input type="hidden" id="id" name="id" value="{{ Auth::guard('web')->user()->id_user }}">
+                        <input type="hidden" id="id" name="id" value="{{ Auth::guard('web')->user()->id_user }}" readonly>
                         <div class="row mb-4">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" value="{{ Auth::guard('web')->user()->username }}">

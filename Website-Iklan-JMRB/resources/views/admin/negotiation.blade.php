@@ -65,10 +65,10 @@
                 <div class="modal-content">
                     <form action="{{route('admin/negotiation/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id_negotiation" id="id_negotiation" value="{{$negotiations->id_negotiation}}">
-                        <input type="hidden" name="id_user" id="id_user" value="{{$negotiations->id_user}}">
-                        <input type="hidden" name="id_iklan" id="id_iklan" value="{{$negotiations->id_iklan}}">
-                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
+                        <input type="hidden" name="id_negotiation" id="id_negotiation" value="{{$negotiations->id_negotiation}}" readonly>
+                        <input type="hidden" name="id_user" id="id_user" value="{{$negotiations->id_user}}" readonly>
+                        <input type="hidden" name="id_iklan" id="id_iklan" value="{{$negotiations->id_iklan}}" readonly>
+                        <input type="hidden" id="time" name="time" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}" readonly>
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detail Iklan {{$negotiations->name}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

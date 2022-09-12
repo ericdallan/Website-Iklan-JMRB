@@ -82,10 +82,10 @@
                                 <label for="reply_pict" class="form-label">Upload Foto<i class="fs-6 text-muted">(Opsional)</i></label>
                                 <input type="file" id="reply_pict" class="form-control" name="reply_pict">
                             </div>
-                            <input type="hidden" id="id_forum" name="id_forum" value="{{$forum->id_forum}}">
-                            <input type="hidden" id="time_reply" name="time_reply" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}">
-                            <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::guard('admin')->user()->id_admin }}">
-                            <input type="hidden" id="owner_reply" name="owner_reply" value="{{ Auth::guard('admin')->user()->username }}">
+                            <input type="hidden" id="id_forum" name="id_forum" value="{{$forum->id_forum}}" readonly>
+                            <input type="hidden" id="time_reply" name="time_reply" value="{{Carbon\Carbon::now()->format('Y/m/d H:i:s')}}" readonly>
+                            <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::guard('admin')->user()->id_admin }}" readonly>
+                            <input type="hidden" id="owner_reply" name="owner_reply" value="{{ Auth::guard('admin')->user()->username }}" readonly>
                             <div class="row mb-3 justify-content-center">
                                 <button type="submit" class="btn btn-default btn-sm rounded-3 w-25">Reply</button>
                             </div>

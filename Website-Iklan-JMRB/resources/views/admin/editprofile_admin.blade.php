@@ -57,7 +57,7 @@
                 </div>
                 <div class="row g-0">
                     <div class="col-sm-6 col-md-6 mx-auto" style="width: 30rem;">
-                        <input type="hidden" id="id" name="id" value="{{ Auth::guard('admin')->user()->id_admin}}">
+                        <input type="hidden" id="id" name="id" value="{{ Auth::guard('admin')->user()->id_admin}}" readonly>
                         <div class="row mt-2 mb-5 d-flex align-items-center">
                             @if(Auth::guard('admin')->user()->pic_profile == '')
                             <div class="row mb-4">

@@ -95,7 +95,7 @@
                     <form action="{{route('dashboard/iklan/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body mx-3">
-                            <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}">
+                            <input type="hidden" id="id" name="id" value="{{ $iklans->id_iklan }}" readonly>
                             <div class="row mb-3">
                                 <div class="text-muted">Preview Foto Iklan</div>
                             </div>
